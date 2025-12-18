@@ -1,209 +1,24 @@
-// Variáveis globais para o Three.js
-let scene, camera, renderer, stars, glbModel;
-let mouseX = 0, mouseY = 0;
-let windowHalfX = window.innerWidth / 2;
-let windowHalfY = window.innerHeight / 2;
-
-// Variáveis para o carrossel
-let currentPortfolioIndex = 0;
-let portfolioItemsPerView = 3;
-let isScrolling = false;
-
-// Inicialização do Three.js para o fundo (estrelas e modelo GLB)
-function initSpaceBackground() {
-    // Cena
-    scene = new THREE.Scene();
+// Atualizar posição do mouse
+function updateMousePosition(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
     
-    // Câmera
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 3000);
-    camera.position.z = 100;
-    
-    // Renderizador
-    renderer = new THREE.WebGLRenderer({ 
-        canvas: document.getElementById('spaceCanvas'), 
-        alpha: true,
-        antialias: true 
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    
-    // Definir fundo preto (skybox removida)
-    scene.background = new THREE.Color(0x000000);
-    
-    // Criar estrelas
-    createStars();
-    
-    // Adicionar luz básica
-    const ambientLight = new THREE.AmbientLight(0x555555);
-    scene.add(ambientLight);
-    
-    // Adicionar luz direcional para o modelo GLB
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5);
-    scene.add(directionalLight);
-    
-    // Carregar modelo GLB (opcional)
-    loadGLBModel();
-    
-    // Event listeners
-    document.addEventListener('mousemove', onMouseMove, false);
-    window.addEventListener('resize', onWindowResize, false);
-    
-    // Iniciar animação
-    animateSpace();
-}
-
-// Criar estrelas
-function createStars() {
-    const starCount = 5000; // Reduzido para melhor performance
-    const positions = new Float32Array(starCount * 3);
-    const colors = new Float32Array(starCount * 3);
-    
-    for (let i = 0; i < starCount; i++) {
-        // Posições aleatórias em uma esfera grande
-        const radius = 2000;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos((Math.random() * 2) - 1);
+    // Atualizar luz do mouse
+    const mouseLight = document.querySelector('.mouse-light');
+    if (mouseLight) {
+        mouseLight.style.opacity = '1';
+        mouseLight.style.left = mouseX + 'px';
+        mouseLight.style.top = mouseY + 'px';
         
-        const i3 = i * 3;
-        positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-        positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-        positions[i3 + 2] = radius * Math.cos(phi);
-        
-        // Cores em tons de cinza
-        const intensity = 0.5 + Math.random() * 0.5;
-        colors[i3] = intensity;
-        colors[i3 + 1] = intensity;
-        colors[i3 + 2] = intensity;
+        // Esconder luz após 1 segundo sem movimento
+        clearTimeout(window.mouseTimer);
+        window.mouseTimer = setTimeout(() => {
+            mouseLight.style.opacity = '0';
+        }, 1000);
     }
-    
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    
-    const material = new THREE.PointsMaterial({
-        size: 1.2,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.9
-    });
-    
-    stars = new THREE.Points(geometry, material);
-    scene.add(stars);
 }
 
-// Carregar modelo GLB (opcional - fallback se não existir)
-function loadGLBModel() {
-    const loader = new THREE.GLTFLoader();
-    
-    // Tentar carregar o modelo GLB
-    loader.load('model.glb', 
-        // Sucesso
-        function(gltf) {
-            glbModel = gltf.scene;
-            
-            // Ajustar escala e posição
-            glbModel.scale.set(50, 50, 50);
-            glbModel.position.set(0, 0, 0);
-            glbModel.rotation.set(0, 0, 0);
-            
-            // Adicionar à cena
-            scene.add(glbModel);
-            
-            console.log('Modelo GLB carregado com sucesso');
-        },
-        // Progresso
-        undefined,
-        // Erro - não faz nada, apenas não carrega o modelo
-        function(error) {
-            console.log('Modelo GLB não encontrado. Continuando sem modelo.');
-        }
-    );
-}
-
-// Animação do fundo do espaço
-function animateSpace() {
-    requestAnimationFrame(animateSpace);
-    
-    // Rotação suave das estrelas
-    if (stars) {
-        stars.rotation.y += 0.0001; // Reduzido para melhor performance
-        stars.rotation.x += 0.00005;
-    }
-    
-    // Rotação do modelo GLB se existir
-    if (glbModel) {
-        glbModel.rotation.y += 0.0001;
-        glbModel.rotation.x += 0.0000;
-    }
-    
-    // Movimento da câmera baseado no mouse (sutil)
-    camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.05; // Reduzido
-    camera.position.y += (-mouseY * 0.3 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-    
-    renderer.render(scene, camera);
-}
-
-// Evento de movimento do mouse
-function onMouseMove(event) {
-    mouseX = (event.clientX - windowHalfX) / 150; // Reduzido
-    mouseY = (event.clientY - windowHalfY) / 150;
-}
-
-// Evento de redimensionamento da janela
-function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    
-    // Atualizar câmera e renderizador do fundo
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-// ===== FUNÇÕES DO SITE =====
-
-// Função para rolagem suave
-function smoothScrollTo(targetId, duration = 1200) {
-    if (isScrolling) return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (!targetElement) return;
-    
-    isScrolling = true;
-    
-    // Calcular posição de destino
-    const targetPosition = targetElement.offsetTop - 80;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        
-        // Usar função de easing para suavidade
-        const ease = easeInOutCubic(Math.min(timeElapsed / duration, 1));
-        const run = startPosition + distance * ease;
-        
-        window.scrollTo(0, run);
-        
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-        } else {
-            isScrolling = false;
-        }
-    }
-    
-    // Função de easing cúbica
-    function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-    
-    requestAnimationFrame(animation);
-}
-
+// ===== CARROSSEL DO PORTFÓLIO =====
 function initPortfolioCarousel() {
     const carousel = document.querySelector('.portfolio-carousel');
     const items = document.querySelectorAll('.portfolio-item');
@@ -213,176 +28,385 @@ function initPortfolioCarousel() {
     
     if (!carousel || items.length === 0) return;
     
-    // Calcular o número máximo de slides baseado na largura da tela
+    let currentIndex = 0;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID;
+    
     function getItemsPerView() {
         if (window.innerWidth < 768) return 1;
-        if (window.innerWidth < 1200) return 2;
+        if (window.innerWidth < 992) return 2;
         return 3;
     }
     
     function updateCarousel() {
-        portfolioItemsPerView = getItemsPerView();
-        const itemWidth = 100 / portfolioItemsPerView;
-        const translateX = -currentPortfolioIndex * itemWidth;
+        const itemsPerView = getItemsPerView();
+        const itemWidth = 100 / itemsPerView;
+        const translateX = -currentIndex * itemWidth;
         
         carousel.style.transform = `translateX(${translateX}%)`;
         
-        // Atualizar dots ativos
-        const maxDots = Math.max(0, Math.ceil(items.length / portfolioItemsPerView) - 1);
+        // Atualizar dots
+        const maxDots = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
         dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentPortfolioIndex && index <= maxDots);
-            dot.style.display = index <= maxDots ? 'block' : 'none';
+            if (dot) {
+                dot.classList.toggle('active', index === currentIndex && index <= maxDots);
+                dot.style.display = index <= maxDots ? 'block' : 'none';
+            }
         });
         
-        // Esconder/mostrar botões baseado na posição atual
-        prevBtn.style.opacity = currentPortfolioIndex === 0 ? '0.5' : '1';
-        prevBtn.style.cursor = currentPortfolioIndex === 0 ? 'not-allowed' : 'pointer';
-        
-        const maxIndex = Math.max(0, Math.ceil(items.length / portfolioItemsPerView) - 1);
-        nextBtn.style.opacity = currentPortfolioIndex >= maxIndex ? '0.5' : '1';
-        nextBtn.style.cursor = currentPortfolioIndex >= maxIndex ? 'not-allowed' : 'pointer';
+        // Controlar visibilidade dos botões
+        if (prevBtn && nextBtn) {
+            prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            prevBtn.disabled = currentIndex === 0;
+            
+            const maxIndex = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+            nextBtn.disabled = currentIndex >= maxIndex;
+        }
     }
     
     function nextSlide() {
-        const maxIndex = Math.max(0, Math.ceil(items.length / portfolioItemsPerView) - 1);
+        const itemsPerView = getItemsPerView();
+        const maxIndex = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
         
-        if (currentPortfolioIndex < maxIndex) {
-            currentPortfolioIndex++;
+        if (currentIndex < maxIndex) {
+            currentIndex++;
             updateCarousel();
         }
     }
     
     function prevSlide() {
-        if (currentPortfolioIndex > 0) {
-            currentPortfolioIndex--;
+        if (currentIndex > 0) {
+            currentIndex--;
             updateCarousel();
         }
     }
     
-    // Event listeners
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
+    // Touch/swipe para mobile
+    function touchStart(e) {
+        if (window.innerWidth > 767) return; // Apenas para mobile
+        
+        isDragging = true;
+        startPos = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        animationID = requestAnimationFrame(animation);
+        carousel.style.cursor = 'grabbing';
+    }
     
-    dots.forEach(dot => {
-        dot.addEventListener('click', function() {
-            currentPortfolioIndex = parseInt(this.getAttribute('data-index'));
-            updateCarousel();
+    function touchMove(e) {
+        if (!isDragging || window.innerWidth > 767) return;
+        e.preventDefault();
+        
+        const currentPosition = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+    
+    function touchEnd() {
+        if (window.innerWidth > 767) return;
+        
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        carousel.style.cursor = 'grab';
+        
+        const itemsPerView = getItemsPerView();
+        const itemWidth = carousel.offsetWidth / itemsPerView;
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Se o movimento for significativo, mudar slide
+        if (Math.abs(movedBy) > itemWidth * 0.2) {
+            if (movedBy < 0 && currentIndex < Math.ceil(items.length / itemsPerView) - 1) {
+                nextSlide();
+            } else if (movedBy > 0 && currentIndex > 0) {
+                prevSlide();
+            }
+        }
+        
+        prevTranslate = currentTranslate;
+    }
+    
+    function animation() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+        if (isDragging) requestAnimationFrame(animation);
+    }
+    
+    // Event listeners para desktop
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    
+    // Event listeners para mobile (touch)
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchmove', touchMove);
+    carousel.addEventListener('touchend', touchEnd);
+    
+    // Event listeners para mouse (desktop)
+    carousel.addEventListener('mousedown', touchStart);
+    carousel.addEventListener('mousemove', touchMove);
+    carousel.addEventListener('mouseup', touchEnd);
+    carousel.addEventListener('mouseleave', touchEnd);
+    
+    if (dots) {
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                currentIndex = parseInt(this.getAttribute('data-index'));
+                updateCarousel();
+            });
+        });
+    }
+    
+    // Inicializar
+    updateCarousel();
+    window.addEventListener('resize', updateCarousel);
+}
+
+// ===== CERTIFICAÇÕES =====
+function initCertifications() {
+    const certificationCards = document.querySelectorAll('.certification-card');
+    const certificationModal = document.querySelector('.certification-modal');
+    const modalClose = document.querySelector('.certification-modal-close');
+    const modalTitle = document.querySelector('.certification-modal-title');
+    const modalDate = document.querySelector('.certification-modal-date');
+    const modalDescription = document.querySelector('.certification-modal-description');
+    const modalDetails = document.querySelector('.certification-modal-details');
+    const modalSkills = document.querySelector('.certification-modal-skills');
+    
+    // Dados das certificações
+    const certificationsData = [
+        {
+            title: "Google Ads Certification",
+            date: "2022",
+            description: "Certificação oficial do Google em gestão de campanhas de publicidade digital, abrangendo Search, Display, Video e Shopping Ads.",
+            details: [
+                "Gestão completa de campanhas no Google Ads",
+                "Otimização de ROI e conversões",
+                "Segmentação avançada de público",
+                "Análise de métricas e relatórios"
+            ],
+            skills: ["Google Ads", "Publicidade", "ROI", "Análise"]
+        },
+        {
+            title: "Meta Blueprint Certification",
+            date: "2023",
+            description: "Certificação avançada em marketing no Facebook e Instagram, incluindo estratégias de conteúdo, anúncios e análise de performance.",
+            details: [
+                "Estratégias de conteúdo para Facebook e Instagram",
+                "Criação e gestão de campanhas patrocinadas",
+                "Otimização de anúncios para diferentes objetivos",
+                "Análise de métricas e ajustes de campanha"
+            ],
+            skills: ["Meta Ads", "Facebook", "Instagram", "Marketing"]
+        },
+        {
+            title: "E-commerce Specialist",
+            date: "2021",
+            description: "Especialização em gestão e otimização de lojas virtuais, incluindo plataformas, logística e conversão de vendas.",
+            details: [
+                "Gestão de plataformas e-commerce (Shopify, WooCommerce)",
+                "Otimização de conversão e experiência do usuário",
+                "Gestão de estoque e logística",
+                "Estratégias de retenção de clientes"
+            ],
+            skills: ["E-commerce", "Shopify", "Conversão", "Logística"]
+        },
+        {
+            title: "Desenvolvimento Web Full Stack",
+            date: "2020",
+            description: "Formação completa em desenvolvimento web front-end e back-end, com foco em tecnologias modernas e práticas ágeis.",
+            details: [
+                "HTML5, CSS3, JavaScript (ES6+)",
+                "React.js e Node.js",
+                "Banco de dados SQL e NoSQL",
+                "APIs REST e GraphQL"
+            ],
+            skills: ["Front-end", "Back-end", "React", "Node.js"]
+        },
+        {
+            title: "Gestão de Projetos Ágeis",
+            date: "2022",
+            description: "Metodologias ágeis e gestão eficiente de projetos digitais, com foco em Scrum, Kanban e entrega contínua de valor.",
+            details: [
+                "Metodologias Scrum e Kanban",
+                "Planejamento e estimativa de projetos",
+                "Gestão de equipes remotas",
+                "Entrega contínua e melhoria constante"
+            ],
+            skills: ["Scrum", "Kanban", "Gestão", "Ágil"]
+        },
+        {
+            title: "Segurança da Informação",
+            date: "2021",
+            description: "Proteção de dados e sistemas em ambientes corporativos, incluindo políticas de segurança, criptografia e prevenção de ataques.",
+            details: [
+                "Políticas e procedimentos de segurança",
+                "Criptografia e proteção de dados",
+                "Prevenção e detecção de ameaças",
+                "Conformidade com LGPD e GDPR"
+            ],
+            skills: ["Segurança", "Criptografia", "LGPD", "Proteção"]
+        }
+    ];
+    
+    // Abrir modal
+    certificationCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            const data = certificationsData[index];
+            
+            // Preencher modal com dados
+            modalTitle.textContent = data.title;
+            modalDate.textContent = data.date;
+            modalDescription.textContent = data.description;
+            
+            // Limpar e preencher detalhes
+            modalDetails.innerHTML = '';
+            const detailsTitle = document.createElement('h4');
+            detailsTitle.textContent = 'Detalhes';
+            modalDetails.appendChild(detailsTitle);
+            
+            const detailsList = document.createElement('ul');
+            data.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                detailsList.appendChild(li);
+            });
+            modalDetails.appendChild(detailsList);
+            
+            // Limpar e preencher habilidades
+            modalSkills.innerHTML = '';
+            data.skills.forEach(skill => {
+                const skillSpan = document.createElement('span');
+                skillSpan.textContent = skill;
+                modalSkills.appendChild(skillSpan);
+            });
+            
+            // Mostrar modal
+            certificationModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
     });
     
-    // Atualizar carrossel no redimensionamento da janela
-    window.addEventListener('resize', updateCarousel);
-    
-    // Inicializar carrossel
-    updateCarousel();
-}
-
-// Modal da logo
-function initLogoModal() {
-    const logoLink = document.getElementById('logoLink');
-    const logoModal = document.getElementById('logoModal');
-    const closeModal = document.querySelector('.logo-modal-close');
-    
-    if (!logoLink || !logoModal) return;
-    
-    // Abrir modal
-    logoLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        logoModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Impedir scroll
-    });
-    
-    // Fechar modal com X
-    closeModal.addEventListener('click', function() {
-        logoModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
+    // Fechar modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            certificationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
     
     // Fechar modal ao clicar fora
-    logoModal.addEventListener('click', function(e) {
+    if (certificationModal) {
+        certificationModal.addEventListener('click', (e) => {
+            if (e.target === certificationModal) {
+                certificationModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Fechar modal com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certificationModal.classList.contains('active')) {
+            certificationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// ===== MODAL DA LOGO =====
+function initLogoModal() {
+    const logoLink = document.querySelector('.logo-img') || document.querySelector('.logo');
+    const modal = document.getElementById('logoModal');
+    const closeBtn = document.querySelector('.logo-modal-close');
+    
+    if (!logoLink || !modal) return;
+    
+    logoLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    modal.addEventListener('click', function(e) {
         if (e.target === this) {
             this.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
     });
     
-    // Fechar modal com ESC
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && logoModal.classList.contains('active')) {
-            logoModal.classList.remove('active');
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Esconder tela de loading após 2 segundos
-    setTimeout(function() {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.opacity = '0';
-        setTimeout(function() {
-            loadingScreen.style.visibility = 'hidden';
-        }, 1000);
-    }, 2000);
+// ===== ANIMAÇÃO DE DIGITAÇÃO =====
+function initTypewriter() {
+    const nameElement = document.getElementById('typed-name');
+    const subtitleElement = document.getElementById('typed-subtitle');
     
-    // Menu mobile
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
+    if (!nameElement) return;
     
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-                
-            // Alternar scroll do body
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-        });
+    const nameText = "Arthur Kennedy De Faria";
+    const subtitleText = "Gestor de Tráfego, Gestor de E-commerce, Desenvolvedor Web e TI";
+    
+    nameElement.textContent = "";
+    subtitleElement.textContent = "";
+    
+    function typeText(element, text, speed = 50, callback = null) {
+        let i = 0;
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                setTimeout(callback, 500);
+            }
+        }
+        
+        type();
     }
     
-    // Fechar menu ao clicar em um link
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            document.body.style.overflow = 'auto';
+    // Começar animação
+    setTimeout(() => {
+        typeText(nameElement, nameText, 50, () => {
+            setTimeout(() => {
+                typeText(subtitleElement, subtitleText, 30);
+            }, 300);
         });
-    });
-    
-    // Navegação suave para setas
-    const scrollDownButtons = document.querySelectorAll('.scroll-down');
-    scrollDownButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            // Usar rolagem suave personalizada para setas
-            smoothScrollTo(targetId, 1000);
-        });
-    });
-    
-    // Navegação suave para links do menu (mantém comportamento padrão)
+    }, 1000);
+}
+
+// ===== NAVEGAÇÃO SUAVE =====
+function initSmoothNavigation() {
+    // Links do menu
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
             
-            // Fechar menu mobile se estiver aberto
-            if (navLinks.classList.contains('active')) {
+            // Fechar menu mobile se aberto
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = 'auto';
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
             }
             
-            // Usar rolagem nativa para links do menu
+            // Rolagem suave
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
@@ -393,7 +417,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar scroll effect
+    // Setas de scroll
+    document.querySelectorAll('.scroll-down').forEach(arrow => {
+        arrow.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href') || this.getAttribute('data-target');
+            if (targetId) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+}
+
+// ===== MENU MOBILE =====
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (!mobileMenuBtn || !navLinks) return;
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        this.innerHTML = navLinks.classList.contains('active') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+        
+        document.body.style.overflow = navLinks.classList.contains('active') 
+            ? 'hidden' 
+            : 'auto';
+    });
+    
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+        });
+    });
+}
+
+// ===== NAVBAR SCROLL EFFECT =====
+function initNavbarScroll() {
     window.addEventListener('scroll', function() {
         const nav = document.querySelector('nav');
         if (window.scrollY > 100) {
@@ -402,120 +473,110 @@ document.addEventListener('DOMContentLoaded', function() {
             nav.classList.remove('scrolled');
         }
     });
-    
-    // Animação de digitação do nome
-    const nameElement = document.getElementById('typed-name');
-    const subtitleElement = document.getElementById('typed-subtitle');
-    const nameText = "Arthur Kennedy De Faria";
-    const subtitleText = "Gestor de Tráfego, Gestor de E-commerce, Desenvolvedor Web e TI";
-    
-    if (nameElement) {
-        nameElement.textContent = "";
-        subtitleElement.textContent = "";
-        
-        // Digitar nome
-        typeText(nameElement, nameText, 0, function() {
-            // Após digitar o nome, começar a digitar o subtítulo
+}
+
+// ===== LOADING SCREEN =====
+function initLoadingScreen() {
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
             setTimeout(() => {
-                typeText(subtitleElement, subtitleText, 0);
-            }, 300);
-        });
-    }
-    
-    function typeText(element, text, index, callback) {
-        if (index < text.length) {
-            element.textContent += text.charAt(index);
-            setTimeout(function() {
-                typeText(element, text, index + 1, callback);
-            }, 50);
-        } else if (callback) {
-            callback();
+                loadingScreen.style.visibility = 'hidden';
+            }, 1000);
         }
-    }
-    
-    // Observar elementos para animação de entrada
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
+    }, 2000);
+}
+
+// ===== INTERSECTION OBSERVER =====
+function initIntersectionObserver() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animated');
             }
         });
-    }, observerOptions);
-    
-    // Observar elementos para animação
-    document.querySelectorAll('.timeline-content, .skill-category, .portfolio-item').forEach(el => {
-        observer.observe(el);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
     
-    // Inicializar Three.js
-    initSpaceBackground();
-    
-    // Inicializar carrossel do portfólio
-    initPortfolioCarousel();
-    
-    // Inicializar modal da logo
-    initLogoModal();
-    
-    // Corrigir altura das seções para evitar sobreposição do footer
-    function adjustSectionHeights() {
-        const sections = document.querySelectorAll('section');
-        const viewportHeight = window.innerHeight;
+    // Observar elementos
+    document.querySelectorAll('.timeline-content, .skill-category, .portfolio-item, .certification-card').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// ===== OTIMIZAÇÃO PARA MOBILE =====
+function optimizeForMobile() {
+    if (window.innerWidth < 768) {
+        // Ajustes específicos para mobile
+        document.body.style.overflowX = 'hidden';
         
-        sections.forEach(section => {
-            if (section.offsetHeight < viewportHeight) {
-                section.style.minHeight = `${viewportHeight}px`;
+        // Ajustar tamanhos de fonte
+        const elementsToAdjust = document.querySelectorAll('h1, h2, h3, p, .btn, .stat-value');
+        elementsToAdjust.forEach(el => {
+            const currentSize = parseFloat(window.getComputedStyle(el).fontSize);
+            if (currentSize > 16) {
+                el.style.fontSize = `${currentSize * 0.9}px`;
             }
         });
     }
+}
+
+// ===== INICIALIZAR TUDO =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar funções
+    initLoadingScreen();
+    initMobileMenu();
+    initSmoothNavigation();
+    initNavbarScroll();
+    initTypewriter();
+    initLogoModal();
+    initPortfolioCarousel();
+    initCertifications();
+    initIntersectionObserver();
     
-    // Ajustar alturas inicialmente e no redimensionamento
-    adjustSectionHeights();
-    window.addEventListener('resize', adjustSectionHeights);
+    // Inicializar efeitos de mouse
+    document.addEventListener('mousemove', updateMousePosition);
+    applyParallax();
     
-    // Garantir que o footer seja visível
-    function ensureFooterVisibility() {
-        const footer = document.querySelector('footer');
-        const bodyHeight = document.body.offsetHeight;
-        const viewportHeight = window.innerHeight;
-        
-        if (bodyHeight < viewportHeight) {
-            footer.style.position = 'absolute';
-            footer.style.bottom = '0';
-            footer.style.width = '100%';
-        } else {
-            footer.style.position = 'relative';
-        }
+    // Inicializar linha animada
+    if (animatedLine) {
+        updateAnimatedLine();
     }
     
-    ensureFooterVisibility();
-    window.addEventListener('resize', ensureFooterVisibility);
+    // Otimizar para dispositivos móveis
+    optimizeForMobile();
+    window.addEventListener('resize', optimizeForMobile);
+    
+    // Remover loading screen se ainda estiver visível após 5 segundos
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.visibility !== 'hidden') {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.visibility = 'hidden';
+            }, 1000);
+        }
+    }, 5000);
 });
 
-// Melhorar performance no scroll
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    if (!scrollTimeout) {
-        scrollTimeout = setTimeout(function() {
-            scrollTimeout = null;
-            // Atualizar elementos visíveis
-            const scrollPos = window.scrollY;
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                
-                if (scrollPos >= sectionTop - 100 && scrollPos < sectionTop + sectionHeight - 100) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
-        }, 100);
+// ===== GESTÃO DE PERFORMANCE =====
+let resizeTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        // Recarregar carrossel após redimensionamento
+        initPortfolioCarousel();
+    }, 250);
+});
+
+// Desabilitar animações quando a página não está visível
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        // Pausar animações se possível
+    } else {
+        // Retomar animações
     }
 });
