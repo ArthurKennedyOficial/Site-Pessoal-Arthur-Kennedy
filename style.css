@@ -107,7 +107,7 @@ section {
     left: -10%;
     width: 120%;
     height: 120%;
-    background-image: url('background.avif'); /* Sua imagem de fundo */
+    background-image: url('background.jpg'); /* Sua imagem de fundo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1668,3 +1668,4 @@ footer {
         display: none; /* Esconder texto da logo em telas muito pequenas */
     }
 }
+
