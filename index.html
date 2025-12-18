@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Kennedy | Especialista em E-commerce e Tráfego Pago</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Carregando experiência</div>
+        </div>
+    </div>
+
+    <!-- Canvas para o fundo do espaço (estrelas e modelo GLB) -->
+    <canvas id="spaceCanvas"></canvas>
+
+    <!-- Modal para foto ampliada -->
+    <div id="logoModal" class="logo-modal">
+        <div class="logo-modal-content">
+            <span class="logo-modal-close">&times;</span>
+            <img src="Arthur.png" alt="Arthur Kennedy - Foto ampliada">
+        </div>
+    </div>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#hero" class="logo" id="logoLink">
+                <div class="logo-img"></div>
+                <span>Arthur Kennedy</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> Sobre</a></li>
+                <li><a href="#experiences"><i class="fas fa-briefcase"></i> Experiências</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Habilidades</a></li>
+                <li><a href="#portfolio"><i class="fas fa-project-diagram"></i> Portfólio</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h1 id="typed-name">Arthur Kennedy De Faria</h1>
+            <div class="subtitle">
+                <h2 id="typed-subtitle">Gestor de Tráfego, Gestor de E-commerce, Desenvolvedor Web e TI</h2>
+            </div>
+            <p class="hero-description">Transformando investimentos em resultados: mais de <span class="highlight">R$ 1 milhão</span> em vendas geradas através de estratégias digitais eficientes.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary"><i class="fas fa-eye"></i> Ver Portfólio</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Entrar em Contato</a>
+            </div>
+            <div class="floating-stats">
+                <div class="stat">
+                    <div class="stat-value">R$ 1MM+</div>
+                    <div class="stat-label">Vendas Geradas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">R$ 150K+</div>
+                    <div class="stat-label">Investidos em Mídia</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">2k+</div>
+                    <div class="stat-label">Vendas Geradas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5+</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+            </div>
+        </div>
+        <div class="section-scroll-indicator">
+            <a href="#about" class="scroll-down" data-target="about">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Tenho 23 anos e nos últimos 5 anos venho acumulando uma vasta experiência profissional, de estagiário a coordenador de TI em uma das maiores empresas de contabilidade do interior de Minas Gerais.</p>
+                    <p>Criei uma loja virtual que atingiu cerca de 400 clientes ativos e hoje presto assessoria estratégica de marketing para outras empresas como gestor de tráfego pago e estrategista digital.</p>
+                    <p>Meu objetivo é ajudar empresas a venderem mais, melhor e sempre, utilizando estratégias baseadas em dados e as mais recentes tecnologias de marketing digital.</p>
+                </div>
+                <div class="about-image">
+                    <img src="Space.png" alt="Arthur Kennedy">
+                </div>
+            </div>
+        </div>
+        <div class="section-scroll-indicator">
+            <a href="#experiences" class="scroll-down" data-target="experiences">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="experiences">
+        <div class="container">
+            <h2>Experiências</h2>
+            <div class="timeline">
+                <!-- Experiências existentes mantidas -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - Atual</span>
+                        <h3>Fundador e CEO - XS Commerce</h3>
+                        <p>Assessoria de Marketing Estratégica especializada em e-commerce e performance digital.</p>
+                        <ul>
+                            <li>Gestão de campanhas em Meta Ads e Google Ads com foco em ROI</li>
+                            <li>Desenvolvimento de estratégias de tráfego para e-commerce</li>
+                            <li>Criação e otimização de funis de venda completos</li>
+                            <li>Análise profunda de KPIs para tomada de decisão baseada em dados</li>
+                            <li>Implementação de estratégias para aumentar o LTV (Lifetime Value)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2023</span>
+                        <h3>Fundador e CEO - ATYLA E-commerce</h3>
+                        <p>E-commerce de moda masculina que alcançou 400 clientes ativos através de estratégias digitais integradas.</p>
+                        <ul>
+                            <li>Gestão completa de anúncios online (Meta Ads e Google Ads)</li>
+                            <li>Administração operacional do e-commerce</li>
+                            <li>Pesquisa de mercado e precificação estratégica de produtos</li>
+                            <li>Criação de páginas de vendas otimizadas para conversão</li>
+                            <li>Produção de conteúdo visual para mídia paga</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2023</span>
+                        <h3>Coordenador de TI - MMJ Contabilidade</h3>
+                        <p>Responsável pela infraestrutura tecnológica de uma das maiores empresas de contabilidade do interior de Minas Gerais.</p>
+                        <ul>
+                            <li>Suporte técnico especializado a 60 colaboradores</li>
+                            <li>Implementação de políticas de segurança de dados</li>
+                            <li>Manutenção e monitoramento de servidores, redes e sistemas</li>
+                            <li>Gestão de backups e atualizações críticas</li>
+                            <li>Implantação de novas soluções tecnológicas</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Novos cards adicionados -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 - Futuro</span>
+                        <h3>Novo Projeto / Empresa</h3>
+                        <p>Descrição do novo projeto ou experiência.</p>
+                        <ul>
+                            <li>Responsabilidade 1</li>
+                            <li>Responsabilidade 2</li>
+                            <li>Responsabilidade 3</li>
+                            <li>Responsabilidade 4</li>
+                            <li>Responsabilidade 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 - Futuro</span>
+                        <h3>Outro Projeto / Empresa</h3>
+                        <p>Descrição do outro projeto ou experiência.</p>
+                        <ul>
+                            <li>Responsabilidade 1</li>
+                            <li>Responsabilidade 2</li>
+                            <li>Responsabilidade 3</li>
+                            <li>Responsabilidade 4</li>
+                            <li>Responsabilidade 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-scroll-indicator">
+            <a href="#skills" class="scroll-down" data-target="skills">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Habilidades</h2>
+            <div class="skills-container">
+                <!-- Categorias de habilidades mantidas -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Gestão de Tráfego</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Meta Ads (Facebook/Instagram)</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Google Ads</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Google Analytics</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-shopping-cart"></i> E-commerce</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestão de E-commerce</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Funis de Venda</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestão de Marketplaces</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Tecnologia</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Informática/TI</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Edição de Vídeo</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Segurança de Dados</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Novas categorias de habilidades -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> Ferramentas de IA</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>ChatGPT & Copilot</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Midjourney / DALL-E</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Ferramentas de Automação</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Design e Edição</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Photoshop</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Premiere / CapCut</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Figma / Canva</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-pie"></i> Negócios e Gestão</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestão de Projetos</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Análise Financeira</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Planejamento Estratégico</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-scroll-indicator">
+            <a href="#portfolio" class="scroll-down" data-target="portfolio">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portfólio</h2>
+            <div class="portfolio-carousel-container">
+                <div class="portfolio-carousel">
+                    <!-- Items do portfólio mantidos -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>ATYLA - E-commerce de Moda Masculina</h3>
+                            <p>E-commerce completo de moda masculina que alcançou 400 clientes ativos através de estratégias digitais integradas.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">Meta Ads</span>
+                                <span class="tag">Google Ads</span>
+                                <span class="tag">Gestão de Tráfego</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Campanha de Tráfego para E-commerce</h3>
+                            <p>Estratégia completa de tráfego para e-commerce que aumentou conversões em 40% e ROI de 4.2x.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Meta Ads</span>
+                                <span class="tag">Otimização</span>
+                                <span class="tag">Google Analytics</span>
+                                <span class="tag">ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Infraestrutura de TI - MMJ Contabilidade</h3>
+                            <p>Implantação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de MG.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">TI</span>
+                                <span class="tag">Infraestrutura</span>
+                                <span class="tag">Segurança</span>
+                                <span class="tag">Servidores</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Estratégia de Growth Marketing</h3>
+                            <p>Desenvolvimento de estratégia completa de growth marketing para startup de tecnologia.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Growth</span>
+                                <span class="tag">Marketing</span>
+                                <span class="tag">Estratégia</span>
+                                <span class="tag">Startup</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>App de Gestão de E-commerce</h3>
+                            <p>Desenvolvimento de aplicativo mobile para gestão integrada de múltiplos e-commerces.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Mobile</span>
+                                <span class="tag">App</span>
+                                <span class="tag">Gestão</span>
+                                <span class="tag">Integração</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Produção de Conteúdo Digital</h3>
+                            <p>Criação de conteúdo em vídeo para campanhas de marketing digital com alta conversão.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Vídeo</span>
+                                <span class="tag">Conteúdo</span>
+                                <span class="tag">Marketing</span>
+                                <span class="tag">Produção</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                    <button class="carousel-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="section-scroll-indicator">
+            <a href="#contact" class="scroll-down" data-target="contact">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-main">
+                        <p class="contact-intro">Estou disponível para projetos freelancer em tempo parcial ou integral, com formato de trabalho 100% remoto.</p>
+                        <p class="contact-invitation">Entre em contato para discutirmos como posso ajudar seu negócio a alcançar resultados excepcionais!</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Localização</h4>
+                                    <p>Pará de Minas, MG, Brasil</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>E-mail</h4>
+                                    <p>comercialkennedy18@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Telefone/WhatsApp</h4>
+                                    <p>(37) 9 9664-7419</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Disponibilidade</h4>
+                                    <p>PJ ou CLT</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Idiomas</h4>
+                                    <p>Português (Nativo) | Inglês (Básico)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="references">
+                        <h3>Referências</h3>
+                        <div class="reference-item">
+                            <div class="reference-name">Paulo Massa</div>
+                            <div class="reference-role">Assessor de RH para empresas</div>
+                            <div class="reference-contact">37 9 9193-4164</div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-name">Lucia Aparecida</div>
+                            <div class="reference-role">Gerente da MMJ Contabilidade</div>
+                            <div class="reference-contact">37 9 9192-5418</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Arthur Kennedy De Faria. Todos os direitos reservados.</p>
+                <p class="footer-subtitle">Especialista em E-commerce e Tráfego Pago</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
