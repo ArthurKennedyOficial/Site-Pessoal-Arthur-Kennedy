@@ -812,6 +812,18 @@ function initMobileMenu() {
     });
 }
 
+// ===== NAVBAR SCROLL EFFECT =====
+function initNavbarScroll() {
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+}
+
 // ===== LOADING SCREEN =====
 function initLoadingScreen() {
     setTimeout(() => {
@@ -843,6 +855,8 @@ function initIntersectionObserver() {
         observer.observe(el);
     });
 }
+
+
 
 // ===== INICIALIZAR TUDO =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -882,4 +896,3 @@ document.addEventListener('visibilitychange', function() {
         // Retomar animações
     }
 });
-
