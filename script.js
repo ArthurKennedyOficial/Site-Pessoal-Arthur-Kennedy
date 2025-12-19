@@ -348,6 +348,355 @@ function initLogoModal() {
     });
 }
 
+// ===== MODAL DE EXPERIÊNCIAS =====
+function initExperienceModal() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const experienceModal = document.getElementById('experienceModal');
+    const modalClose = document.querySelector('.experience-modal-close');
+    const modalTitle = document.querySelector('.experience-modal-title');
+    const modalDate = document.querySelector('.experience-modal-date');
+    const modalDescription = document.querySelector('.experience-modal-description');
+    const modalDetails = document.querySelector('.experience-modal-details');
+    
+    // Dados das experiências completas
+    const experiencesData = [
+        {
+            title: "Fundador e CEO - XS Commerce",
+            date: "2023 - Atual",
+            description: "Assessoria de Marketing Estratégica especializada em e-commerce e performance digital.",
+            details: [
+                "Gestão de campanhas em Meta Ads e Google Ads com foco em ROI",
+                "Desenvolvimento de estratégias de tráfego para e-commerce",
+                "Criação e otimização de funis de venda completos",
+                "Análise profunda de KPIs para tomada de decisão baseada em dados",
+                "Implementação de estratégias para aumentar o LTV (Lifetime Value)"
+            ]
+        },
+        {
+            title: "Fundador e CEO - ATYLA E-commerce",
+            date: "2021 - 2023",
+            description: "E-commerce de moda masculina que alcançou 400 clientes ativos através de estratégias digitais.",
+            details: [
+                "Gestão completa de anúncios online (Meta Ads e Google Ads)",
+                "Administração completa do e-commerce",
+                "Pesquisa de mercado, precificação e desenvolvimento de produtos",
+                "Criação de páginas de vendas otimizadas para conversão",
+                "Edição e Criação de vídeos e imagens publicitárias",
+                "Criação e otimização de funis de venda completos"
+            ]
+        },
+        {
+            title: "Coordenador de TI - MMJ Contabilidade",
+            date: "2020 - 2023",
+            description: "Responsável pela manutenção e suporte de toda a infraestrutura tecnológica de uma das maiores empresas de contabilidade do interior de Minas Gerais.",
+            details: [
+                "Suporte técnico especializado a + de 60 colaboradores locais",
+                "Implementação de políticas de segurança de dados",
+                "Manutenção e monitoramento de servidores, computadores, redes e sistemas",
+                "Gestão de backups e atualizações críticas",
+                "Implantação de novas soluções tecnológicas"
+            ]
+        }
+    ];
+    
+    // Abrir modal
+    timelineItems.forEach((item, index) => {
+        const btnMoreInfo = item.querySelector('.btn-more-info');
+        
+        const clickHandler = () => {
+            const data = experiencesData[index];
+            
+            // Preencher modal com dados
+            modalTitle.textContent = data.title;
+            modalDate.textContent = data.date;
+            modalDescription.textContent = data.description;
+            
+            // Limpar e preencher detalhes
+            modalDetails.innerHTML = '';
+            const detailsTitle = document.createElement('h4');
+            detailsTitle.textContent = 'Responsabilidades e Conquistas';
+            modalDetails.appendChild(detailsTitle);
+            
+            const detailsList = document.createElement('ul');
+            data.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                detailsList.appendChild(li);
+            });
+            modalDetails.appendChild(detailsList);
+            
+            // Mostrar modal
+            experienceModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        // Adicionar evento ao item e ao botão
+        item.addEventListener('click', clickHandler);
+        if (btnMoreInfo) {
+            btnMoreInfo.addEventListener('click', function(e) {
+                e.stopPropagation();
+                clickHandler();
+            });
+        }
+    });
+    
+    // Fechar modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            experienceModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Fechar modal ao clicar fora
+    if (experienceModal) {
+        experienceModal.addEventListener('click', (e) => {
+            if (e.target === experienceModal) {
+                experienceModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Fechar modal com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && experienceModal.classList.contains('active')) {
+            experienceModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// ===== MODAL DE PORTFÓLIO =====
+function initPortfolioModal() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const portfolioModal = document.getElementById('portfolioModal');
+    const modalClose = document.querySelector('.portfolio-modal-close');
+    const modalTitle = document.querySelector('.portfolio-modal-title');
+    const modalSubtitle = document.querySelector('.portfolio-modal-subtitle');
+    const modalIcon = document.querySelector('.portfolio-modal-icon');
+    const galleryMain = document.querySelector('.gallery-main-img');
+    const galleryThumbs = document.querySelector('.gallery-thumbs');
+    const modalDescription = document.querySelector('.portfolio-modal-description');
+    const linksContainer = document.querySelector('.links-container');
+    const techTags = document.querySelector('.tech-tags');
+    const downloadsContainer = document.querySelector('.downloads-container');
+    
+    // Dados dos projetos do portfólio
+    const portfolioData = [
+        {
+            title: "ATYLA - E-commerce de Moda Masculina",
+            subtitle: "E-commerce completo que alcançou 400 clientes ativos",
+            icon: "fas fa-tshirt",
+            description: "Desenvolvimento completo de e-commerce de moda masculina com estratégias digitais integradas. O projeto incluiu desde a concepção da marca, desenvolvimento do site, até a implementação de estratégias de marketing digital que resultaram em 400 clientes ativos.",
+            images: [
+                "projeto1-1.jpg",
+                "projeto1-2.jpg",
+                "projeto1-3.jpg"
+            ],
+            links: [
+                { text: "Visitar Site", url: "#", icon: "fas fa-external-link-alt" },
+                { text: "Case Completo", url: "#", icon: "fas fa-file-alt" }
+            ],
+            technologies: ["E-commerce", "Meta Ads", "Google Ads", "Gestão de Tráfego", "Nuvem Shop", "Google Analytics"],
+            downloads: [
+                { text: "PDF do Case", url: "#", icon: "fas fa-file-pdf" },
+                { text: "Apresentação", url: "#", icon: "fas fa-file-powerpoint" }
+            ]
+        },
+        {
+            title: "Campanha de Tráfego para E-commerce",
+            subtitle: "Aumento de 40% nas conversões com ROI 4.2x",
+            icon: "fas fa-bullseye",
+            description: "Estratégia completa de tráfego pago para e-commerce de moda feminina. Utilizando Meta Ads e Google Ads, otimizei campanhas que resultaram em aumento de 40% nas conversões e ROI de 4.2x em 3 meses.",
+            images: [
+                "projeto2-1.jpg",
+                "projeto2-2.jpg",
+                "projeto2-3.jpg"
+            ],
+            links: [
+                { text: "Relatório de Performance", url: "#", icon: "fas fa-chart-line" },
+                { text: "Dashboard Analytics", url: "#", icon: "fas fa-tachometer-alt" }
+            ],
+            technologies: ["Meta Ads", "Google Ads", "Otimização", "Google Analytics", "ROI", "Conversão"],
+            downloads: [
+                { text: "Relatório PDF", url: "#", icon: "fas fa-file-pdf" },
+                { text: "Planilha de Métricas", url: "#", icon: "fas fa-file-excel" }
+            ]
+        },
+        {
+            title: "Infraestrutura de TI - MMJ Contabilidade",
+            subtitle: "Gestão completa de infraestrutura tecnológica",
+            icon: "fas fa-landmark",
+            description: "Implementação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de Minas Gerais. Incluiu migração para nuvem, implementação de políticas de segurança e suporte técnico especializado.",
+            images: [
+                "projeto3-1.jpg",
+                "projeto3-2.jpg",
+                "projeto3-3.jpg"
+            ],
+            links: [
+                { text: "Diagrama da Infraestrutura", url: "#", icon: "fas fa-network-wired" },
+                { text: "Relatório Técnico", url: "#", icon: "fas fa-file-contract" }
+            ],
+            technologies: ["TI", "Infraestrutura", "Segurança", "Servidores", "Redes", "Cloud"],
+            downloads: [
+                { text: "Manual de Procedimentos", url: "#", icon: "fas fa-book" },
+                { text: "Checklist de Segurança", url: "#", icon: "fas fa-clipboard-check" }
+            ]
+        },
+        {
+            title: "Estratégia de Growth Marketing",
+            subtitle: "Growth marketing para startup de tecnologia",
+            icon: "fas fa-chart-line",
+            description: "Desenvolvimento de estratégia completa de growth marketing para startup de tecnologia no setor de saúde. Implementação de funis de aquisição, ativação e retenção que resultaram em crescimento de 200% na base de usuários em 6 meses.",
+            images: [
+                "projeto4-1.jpg",
+                "projeto4-2.jpg",
+                "projeto4-3.jpg"
+            ],
+            links: [
+                { text: "Apresentação da Estratégia", url: "#", icon: "fas fa-presentation" },
+                { text: "Dashboard Growth", url: "#", icon: "fas fa-chart-bar" }
+            ],
+            technologies: ["Growth", "Marketing", "Estratégia", "Startup", "Funis", "Retenção"],
+            downloads: [
+                { text: "Plano de Growth", url: "#", icon: "fas fa-roadmap" },
+                { text: "Template de Métricas", url: "#", icon: "fas fa-table" }
+            ]
+        },
+        {
+            title: "App de Gestão de E-commerce",
+            subtitle: "Aplicativo mobile para gestão integrada",
+            icon: "fas fa-mobile-alt",
+            description: "Desenvolvimento de aplicativo mobile para gestão integrada de múltiplos e-commerces. Permite controle de estoque, pedidos, métricas e campanhas de marketing em uma única plataforma.",
+            images: [
+                "projeto5-1.jpg",
+                "projeto5-2.jpg",
+                "projeto5-3.jpg"
+            ],
+            links: [
+                { text: "Demo do App", url: "#", icon: "fas fa-play-circle" },
+                { text: "Documentação API", url: "#", icon: "fas fa-code" }
+            ],
+            technologies: ["Mobile", "App", "Gestão", "Integração", "React Native", "API"],
+            downloads: [
+                { text: "APK do App", url: "#", icon: "fas fa-mobile-alt" },
+                { text: "Documentação Técnica", url: "#", icon: "fas fa-file-code" }
+            ]
+        }
+    ];
+    
+    // Abrir modal
+    portfolioItems.forEach((item, index) => {
+        const btnViewDetails = item.querySelector('.portfolio-view-details');
+        
+        const clickHandler = () => {
+            const data = portfolioData[index];
+            
+            // Preencher modal com dados
+            modalTitle.textContent = data.title;
+            modalSubtitle.textContent = data.subtitle;
+            modalIcon.innerHTML = `<i class="${data.icon}"></i>`;
+            modalDescription.textContent = data.description;
+            
+            // Limpar e preencher galeria
+            galleryThumbs.innerHTML = '';
+            if (data.images && data.images.length > 0) {
+                galleryMain.src = data.images[0];
+                galleryMain.alt = data.title;
+                
+                data.images.forEach((imgSrc, imgIndex) => {
+                    const thumb = document.createElement('div');
+                    thumb.className = `gallery-thumb ${imgIndex === 0 ? 'active' : ''}`;
+                    thumb.innerHTML = `<img src="${imgSrc}" alt="${data.title} - Imagem ${imgIndex + 1}">`;
+                    
+                    thumb.addEventListener('click', () => {
+                        galleryMain.src = imgSrc;
+                        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                    
+                    galleryThumbs.appendChild(thumb);
+                });
+            } else {
+                galleryMain.src = '';
+                galleryMain.alt = '';
+            }
+            
+            // Limpar e preencher links
+            linksContainer.innerHTML = '';
+            data.links.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = 'link-item';
+                linkElement.target = '_blank';
+                linkElement.rel = 'noopener noreferrer';
+                linkElement.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
+                linksContainer.appendChild(linkElement);
+            });
+            
+            // Limpar e preencher tecnologias
+            techTags.innerHTML = '';
+            data.technologies.forEach(tech => {
+                const tag = document.createElement('span');
+                tag.className = 'tech-tag';
+                tag.textContent = tech;
+                techTags.appendChild(tag);
+            });
+            
+            // Limpar e preencher downloads
+            downloadsContainer.innerHTML = '';
+            data.downloads.forEach(download => {
+                const downloadElement = document.createElement('a');
+                downloadElement.href = download.url;
+                downloadElement.className = 'download-item';
+                downloadElement.download = true;
+                downloadElement.innerHTML = `<i class="${download.icon}"></i> ${download.text}`;
+                downloadsContainer.appendChild(downloadElement);
+            });
+            
+            // Mostrar modal
+            portfolioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        // Adicionar evento ao item e ao botão
+        item.addEventListener('click', clickHandler);
+        if (btnViewDetails) {
+            btnViewDetails.addEventListener('click', function(e) {
+                e.stopPropagation();
+                clickHandler();
+            });
+        }
+    });
+    
+    // Fechar modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Fechar modal ao clicar fora
+    if (portfolioModal) {
+        portfolioModal.addEventListener('click', (e) => {
+            if (e.target === portfolioModal) {
+                portfolioModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Fechar modal com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && portfolioModal.classList.contains('active')) {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
 // ===== ANIMAÇÃO DE DIGITAÇÃO =====
 function initTypewriter() {
     const nameElement = document.getElementById('typed-name');
@@ -521,6 +870,14 @@ function optimizeForMobile() {
                 el.style.fontSize = `${currentSize * 0.9}px`;
             }
         });
+        
+        // Otimizar carregamento de imagens
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
+            }
+        });
     }
 }
 
@@ -535,16 +892,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initLogoModal();
     initPortfolioCarousel();
     initCertifications();
+    initExperienceModal();
+    initPortfolioModal();
     initIntersectionObserver();
     
     // Inicializar efeitos de mouse
     document.addEventListener('mousemove', updateMousePosition);
-    applyParallax();
-    
-    // Inicializar linha animada
-    if (animatedLine) {
-        updateAnimatedLine();
-    }
     
     // Otimizar para dispositivos móveis
     optimizeForMobile();
