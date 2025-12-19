@@ -89,15 +89,27 @@ section {
 }
 
 /* ===== BACKGROUND COM PARALLAX ===== */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    transition: transform 0.3s ease-out;
+}
+
 .background-image {
-    position: absolute;
+    position: relative;
     top: -10%;
     left: -10%;
     width: 120%;
     height: 120%;
     background-image: url('background.jpg'); /* Sua imagem de fundo */
     background-size: cover;
-    background-position: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     opacity: 0.7;
 }
@@ -1645,6 +1657,7 @@ footer {
 @media (max-width: 767px) {
     /* Reset mobile */
     body {
+        -webkit-text-size-adjust: 100%;
         -webkit-tap-highlight-color: transparent;
         overflow-x: hidden;
     }
@@ -1662,7 +1675,7 @@ footer {
     }
     
     h1 {
-        font-size: 1.0rem;
+        font-size: 1.8rem;
         line-height: 1.3;
         
     }
@@ -1960,6 +1973,17 @@ footer {
         height: 45px;
     }
     
+    /* Scroll Indicator Mobile */
+    .section-scroll-indicator {
+        bottom: 30px;
+    }
+    
+    .scroll-down {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
     /* Logo Mobile */
     .logo-text {
         font-size: 1rem;
@@ -2085,6 +2109,3 @@ footer {
         font-size: 1rem;
     }
 }
-
-
-
