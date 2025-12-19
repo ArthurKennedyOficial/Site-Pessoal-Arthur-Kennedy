@@ -812,18 +812,6 @@ function initMobileMenu() {
     });
 }
 
-// ===== NAVBAR SCROLL EFFECT =====
-function initNavbarScroll() {
-    window.addEventListener('scroll', function() {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 100) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
-}
-
 // ===== LOADING SCREEN =====
 function initLoadingScreen() {
     setTimeout(() => {
@@ -856,31 +844,6 @@ function initIntersectionObserver() {
     });
 }
 
-// ===== OTIMIZAÇÃO PARA MOBILE =====
-function optimizeForMobile() {
-    if (window.innerWidth < 768) {
-        // Ajustes específicos para mobile
-        document.body.style.overflowX = 'hidden';
-        
-        // Ajustar tamanhos de fonte
-        const elementsToAdjust = document.querySelectorAll('h1, h2, h3, p, .btn, .stat-value');
-        elementsToAdjust.forEach(el => {
-            const currentSize = parseFloat(window.getComputedStyle(el).fontSize);
-            if (currentSize > 16) {
-                el.style.fontSize = `${currentSize * 0.9}px`;
-            }
-        });
-        
-        // Otimizar carregamento de imagens
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (!img.hasAttribute('loading')) {
-                img.setAttribute('loading', 'lazy');
-            }
-        });
-    }
-}
-
 // ===== INICIALIZAR TUDO =====
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar funções
@@ -899,10 +862,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar efeitos de mouse
     document.addEventListener('mousemove', updateMousePosition);
     
-    // Otimizar para dispositivos móveis
-    optimizeForMobile();
-    window.addEventListener('resize', optimizeForMobile);
-    
     // Remover loading screen se ainda estiver visível após 5 segundos
     setTimeout(() => {
         const loadingScreen = document.getElementById('loading-screen');
@@ -915,16 +874,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
 });
 
-// ===== GESTÃO DE PERFORMANCE =====
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Recarregar carrossel após redimensionamento
-        initPortfolioCarousel();
-    }, 250);
-});
-
 // Desabilitar animações quando a página não está visível
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -933,3 +882,4 @@ document.addEventListener('visibilitychange', function() {
         // Retomar animações
     }
 });
+
