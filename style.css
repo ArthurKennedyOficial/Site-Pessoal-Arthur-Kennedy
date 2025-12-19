@@ -1670,11 +1670,14 @@ footer {
     section {
         padding: 40px 0;
         scroll-margin-top: 60px;
+        margin-left: 5%;
+        margin-right: 5%;
     }
     
     h1 {
         font-size: 1.8rem;
         line-height: 1.3;
+        
     }
     
     h2 {
@@ -1758,11 +1761,11 @@ footer {
     }
     
     .hero-content {
-        text-align: center;
+        text-align: left;
     }
     
     .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
     }
     
     .subtitle h2 {
@@ -1787,25 +1790,24 @@ footer {
     }
     
     .floating-stats {
-        flex-direction: column;
         gap: 20px;
-        margin-top: 30px;
+        justify-content: center;
     }
     
     .stat {
         text-align: center;
-        width: 100%;
+        min-width: 45%;
     }
     
     .stat-value {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     
     /* About Section Mobile */
     .about-content {
         grid-template-columns: 1fr;
         gap: 30px;
-        text-align: center;
+        text-align: left;
     }
     
     .about-image {
