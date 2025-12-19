@@ -25,14 +25,62 @@
         <div class="mouse-light"></div>
     </div>
 
-    <!-- Linha animada -->
-    <div class="animated-line" id="animatedLine"></div>
-
     <!-- Modal para foto ampliada -->
     <div id="logoModal" class="logo-modal">
         <div class="logo-modal-content">
             <span class="logo-modal-close">&times;</span>
             <img src="Arthur.png" alt="Arthur Kennedy - Foto ampliada">
+        </div>
+    </div>
+
+    <!-- Modal para Experiências -->
+    <div id="experienceModal" class="experience-modal">
+        <div class="experience-modal-content">
+            <span class="experience-modal-close">&times;</span>
+            <div class="experience-modal-body">
+                <h3 class="experience-modal-title"></h3>
+                <p class="experience-modal-date"></p>
+                <div class="experience-modal-description"></div>
+                <div class="experience-modal-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Portfólio -->
+    <div id="portfolioModal" class="portfolio-modal">
+        <div class="portfolio-modal-content">
+            <span class="portfolio-modal-close">&times;</span>
+            <div class="portfolio-modal-body">
+                <div class="portfolio-modal-header">
+                    <div class="portfolio-modal-icon"></div>
+                    <h3 class="portfolio-modal-title"></h3>
+                    <p class="portfolio-modal-subtitle"></p>
+                </div>
+                
+                <div class="portfolio-modal-gallery">
+                    <div class="gallery-main">
+                        <img src="" alt="" class="gallery-main-img">
+                    </div>
+                    <div class="gallery-thumbs"></div>
+                </div>
+                
+                <div class="portfolio-modal-description"></div>
+                
+                <div class="portfolio-modal-links">
+                    <h4><i class="fas fa-link"></i> Links do Projeto</h4>
+                    <div class="links-container"></div>
+                </div>
+                
+                <div class="portfolio-modal-tech">
+                    <h4><i class="fas fa-tools"></i> Tecnologias Utilizadas</h4>
+                    <div class="tech-tags"></div>
+                </div>
+                
+                <div class="portfolio-modal-downloads">
+                    <h4><i class="fas fa-download"></i> Downloads</h4>
+                    <div class="downloads-container"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -115,86 +163,37 @@
         <div class="container">
             <h2>Experiências</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item" data-index="0">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2023 - Atual</span>
                         <h3>Fundador e CEO - XS Commerce</h3>
                         <p>Assessoria de Marketing Estratégica especializada em e-commerce e performance digital.</p>
-                        <ul>
-                            <li>Gestão de campanhas em Meta Ads e Google Ads com foco em ROI</li>
-                            <li>Desenvolvimento de estratégias de tráfego para e-commerce</li>
-                            <li>Criação e otimização de funis de venda completos</li>
-                            <li>Análise profunda de KPIs para tomada de decisão baseada em dados</li>
-                            <li>Implementação de estratégias para aumentar o LTV (Lifetime Value)</li>
-                        </ul>
+                        <button class="btn-more-info">
+                            <i class="fas fa-plus-circle"></i> Mais Informações
+                        </button>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024 - Atual</span>
-                        <h3>Assessor de Marketing - Jhoy Pet</h3>
-                        <p> Jhoy Pet é um e-commerce de produtos pet focada em transporte de animais. Ofereço uma assessoria completa de marketing estratégico especializada em e-commerce e performance digital.</p>
-                        <ul>
-                            <li>Gestão de campanhas em Meta Ads e Google Ads com foco em ROI</li>
-                            <li>Desenvolvimento de estratégias de tráfego para e-commerce</li>
-                            <li>Criação e otimização de funis de venda completos</li>
-                            <li>Análise profunda de KPIs para tomada de decisão baseada em dados</li>
-                            <li>Implementação de estratégias para aumentar o LTV (Lifetime Value)</li>
-                            <li>Geração de relatórios e reuniões mensais </li>
-                            <li>Gestão de Marketplaces Ads Shopee e Mercado Livre</li>
-                            <li>Edição e Criação de vídeos e imagens publicitárias</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024 - 2025</span>
-                        <h3>Assessor de Marketing - Sposato Premium</h3>
-                        <p> Sposato Premium é uma empresa de design de interiores, localizada em Curitiba. Trabalhei como assessor completo de marketing estratégico e performance digital.</p>
-                        <ul>
-                            <li>Gestão de campanhas em Meta Ads e Google Ads com foco em ROI</li>
-                            <li>Desenvolvimento de estratégias de tráfego para WhatsApp</li>
-                            <li>Criação e otimização de funis de venda completos</li>
-                            <li>Análise profunda de KPIs para tomada de decisão baseada em dados</li>
-                            <li>Implementação de estratégias para aumentar o LTV (Lifetime Value)</li>
-                            <li>Geração de relatórios e reuniões mensais </li>
-                            <li>Criação de Landing Pages para captação de leads</li>
-                            <li>Edição e Criação de vídeos e imagens publicitárias</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
+                </div>                
+                <div class="timeline-item" data-index="1">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2021 - 2023</span>
                         <h3>Fundador e CEO - ATYLA E-commerce</h3>
                         <p>E-commerce de moda masculina que alcançou 400 clientes ativos através de estratégias digitais.</p>
-                        <ul>
-                            <li>Gestão completa de anúncios online (Meta Ads e Google Ads)</li>
-                            <li>Administração completa do e-commerce</li>
-                            <li>Pesquisa de mercado, precificação e desenvolvimento de produtos</li>
-                            <li>Criação de páginas de vendas otimizadas para conversão</li>
-                            <li>Edição e Criação de vídeos e imagens publicitárias</li>
-                            <li>Criação e otimização de funis de venda completos</li>
-                        </ul>
+                        <button class="btn-more-info">
+                            <i class="fas fa-plus-circle"></i> Mais Informações
+                        </button>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-index="2">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">2020 - 2023</span>
                         <h3>Coordenador de TI - MMJ Contabilidade</h3>
                         <p>Responsável pela manutenção e suporte de toda a infraestrutura tecnológica de uma das maiores empresas de contabilidade do interior de Minas Gerais.</p>
-                        <ul>
-                            <li>Suporte técnico especializado a + de 60 colaboradores locais</li>
-                            <li>Implementação de políticas de segurança de dados</li>
-                            <li>Manutenção e monitoramento de servidores, computadores, redes e sistemas</li>
-                            <li>Gestão de backups e atualizações críticas</li>
-                            <li>Implantação de novas soluções tecnológicas</li>
-                        </ul>
+                        <button class="btn-more-info">
+                            <i class="fas fa-plus-circle"></i> Mais Informações
+                        </button>
                     </div>
                 </div>
             </div>
@@ -207,7 +206,7 @@
             <h2>Habilidades</h2>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Gestão de Tráfego</h3>
+                    <h3><i class="fas fa-bullhorn"></i> Marketing</h3>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Meta Ads (Facebook/Instagram)</span>
@@ -237,29 +236,20 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Google Tag Manager</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 45%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-shopping-cart"></i> E-commerce</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gestão de E-commerce</span>
+                            <span>Funis de Venda</span>
                             <span>Avançado</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-level" style="width: 90%"></div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-briefcase"></i> Negócios e Gestão</h3>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Funis de Venda</span>
+                            <span>Gestão de E-commerce</span>
                             <span>Avançado</span>
                         </div>
                         <div class="skill-bar">
@@ -277,11 +267,20 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Nuvem Shop</span>
+                            <span>Microsoft Office</span>
                             <span>Avançado</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestão de Projetos</span>
+                            <span>Intermediário</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
                         </div>
                     </div>
                 </div>
@@ -299,15 +298,6 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Microsoft Office</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
                             <span>Desenvolvimento Web</span>
                             <span>Intermediário</span>
                         </div>
@@ -315,119 +305,25 @@
                             <div class="skill-level" style="width: 75%"></div>
                         </div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Edição e Design </h3>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span></span>
+                            <span>Nuvem Shop</span>
+                            <span>Avançado</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Google Tag Manager</span>
                             <span>Básico</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-level" style="width: 40%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>CapCut</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Canva</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
+                            <div class="skill-level" style="width: 45%"></div>
                         </div>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Ferramentas IA </h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>ChatGPT e Agentes IA</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gemini / Nano-Banana</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Claude / Copywriting</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Deep Seek / Programação</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Negócios e Gestão </h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Análise de KPIs</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gestão de Projetos</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Geração de Relatórios</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Planejamento Estratégico</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
         
@@ -438,7 +334,7 @@
             <h2>Portfólio</h2>
             <div class="portfolio-carousel-container">
                 <div class="portfolio-carousel">
-                    <div class="portfolio-item">
+                    <div class="portfolio-item" data-index="0">
                         <div class="portfolio-img">
                             <i class="fas fa-tshirt"></i>
                         </div>
@@ -449,12 +345,14 @@
                                 <span class="tag">E-commerce</span>
                                 <span class="tag">Meta Ads</span>
                                 <span class="tag">Google Ads</span>
-                                <span class="tag">Gestão de Tráfego</span>
                             </div>
+                            <button class="portfolio-view-details">
+                                <i class="fas fa-expand-alt"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="portfolio-item">
+                    <div class="portfolio-item" data-index="1">
                         <div class="portfolio-img">
                             <i class="fas fa-bullseye"></i>
                         </div>
@@ -465,12 +363,14 @@
                                 <span class="tag">Meta Ads</span>
                                 <span class="tag">Otimização</span>
                                 <span class="tag">Google Analytics</span>
-                                <span class="tag">ROI</span>
                             </div>
+                            <button class="portfolio-view-details">
+                                <i class="fas fa-expand-alt"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="portfolio-item">
+                    <div class="portfolio-item" data-index="2">
                         <div class="portfolio-img">
                             <i class="fas fa-landmark"></i>
                         </div>
@@ -481,12 +381,14 @@
                                 <span class="tag">TI</span>
                                 <span class="tag">Infraestrutura</span>
                                 <span class="tag">Segurança</span>
-                                <span class="tag">Servidores</span>
                             </div>
+                            <button class="portfolio-view-details">
+                                <i class="fas fa-expand-alt"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="portfolio-item">
+                    <div class="portfolio-item" data-index="3">
                         <div class="portfolio-img">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -497,12 +399,14 @@
                                 <span class="tag">Growth</span>
                                 <span class="tag">Marketing</span>
                                 <span class="tag">Estratégia</span>
-                                <span class="tag">Startup</span>
                             </div>
+                            <button class="portfolio-view-details">
+                                <i class="fas fa-expand-alt"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="portfolio-item">
+                    <div class="portfolio-item" data-index="4">
                         <div class="portfolio-img">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
@@ -513,8 +417,10 @@
                                 <span class="tag">Mobile</span>
                                 <span class="tag">App</span>
                                 <span class="tag">Gestão</span>
-                                <span class="tag">Integração</span>
                             </div>
+                            <button class="portfolio-view-details">
+                                <i class="fas fa-expand-alt"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -695,6 +601,11 @@
                             <div class="reference-name">Lucia Aparecida</div>
                             <div class="reference-role">Gerente da MMJ Contabilidade</div>
                             <div class="reference-contact">37 9 9192-5418</div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-name">Mario Martins Jacinto Junior</div>
+                            <div class="reference-role">Ex Diretor MMJ Contabilidade</div>
+                            <div class="reference-contact">37 9 8408-9047</div>
                         </div>
                     </div>
                 </div>
