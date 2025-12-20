@@ -367,9 +367,18 @@ function initExperienceModal() {
             details: [
                 "Gestão de campanhas em Meta Ads e Google Ads com foco em ROI",
                 "Desenvolvimento de estratégias de tráfego para e-commerce",
-                "Criação e otimização de funis de venda completos",
+                "Gestão de marketplaces ads, shopee e mercado livre com foco em ROI",
+                "Criação e otimização de funis de venda para e-commerce",
                 "Análise profunda de KPIs para tomada de decisão baseada em dados",
-                "Implementação de estratégias para aumentar o LTV (Lifetime Value)"
+                "Implementação de estratégias para aumentar o LTV (Lifetime Value)",
+                "Geração de leads para whatsapp",
+                "Treinamento para time comercial",
+                "Edição e Criação de vídeos e imagens publicitárias",
+                "Criação de sites e lojas virtuias otimizadas para conversão",
+                "Copywriting e Roteirização de vídeos",
+                "Prospecção Ativa e Closer de Vendas",
+                "Gestão de uma assessoria de marketing com foco em performance"
+
             ]
         },
         {
@@ -382,7 +391,11 @@ function initExperienceModal() {
                 "Pesquisa de mercado, precificação e desenvolvimento de produtos",
                 "Criação de páginas de vendas otimizadas para conversão",
                 "Edição e Criação de vídeos e imagens publicitárias",
-                "Criação e otimização de funis de venda completos"
+                "Criação e otimização de funis de venda completos",
+                "Copywriting e Roteirização de vídeos",
+                "Controle de estoque e alinhamento com fornecedores",
+                "Implementação de estratégias para aumentar o LTV (Lifetime Value)",
+                "Análise profunda de KPIs para tomada de decisão baseada em dados"
             ]
         },
         {
@@ -394,7 +407,10 @@ function initExperienceModal() {
                 "Implementação de políticas de segurança de dados",
                 "Manutenção e monitoramento de servidores, computadores, redes e sistemas",
                 "Gestão de backups e atualizações críticas",
-                "Implantação de novas soluções tecnológicas"
+                "Implantação de novas soluções tecnológicas",
+                "Gestão e reposição do inventário de equipamentos",
+                "Gestão de orçamento para novas tecnologias",
+                "Coordenação de projetos"
             ]
         }
     ];
@@ -414,7 +430,7 @@ function initExperienceModal() {
             // Limpar e preencher detalhes
             modalDetails.innerHTML = '';
             const detailsTitle = document.createElement('h4');
-            detailsTitle.textContent = 'Responsabilidades e Conquistas';
+            detailsTitle.textContent = 'Responsabilidades';
             modalDetails.appendChild(detailsTitle);
             
             const detailsList = document.createElement('ul');
@@ -467,7 +483,7 @@ function initExperienceModal() {
     });
 }
 
-// ===== MODAL DE PORTFÓLIO =====
+// ===== MODAL DE PORTFÓLIO SIMPLIFICADO =====
 function initPortfolioModal() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const portfolioModal = document.getElementById('portfolioModal');
@@ -475,114 +491,57 @@ function initPortfolioModal() {
     const modalTitle = document.querySelector('.portfolio-modal-title');
     const modalSubtitle = document.querySelector('.portfolio-modal-subtitle');
     const modalIcon = document.querySelector('.portfolio-modal-icon');
-    const galleryMain = document.querySelector('.gallery-main-img');
-    const galleryThumbs = document.querySelector('.gallery-thumbs');
+    const galleryMain = document.querySelector('.gallery-main');
     const modalDescription = document.querySelector('.portfolio-modal-description');
     const linksContainer = document.querySelector('.links-container');
-    const techTags = document.querySelector('.tech-tags');
     const downloadsContainer = document.querySelector('.downloads-container');
     
-    // Dados dos projetos do portfólio
+    // Dados simplificados dos projetos
     const portfolioData = [
         {
             title: "ATYLA - E-commerce de Moda Masculina",
             subtitle: "E-commerce completo que alcançou 400 clientes ativos",
             icon: "fas fa-tshirt",
-            description: "Desenvolvimento completo de e-commerce de moda masculina com estratégias digitais integradas. O projeto incluiu desde a concepção da marca, desenvolvimento do site, até a implementação de estratégias de marketing digital que resultaram em 400 clientes ativos.",
-            images: [
-                "projeto1-1.jpg",
-                "projeto1-2.jpg",
-                "projeto1-3.jpg"
-            ],
-            links: [
-                { text: "Visitar Site", url: "#", icon: "fas fa-external-link-alt" },
-                { text: "Case Completo", url: "#", icon: "fas fa-file-alt" }
-            ],
-            technologies: ["E-commerce", "Meta Ads", "Google Ads", "Gestão de Tráfego", "Nuvem Shop", "Google Analytics"],
-            downloads: [
-                { text: "PDF do Case", url: "#", icon: "fas fa-file-pdf" },
-                { text: "Apresentação", url: "#", icon: "fas fa-file-powerpoint" }
-            ]
+            description: "Gestão e Desenvolvimento completo de e-commerce de moda masculina. O projeto incluiu desde a concepção da marca, desenvolvimento do site, até a implementação de estratégias de marketing digital que resultaram em 400 clientes ativos no primeiro ano.",
+            image: "fotos_portfolio/projeto1-1.jpg",
+            link: { text: "Site pausado", url: "#", icon: "fas fa-external-link-alt" },
+            download: null // Sem download para este
         },
         {
-            title: "Campanha de Tráfego para E-commerce",
-            subtitle: "Aumento de 40% nas conversões com ROI 4.2x",
+            title: "Jhoy Pet - E-commerce de produtos Pet",
+            subtitle: "Aumento em 500% no faturamento no primero mês de assessoria",
             icon: "fas fa-bullseye",
-            description: "Estratégia completa de tráfego pago para e-commerce de moda feminina. Utilizando Meta Ads e Google Ads, otimizei campanhas que resultaram em aumento de 40% nas conversões e ROI de 4.2x em 3 meses.",
-            images: [
-                "projeto2-1.jpg",
-                "projeto2-2.jpg",
-                "projeto2-3.jpg"
-            ],
-            links: [
-                { text: "Relatório de Performance", url: "#", icon: "fas fa-chart-line" },
-                { text: "Dashboard Analytics", url: "#", icon: "fas fa-tachometer-alt" }
-            ],
-            technologies: ["Meta Ads", "Google Ads", "Otimização", "Google Analytics", "ROI", "Conversão"],
-            downloads: [
-                { text: "Relatório PDF", url: "#", icon: "fas fa-file-pdf" },
-                { text: "Planilha de Métricas", url: "#", icon: "fas fa-file-excel" }
-            ]
+            description: "Montamos uma estratégia completa de tráfego pago com foco inicial em geração de leads para whatsapp e instagram, objetivo era conversão rápida e barata. Resultado no primeiro mês: Saimos de 30 Conversas por mês para 400 sem aumentar investimento, aumento o faturamento em 500%. Lançamos o e-commerce 3 meses após o ínicio da assessoria e no primeiro dia batemos o mês inteiro de faturamento no whatsapp. Crescimento médio mensal de 130% nos primeiros 6 meses",
+            image: "fotos_portfolio/projeto2-2.jpg",
+            link: { text: "Site da Empresa", url: "https://www.jhoypet.com.br", icon: "fas fa-chart-line" },
+            download: null // Sem download para este
         },
         {
             title: "Infraestrutura de TI - MMJ Contabilidade",
             subtitle: "Gestão completa de infraestrutura tecnológica",
             icon: "fas fa-landmark",
             description: "Implementação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de Minas Gerais. Incluiu migração para nuvem, implementação de políticas de segurança e suporte técnico especializado.",
-            images: [
-                "projeto3-1.jpg",
-                "projeto3-2.jpg",
-                "projeto3-3.jpg"
-            ],
-            links: [
-                { text: "Diagrama da Infraestrutura", url: "#", icon: "fas fa-network-wired" },
-                { text: "Relatório Técnico", url: "#", icon: "fas fa-file-contract" }
-            ],
-            technologies: ["TI", "Infraestrutura", "Segurança", "Servidores", "Redes", "Cloud"],
-            downloads: [
-                { text: "Manual de Procedimentos", url: "#", icon: "fas fa-book" },
-                { text: "Checklist de Segurança", url: "#", icon: "fas fa-clipboard-check" }
-            ]
+            image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&fit=crop",
+            link: { text: "Site da empresa", url: "https://www.mmj.com.br", icon: "fas fa-chart-line" },
+            download: null // Sem download para este
         },
         {
             title: "Estratégia de Growth Marketing",
             subtitle: "Growth marketing para startup de tecnologia",
             icon: "fas fa-chart-line",
             description: "Desenvolvimento de estratégia completa de growth marketing para startup de tecnologia no setor de saúde. Implementação de funis de aquisição, ativação e retenção que resultaram em crescimento de 200% na base de usuários em 6 meses.",
-            images: [
-                "projeto4-1.jpg",
-                "projeto4-2.jpg",
-                "projeto4-3.jpg"
-            ],
-            links: [
-                { text: "Apresentação da Estratégia", url: "#", icon: "fas fa-presentation" },
-                { text: "Dashboard Growth", url: "#", icon: "fas fa-chart-bar" }
-            ],
-            technologies: ["Growth", "Marketing", "Estratégia", "Startup", "Funis", "Retenção"],
-            downloads: [
-                { text: "Plano de Growth", url: "#", icon: "fas fa-roadmap" },
-                { text: "Template de Métricas", url: "#", icon: "fas fa-table" }
-            ]
+            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop",
+            link: { text: "Apresentação da Estratégia", url: "#", icon: "fas fa-presentation" },
+            download: null
         },
         {
             title: "App de Gestão de E-commerce",
             subtitle: "Aplicativo mobile para gestão integrada",
             icon: "fas fa-mobile-alt",
             description: "Desenvolvimento de aplicativo mobile para gestão integrada de múltiplos e-commerces. Permite controle de estoque, pedidos, métricas e campanhas de marketing em uma única plataforma.",
-            images: [
-                "projeto5-1.jpg",
-                "projeto5-2.jpg",
-                "projeto5-3.jpg"
-            ],
-            links: [
-                { text: "Demo do App", url: "#", icon: "fas fa-play-circle" },
-                { text: "Documentação API", url: "#", icon: "fas fa-code" }
-            ],
-            technologies: ["Mobile", "App", "Gestão", "Integração", "React Native", "API"],
-            downloads: [
-                { text: "APK do App", url: "#", icon: "fas fa-mobile-alt" },
-                { text: "Documentação Técnica", url: "#", icon: "fas fa-file-code" }
-            ]
+            image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&fit=crop",
+            link: null,
+            download: null // Nem link nem download
         }
     ];
     
@@ -599,61 +558,62 @@ function initPortfolioModal() {
             modalIcon.innerHTML = `<i class="${data.icon}"></i>`;
             modalDescription.textContent = data.description;
             
-            // Limpar e preencher galeria
-            galleryThumbs.innerHTML = '';
-            if (data.images && data.images.length > 0) {
-                galleryMain.src = data.images[0];
-                galleryMain.alt = data.title;
+            // Limpar e configurar imagem
+            galleryMain.innerHTML = '';
+            
+            if (data.image) {
+                const img = document.createElement('img');
+                img.className = 'portfolio-modal-image';
+                img.src = data.image;
+                img.alt = data.title;
+                img.loading = 'lazy';
                 
-                data.images.forEach((imgSrc, imgIndex) => {
-                    const thumb = document.createElement('div');
-                    thumb.className = `gallery-thumb ${imgIndex === 0 ? 'active' : ''}`;
-                    thumb.innerHTML = `<img src="${imgSrc}" alt="${data.title} - Imagem ${imgIndex + 1}">`;
-                    
-                    thumb.addEventListener('click', () => {
-                        galleryMain.src = imgSrc;
-                        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
-                        thumb.classList.add('active');
-                    });
-                    
-                    galleryThumbs.appendChild(thumb);
-                });
+                // Fallback se a imagem não carregar
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'image-fallback';
+                    fallback.innerHTML = `<i class="${data.icon}"></i>`;
+                    galleryMain.appendChild(fallback);
+                };
+                
+                galleryMain.appendChild(img);
             } else {
-                galleryMain.src = '';
-                galleryMain.alt = '';
+                // Se não houver imagem, mostrar ícone
+                const fallback = document.createElement('div');
+                fallback.className = 'image-fallback';
+                fallback.innerHTML = `<i class="${data.icon}"></i>`;
+                galleryMain.appendChild(fallback);
             }
             
-            // Limpar e preencher links
+            // Configurar link (se existir)
             linksContainer.innerHTML = '';
-            data.links.forEach(link => {
+            if (data.link && data.link.url && data.link.text) {
                 const linkElement = document.createElement('a');
-                linkElement.href = link.url;
+                linkElement.href = data.link.url;
                 linkElement.className = 'link-item';
                 linkElement.target = '_blank';
                 linkElement.rel = 'noopener noreferrer';
-                linkElement.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
+                linkElement.innerHTML = `<i class="${data.link.icon}"></i> ${data.link.text}`;
                 linksContainer.appendChild(linkElement);
-            });
+                linksContainer.style.display = 'block';
+            } else {
+                linksContainer.style.display = 'none';
+            }
             
-            // Limpar e preencher tecnologias
-            techTags.innerHTML = '';
-            data.technologies.forEach(tech => {
-                const tag = document.createElement('span');
-                tag.className = 'tech-tag';
-                tag.textContent = tech;
-                techTags.appendChild(tag);
-            });
-            
-            // Limpar e preencher downloads
+            // Configurar download (se existir)
             downloadsContainer.innerHTML = '';
-            data.downloads.forEach(download => {
+            if (data.download && data.download.url && data.download.text) {
                 const downloadElement = document.createElement('a');
-                downloadElement.href = download.url;
+                downloadElement.href = data.download.url;
                 downloadElement.className = 'download-item';
                 downloadElement.download = true;
-                downloadElement.innerHTML = `<i class="${download.icon}"></i> ${download.text}`;
+                downloadElement.innerHTML = `<i class="${data.download.icon}"></i> ${data.download.text}`;
                 downloadsContainer.appendChild(downloadElement);
-            });
+                downloadsContainer.style.display = 'block';
+            } else {
+                downloadsContainer.style.display = 'none';
+            }
             
             // Mostrar modal
             portfolioModal.classList.add('active');
@@ -696,6 +656,7 @@ function initPortfolioModal() {
         }
     });
 }
+
 
 // ===== ANIMAÇÃO DE DIGITAÇÃO =====
 function initTypewriter() {
