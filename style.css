@@ -1975,7 +1975,8 @@ footer {
     
     /* Scroll Indicator Mobile */
     .section-scroll-indicator {
-        bottom: -10px;
+        bottom: -25px;
+
     }
     
     .scroll-down {
@@ -2109,6 +2110,3 @@ footer {
         font-size: 1rem;
     }
 }
-
-
-
