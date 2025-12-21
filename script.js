@@ -3,29 +3,182 @@ let mouseX = 0;
 let mouseY = 0;
 let mouseTimer;
 
-// ===== FUNÇÃO PARA DETECTAR DISPOSITIVO =====
-function isMobileDevice() {
-    return window.innerWidth <= 767;
-}
-
-// ===== EFEITO DE LUZ DO MOUSE (APENAS DESKTOP) =====
-function updateMousePosition(e) {
-    if (isMobileDevice()) return;
+// ===== CARROSSEL DO PORTFÓLIO COM ARRASTE PARA MOBILE =====
+function initPortfolioCarousel() {
+    const carousel = document.querySelector('.portfolio-carousel');
+    const items = document.querySelectorAll('.portfolio-item');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    const wrapper = document.querySelector('.portfolio-carousel-wrapper');
     
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    if (!carousel || items.length === 0) return;
     
-    const mouseLight = document.querySelector('.mouse-light');
-    if (mouseLight) {
-        mouseLight.style.opacity = '1';
-        mouseLight.style.left = mouseX + 'px';
-        mouseLight.style.top = mouseY + 'px';
-        
-        clearTimeout(mouseTimer);
-        mouseTimer = setTimeout(() => {
-            mouseLight.style.opacity = '0';
-        }, 1000);
+    let currentIndex = 0;
+    let itemsPerView = 1;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationId = null;
+    
+    // Criar dots
+    items.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.className = 'carousel-dot';
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    function updateItemsPerView() {
+        if (window.innerWidth >= 992) {
+            itemsPerView = 3;
+        } else if (window.innerWidth >= 768) {
+            itemsPerView = 2;
+        } else {
+            itemsPerView = 1;
+        }
     }
+    
+    function updateCarousel() {
+        updateItemsPerView();
+        
+        // Calcular o deslocamento
+        const itemWidth = 100 / itemsPerView;
+        const gap = 25;
+        const translateX = -currentIndex * (itemWidth + (gap / itemsPerView));
+        
+        carousel.style.transform = `translateX(${translateX}%)`;
+        
+        // Atualizar dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Controlar botões
+        if (prevBtn) {
+            prevBtn.disabled = currentIndex === 0;
+            prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+        }
+        
+        if (nextBtn) {
+            const maxIndex = Math.max(0, items.length - itemsPerView);
+            nextBtn.disabled = currentIndex >= maxIndex;
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.3' : '1';
+        }
+    }
+    
+    function nextSlide() {
+        updateItemsPerView();
+        const maxIndex = Math.max(0, items.length - itemsPerView);
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+        }
+    }
+    
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    // Funções para arraste (touch e mouse)
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+    
+    function startDrag(event) {
+        if (window.innerWidth > 767) return; // Apenas para mobile
+        isDragging = true;
+        startPos = getPositionX(event);
+        carousel.style.cursor = 'grabbing';
+        carousel.style.transition = 'none';
+        animationId = requestAnimationFrame(animation);
+        
+        // Prevenir comportamento padrão
+        event.preventDefault();
+    }
+    
+    function drag(event) {
+        if (!isDragging || window.innerWidth > 767) return;
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+    
+    function endDrag() {
+        if (!isDragging || window.innerWidth > 767) return;
+        isDragging = false;
+        cancelAnimationFrame(animationId);
+        carousel.style.cursor = 'grab';
+        carousel.style.transition = 'transform 0.5s ease';
+        
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Se o movimento for significativo, mudar slide
+        if (Math.abs(movedBy) > 50) {
+            if (movedBy < 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        // Resetar posição
+        currentTranslate = 0;
+        prevTranslate = 0;
+        updateCarousel();
+    }
+    
+    function animation() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+        if (isDragging) {
+            requestAnimationFrame(animation);
+        }
+    }
+    
+    // Event listeners para botões
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    
+    // Event listeners para touch (mobile)
+    if (wrapper) {
+        wrapper.addEventListener('touchstart', startDrag);
+        wrapper.addEventListener('touchmove', drag);
+        wrapper.addEventListener('touchend', endDrag);
+        
+        // Prevenir scroll vertical enquanto arrasta
+        wrapper.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    }
+    
+    // Event listeners para mouse (desktop)
+    if (wrapper && window.innerWidth <= 767) {
+        wrapper.addEventListener('mousedown', startDrag);
+        wrapper.addEventListener('mousemove', drag);
+        wrapper.addEventListener('mouseup', endDrag);
+        wrapper.addEventListener('mouseleave', endDrag);
+    }
+    
+    // Redimensionamento da janela
+    window.addEventListener('resize', updateCarousel);
+    
+    // Inicializar
+    updateCarousel();
 }
 
 // ===== MODAL DA LOGO =====
@@ -191,7 +344,7 @@ function initExperienceModal() {
     });
 }
 
-// ===== MODAL DE PORTFÓLIO =====
+// ===== MODAL DE PORTFÓLIO SIMPLIFICADO (SEM IMAGEM) =====
 function initPortfolioModal() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const portfolioModal = document.getElementById('portfolioModal');
@@ -199,7 +352,6 @@ function initPortfolioModal() {
     const modalTitle = document.querySelector('.portfolio-modal-title');
     const modalSubtitle = document.querySelector('.portfolio-modal-subtitle');
     const modalIcon = document.querySelector('.portfolio-modal-icon');
-    const galleryMain = document.querySelector('.gallery-main');
     const modalDescription = document.querySelector('.portfolio-modal-description');
     const linksContainer = document.querySelector('.links-container');
     
@@ -209,15 +361,13 @@ function initPortfolioModal() {
             subtitle: "E-commerce completo que alcançou 400 clientes ativos",
             icon: "fas fa-tshirt",
             description: "Gestão e Desenvolvimento completo de e-commerce de moda masculina. O projeto incluiu desde a concepção da marca, desenvolvimento do site, até a implementação de estratégias de marketing digital que resultaram em 400 clientes ativos no primeiro ano.",
-            image: "fotos_portfolio/projeto1-1.jpg",
             link: { text: "Site pausado", url: "#", icon: "fas fa-external-link-alt" }
         },
         {
             title: "Jhoy Pet - E-commerce de produtos Pet",
             subtitle: "Aumento em 500% no faturamento no primeiro mês",
             icon: "fas fa-bullseye",
-            description: "Montamos uma estratégia completa de tráfego pago com foco inicial em geração de leads para whatsapp e instagram, objetivo era conversão rápida e barata. Resultado no primeiro mês: Saimos de 30 Conversas por mês para 400 sem aumentar investimento, aumento o faturamento em 500%. Lançamos o e-commerce 3 meses após o ínicio da assessoria e no primeiro dia batemos o mês inteiro de faturamento no whatsapp. Crescimento médio mensal de 130% nos primeiros 6 meses",
-            image: "fotos_portfolio/projeto2-2.jpg",
+            description: "Montamos uma estratégia completa de tráfego pago com foco inicial em geração de leads para whatsapp e instagram, objetivo era conversão rápida e barata. Resultado no primeiro mês: Saímos de 30 Conversas por mês para 400 sem aumentar o investimento, aumentando o faturamento em 500%. Lançamos o e-commerce 3 meses após o início da assessoria e no primeiro dia batemos o mês inteiro de faturamento no whatsapp.",
             link: { text: "Site da Empresa", url: "https://www.jhoypet.com.br", icon: "fas fa-chart-line" }
         },
         {
@@ -225,8 +375,14 @@ function initPortfolioModal() {
             subtitle: "Gestão completa de infraestrutura tecnológica",
             icon: "fas fa-landmark",
             description: "Implementação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de Minas Gerais. Incluiu migração para nuvem, implementação de políticas de segurança e suporte técnico especializado.",
-            image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&fit=crop",
             link: { text: "Site da empresa", url: "https://www.mmj.com.br", icon: "fas fa-chart-line" }
+        },
+        {
+            title: "Estratégia de Growth Marketing",
+            subtitle: "Growth marketing para empresa de design de interiores",
+            icon: "fas fa-chart-line",
+            description: "Criamos uma estratégia completa de aquisição de leads via whastapp para uma empresa de design de interiores, nos primeiros meses já tivemos uma média de 1500 novos leads todos os meses. Iniciamos o processo de expansão digital com landing pages de alta conversão para vendas nacionais e internacionais.",
+            link: { text: "Site Empresa Brasil", url: "https://www.sposatopremium.com.br", icon: "fas fa-presentation" }
         }
     ];
     
@@ -234,38 +390,18 @@ function initPortfolioModal() {
     portfolioItems.forEach((item, index) => {
         const btnViewDetails = item.querySelector('.portfolio-view-details');
         
-        const clickHandler = () => {
+        const clickHandler = (e) => {
+            // Prevenir comportamento padrão em mobile
+            if (e.cancelable) {
+                e.preventDefault();
+            }
+            
             const data = portfolioData[index];
             
             modalTitle.textContent = data.title;
             modalSubtitle.textContent = data.subtitle;
             modalIcon.innerHTML = `<i class="${data.icon}"></i>`;
             modalDescription.textContent = data.description;
-            
-            galleryMain.innerHTML = '';
-            
-            if (data.image) {
-                const img = document.createElement('img');
-                img.className = 'portfolio-modal-image';
-                img.src = data.image;
-                img.alt = data.title;
-                img.loading = 'lazy';
-                
-                img.onerror = function() {
-                    this.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'image-fallback';
-                    fallback.innerHTML = `<i class="${data.icon}"></i>`;
-                    galleryMain.appendChild(fallback);
-                };
-                
-                galleryMain.appendChild(img);
-            } else {
-                const fallback = document.createElement('div');
-                fallback.className = 'image-fallback';
-                fallback.innerHTML = `<i class="${data.icon}"></i>`;
-                galleryMain.appendChild(fallback);
-            }
             
             linksContainer.innerHTML = '';
             if (data.link && data.link.url && data.link.text) {
@@ -282,14 +418,30 @@ function initPortfolioModal() {
             }
             
             portfolioModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'auto';
         };
         
+        // Adicionar evento de clique para desktop
         item.addEventListener('click', clickHandler);
+        
+        // Adicionar evento de toque para mobile
+        item.addEventListener('touchend', function(e) {
+            // Impedir que o toque também dispare o evento de clique
+            e.preventDefault();
+            clickHandler(e);
+        });
+        
+        // Também adicionar evento no botão
         if (btnViewDetails) {
             btnViewDetails.addEventListener('click', function(e) {
                 e.stopPropagation();
-                clickHandler();
+                clickHandler(e);
+            });
+            
+            btnViewDetails.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                clickHandler(e);
             });
         }
     });
@@ -299,6 +451,7 @@ function initPortfolioModal() {
         modalClose.addEventListener('click', () => {
             portfolioModal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
         });
     }
     
@@ -307,6 +460,7 @@ function initPortfolioModal() {
             if (e.target === portfolioModal) {
                 portfolioModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
             }
         });
     }
@@ -315,6 +469,7 @@ function initPortfolioModal() {
         if (e.key === 'Escape' && portfolioModal.classList.contains('active')) {
             portfolioModal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
         }
     });
 }
@@ -463,11 +618,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLogoModal();
     initExperienceModal();
     initPortfolioModal();
-    
-    // Só adicionar evento de mouse se não for mobile
-    if (!isMobileDevice()) {
-        document.addEventListener('mousemove', updateMousePosition);
-    }
+    initPortfolioCarousel();
     
     // Remover loading screen após 5 segundos (fallback)
     setTimeout(() => {
