@@ -15,13 +15,13 @@
     <div id="loading-screen">
         <div class="loading-content">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Carregando experiência</div>
+            <div class="loading-text">Carregando</div>
         </div>
     </div>
 
-    <!-- Background com efeito de parallax -->
+    <!-- Background com imagem simples -->
     <div class="background-container" id="backgroundContainer">
-        <div class="background-image"></div>
+        <div class="background-overlay"></div>
         <div class="mouse-light"></div>
     </div>
 
@@ -46,38 +46,34 @@
         </div>
     </div>
 
-    <!-- Modal para Portfólio - Versão Simplificada -->
-<div id="portfolioModal" class="portfolio-modal">
-    <div class="portfolio-modal-content">
-        <span class="portfolio-modal-close">&times;</span>
-        <div class="portfolio-modal-body">
-            <div class="portfolio-modal-header">
-                <div class="portfolio-modal-icon"></div>
-                <h3 class="portfolio-modal-title"></h3>
-                <p class="portfolio-modal-subtitle"></p>
-            </div>
-            
-            <div class="portfolio-modal-gallery">
-                <div class="gallery-main">
-                    <!-- Imagem será inserida via JS -->
+    <!-- Modal para Portfólio -->
+    <div id="portfolioModal" class="portfolio-modal">
+        <div class="portfolio-modal-content">
+            <span class="portfolio-modal-close">&times;</span>
+            <div class="portfolio-modal-body">
+                <div class="portfolio-modal-header">
+                    <div class="portfolio-modal-icon"></div>
+                    <h3 class="portfolio-modal-title"></h3>
+                    <p class="portfolio-modal-subtitle"></p>
                 </div>
-            </div>
-            
-            <div class="portfolio-modal-description"></div>
-            
-            <div class="portfolio-modal-links" id="portfolioLinks">
-                <h4><i class="fas fa-link"></i> Link do Projeto</h4>
-                <div class="links-container"></div>
-            </div>
-            
-            <div class="portfolio-modal-downloads" id="portfolioDownloads">
-                <h4><i class="fas fa-download"></i> Download</h4>
-                <div class="downloads-container"></div>
+                
+                <div class="portfolio-modal-gallery">
+                    <div class="gallery-main">
+                        <!-- Imagem será inserida via JS -->
+                    </div>
+                </div>
+                
+                <div class="portfolio-modal-description"></div>
+                
+                <div class="portfolio-modal-links" id="portfolioLinks">
+                    <h4><i class="fas fa-link"></i> Link do Projeto</h4>
+                    <div class="links-container"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- Navegação -->
     <nav>
         <div class="container nav-container">
             <a href="#hero" class="logo" id="logoLink">
@@ -93,19 +89,19 @@
                 <li><a href="#experiences"><i class="fas fa-briefcase"></i> Experiências</a></li>
                 <li><a href="#skills"><i class="fas fa-cogs"></i> Habilidades</a></li>
                 <li><a href="#portfolio"><i class="fas fa-project-diagram"></i> Portfólio</a></li>
-                <li><a href="#certifications"><i class="fas fa-award"></i> Certificações</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Seção Hero -->
     <section id="hero">
         <div class="container hero-content">
             <h1 id="typed-name">Arthur Kennedy De Faria</h1>
             <div class="subtitle">
                 <h2 id="typed-subtitle">Gestor de Tráfego, Gestor de E-commerce, Desenvolvedor Web e TI</h2>
             </div>
-            <p class="hero-description">Transformando conhecimento em resultados. Apaixonado por tecnologia, negócios e boas estratégias de marketing. Sempre em busca de novos desafios.</p>
+            <p class="hero-description">Transformando conhecimento em resultados. Apaixonado por tecnologia, negócios e boas estratégias de marketing.</p>
             <div class="cta-buttons">
                 <a href="#portfolio" class="btn btn-primary"><i class="fas fa-eye"></i> Ver Portfólio</a>
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Entrar em Contato</a>
@@ -120,10 +116,6 @@
                     <div class="stat-label">Investidos em Mídia</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">2k+</div>
-                    <div class="stat-label">Vendas Geradas</div>
-                </div>
-                <div class="stat">
                     <div class="stat-value">5+</div>
                     <div class="stat-label">Anos de Experiência</div>
                 </div>
@@ -136,6 +128,7 @@
         </div>
     </section>
 
+    <!-- Seção Sobre -->
     <section id="about">
         <div class="container">
             <h2>Sobre Mim</h2>
@@ -150,9 +143,9 @@
                 </div>
             </div>
         </div>
-        
     </section>
 
+    <!-- Seção Experiências -->
     <section id="experiences">
         <div class="container">
             <h2>Experiências</h2>
@@ -184,7 +177,7 @@
                     <div class="timeline-content">
                         <span class="timeline-date">2020 - 2023</span>
                         <h3>Coordenador de TI - MMJ Contabilidade</h3>
-                        <p>Responsável pela manutenção e suporte de toda a infraestrutura tecnológica de uma das maiores empresas de contabilidade do interior de Minas Gerais.</p>
+                        <p>Responsável pela manutenção e suporte de toda a infraestrutura tecnológica.</p>
                         <button class="btn-more-info">
                             <i class="fas fa-plus-circle"></i> Mais Informações
                         </button>
@@ -192,9 +185,9 @@
                 </div>
             </div>
         </div>
-       
     </section>
 
+    <!-- Seção Habilidades -->
     <section id="skills">
         <div class="container">
             <h2>Habilidades</h2>
@@ -221,15 +214,6 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Google Analytics</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 55%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
                             <span>Funis de Venda</span>
                             <span>Avançado</span>
                         </div>
@@ -240,7 +224,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3><i class="fas fa-briefcase"></i> Negócios e Gestão</h3>
+                    <h3><i class="fas fa-briefcase"></i> Negócios</h3>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Gestão de E-commerce</span>
@@ -254,15 +238,6 @@
                         <div class="skill-name">
                             <span>Gestão de Marketplaces</span>
                             <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Microsoft Office</span>
-                            <span>Avançado</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-level" style="width: 70%"></div>
@@ -308,228 +283,74 @@
                             <div class="skill-level" style="width: 90%"></div>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Google Tag Manager</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 45%"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        
     </section>
 
-
-
+    <!-- Seção Portfólio -->
     <section id="portfolio">
         <div class="container">
             <h2>Portfólio</h2>
-            <div class="portfolio-carousel-container">
-                <div class="portfolio-carousel">
-                    <div class="portfolio-item" data-index="0">
-                        <div class="portfolio-img">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>ATYLA - E-commerce de Moda Masculina</h3>
-                            <p>E-commerce completo de moda masculina que alcançou 400 clientes ativos através de estratégias digitais integradas.</p>
-                            <div class="portfolio-tags">
-                                <span class="tag">E-commerce</span>
-                                <span class="tag">Meta Ads</span>
-                                <span class="tag">Google Ads</span>
-                            </div>
-                            <button class="portfolio-view-details">
-                                <i class="fas fa-expand-alt"></i> Ver Detalhes
-                            </button>
-                        </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-index="0">
+                    <div class="portfolio-img">
+                        <i class="fas fa-tshirt"></i>
                     </div>
-                    
-                    <div class="portfolio-item" data-index="1">
-                        <div class="portfolio-img">
-                            <i class="fas fa-bullseye"></i>
+                    <div class="portfolio-content">
+                        <h3>ATYLA - E-commerce de Moda Masculina</h3>
+                        <p>E-commerce completo de moda masculina que alcançou 400 clientes ativos.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Meta Ads</span>
+                            <span class="tag">Google Ads</span>
                         </div>
-                        <div class="portfolio-content">
-                            <h3>Jhoy Pet - E-commerce de produtos Pet</h3>
-                            <p>Montamos uma estratégia completa de tráfego pago com foco inicial em geração de leads...</p>
-                            <div class="portfolio-tags">
-                                <span class="tag">Meta Ads</span>
-                                <span class="tag">Otimização</span>
-                                <span class="tag">Google Analytics</span>
-                            </div>
-                            <button class="portfolio-view-details">
-                                <i class="fas fa-expand-alt"></i> Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item" data-index="2">
-                        <div class="portfolio-img">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Infraestrutura de TI - MMJ Contabilidade</h3>
-                            <p>Implantação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de MG.</p>
-                            <div class="portfolio-tags">
-                                <span class="tag">TI</span>
-                                <span class="tag">Infraestrutura</span>
-                                <span class="tag">Segurança</span>
-                            </div>
-                            <button class="portfolio-view-details">
-                                <i class="fas fa-expand-alt"></i> Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item" data-index="3">
-                        <div class="portfolio-img">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Estratégia de Growth Marketing</h3>
-                            <p>Desenvolvimento de estratégia completa de growth marketing para startup de tecnologia.</p>
-                            <div class="portfolio-tags">
-                                <span class="tag">Growth</span>
-                                <span class="tag">Marketing</span>
-                                <span class="tag">Estratégia</span>
-                            </div>
-                            <button class="portfolio-view-details">
-                                <i class="fas fa-expand-alt"></i> Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item" data-index="4">
-                        <div class="portfolio-img">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>App de Gestão de E-commerce</h3>
-                            <p>Desenvolvimento de aplicativo mobile para gestão integrada de múltiplos e-commerces.</p>
-                            <div class="portfolio-tags">
-                                <span class="tag">Mobile</span>
-                                <span class="tag">App</span>
-                                <span class="tag">Gestão</span>
-                            </div>
-                            <button class="portfolio-view-details">
-                                <i class="fas fa-expand-alt"></i> Ver Detalhes
-                            </button>
-                        </div>
+                        <button class="portfolio-view-details">
+                            <i class="fas fa-expand-alt"></i> Ver Detalhes
+                        </button>
                     </div>
                 </div>
-                <button class="carousel-btn prev-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn next-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="carousel-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
+                
+                <div class="portfolio-item" data-index="1">
+                    <div class="portfolio-img">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Jhoy Pet - E-commerce Pet</h3>
+                        <p>Estratégia completa de tráfego pago com foco em geração de leads.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Meta Ads</span>
+                            <span class="tag">Otimização</span>
+                            <span class="tag">Conversão</span>
+                        </div>
+                        <button class="portfolio-view-details">
+                            <i class="fas fa-expand-alt"></i> Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-index="2">
+                    <div class="portfolio-img">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Infraestrutura de TI - MMJ Contabilidade</h3>
+                        <p>Implantação e gestão da infraestrutura tecnológica para empresa de contabilidade.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">TI</span>
+                            <span class="tag">Infraestrutura</span>
+                            <span class="tag">Segurança</span>
+                        </div>
+                        <button class="portfolio-view-details">
+                            <i class="fas fa-expand-alt"></i> Ver Detalhes
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </section>
-<!--
-    <section id="certifications">
-        <div class="container">
-            <h2>Certificações e Formações</h2>
-            <div class="certifications-grid">
-                <div class="certification-card" data-index="0">
-                    <div class="certification-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Google Ads Certification</h3>
-                        <p class="certification-short">Certificação oficial do Google em gestão de campanhas de publicidade digital.</p>
-                        <span class="certification-date">2022</span>
-                    </div>
-                </div>
-                
-                <div class="certification-card large" data-index="1">
-                    <div class="certification-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Meta Blueprint Certification</h3>
-                        <p class="certification-short">Certificação avançada em marketing no Facebook e Instagram.</p>
-                        <span class="certification-date">2023</span>
-                    </div>
-                </div>
-                
-                <div class="certification-card" data-index="2">
-                    <div class="certification-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>E-commerce Specialist</h3>
-                        <p class="certification-short">Especialização em gestão e otimização de lojas virtuais.</p>
-                        <span class="certification-date">2021</span>
-                    </div>
-                </div>
-                
-                <div class="certification-card" data-index="3">
-                    <div class="certification-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Desenvolvimento Web Full Stack</h3>
-                        <p class="certification-short">Formação completa em desenvolvimento web front-end e back-end.</p>
-                        <span class="certification-date">2020</span>
-                    </div>
-                </div>
-                
-                <div class="certification-card large" data-index="4">
-                    <div class="certification-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Gestão de Projetos Ágeis</h3>
-                        <p class="certification-short">Metodologias ágeis e gestão eficiente de projetos digitais.</p>
-                        <span class="certification-date">2022</span>
-                    </div>
-                </div>
-                
-                <div class="certification-card" data-index="5">
-                    <div class="certification-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Segurança da Informação</h3>
-                        <p class="certification-short">Proteção de dados e sistemas em ambientes corporativos.</p>
-                        <span class="certification-date">2021</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    -->
-        <!-- Modal para detalhes da certificação
-        <div class="certification-modal">
-            <div class="certification-modal-content">
-                <span class="certification-modal-close">&times;</span>
-                <div class="certification-modal-body">
-                    <div class="certification-modal-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3 class="certification-modal-title"></h3>
-                    <p class="certification-modal-date"></p>
-                    <div class="certification-modal-description"></div>
-                    <div class="certification-modal-details"></div>
-                    <div class="certification-modal-skills"></div>
-                </div>
 
-            </div>
-        </div>
-        
-        
-    </section>
- -->
-    
+    <!-- Seção Contato -->
     <section id="contact">
         <div class="container">
             <h2>Contato</h2>
@@ -537,7 +358,6 @@
                 <div class="contact-info">
                     <div class="contact-main">
                         <p class="contact-intro">Estou disponível para projetos freelancer em tempo parcial ou integral, com formato de trabalho 100% remoto.</p>
-                        <p class="contact-invitation">Entre em contato para discutirmos como posso ajudar seu negócio a alcançar resultados excepcionais!</p>
                         
                         <div class="contact-details">
                             <div class="contact-item">
@@ -576,15 +396,6 @@
                                     <p>PJ ou CLT</p>
                                 </div>
                             </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Idiomas</h4>
-                                    <p>Português (Nativo) | Inglês (Básico)</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -611,16 +422,14 @@
         </div>
     </section>
 
+    <!-- Rodapé -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                </div>
+            <div class="social-links">
+                <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
             <div class="copyright">
                 <p>&copy; 2023 Arthur Kennedy De Faria. Todos os direitos reservados.</p>
