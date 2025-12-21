@@ -27,10 +27,12 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--color-white);
-    
+    background-color: var(--color-black);
     overflow-x: hidden;
     line-height: 1.6;
     position: relative;
+    min-height: 100vh;
+    width: 100%;
 }
 
 h1, h2, h3, h4 {
@@ -60,6 +62,7 @@ h2::after {
     left: 0;
     width: 80px;
     height: 4px;
+    background: linear-gradient(90deg, var(--color-white), var(--color-lighter-gray));
     border-radius: 2px;
 }
 
@@ -87,7 +90,7 @@ section {
     z-index: 10;
 }
 
-/* ===== BACKGROUND SIMPLIFICADO ===== */
+/* ===== BACKGROUND SIMPLIFICADO - SEM FILTRO ESCURO ===== */
 .background-container {
     position: fixed;
     top: 0;
@@ -110,29 +113,8 @@ section {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.192) 0%, rgba(0, 0, 0, 0.37) 100%);
-}
-
-.mouse-light {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-    display: none; /* Desabilitado por padrão, será ativado via JS para desktop */
+    opacity: 0.4; /* Ajustado para menos escuro */
+    filter: brightness(0.8);
 }
 
 /* ===== MODAIS ===== */
@@ -270,31 +252,11 @@ section {
 }
 
 .portfolio-modal-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--color-primary);
     margin-bottom: 15px;
-}
-
-.portfolio-modal-gallery {
-    margin-bottom: 20px;
-}
-
-.gallery-main {
-    width: 100%;
-    height: 250px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 15px;
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.gallery-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .links-container {
@@ -835,21 +797,44 @@ nav.scrolled {
     background: linear-gradient(90deg, var(--color-white), var(--color-accent));
 }
 
-/* ===== PORTFÓLIO SECTION ===== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+/* ===== PORTFÓLIO SECTION COM CARROSSEL MELHORADO ===== */
+.portfolio-carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.portfolio-carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    cursor: grab;
+}
+
+.portfolio-carousel-wrapper:active {
+    cursor: grabbing;
+}
+
+.portfolio-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
     gap: 25px;
-    margin-top: 30px;
+    padding: 10px 5px;
+    touch-action: pan-y;
 }
 
 .portfolio-item {
+    flex: 0 0 calc(100% - 10px);
+    min-width: 0;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
     backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
@@ -900,6 +885,155 @@ nav.scrolled {
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 0.85rem;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--color-white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 10px;
+    margin: 0 15px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--color-white);
+    transform: scale(1.2);
+}
+
+/* ===== CERTIFICAÇÕES SECTION ===== */
+#certifications {
+    padding: 60px 0;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.certification-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.certification-card.large {
+    grid-column: span 2;
+}
+
+.certification-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.certification-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.certification-card:hover::before {
+    transform: translateX(100%);
+}
+
+.certification-icon {
+    font-size: 2.2rem;
+    color: var(--color-white);
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.certification-card:hover .certification-icon {
+    transform: scale(1.1);
+}
+
+.certification-content {
+    flex-grow: 1;
+}
+
+.certification-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+.certification-short {
+    color: var(--color-lighter-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.certification-date {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 /* ===== CONTACT SECTION ===== */
@@ -1099,6 +1233,11 @@ footer {
         font-size: 1.3rem;
     }
     
+    /* Background fix para mobile */
+    .background-container::before {
+        opacity: 0.3;
+    }
+    
     /* Navigation Mobile */
     .nav-links {
         display: none;
@@ -1221,13 +1360,46 @@ footer {
     }
     
     /* Portfolio Section Mobile */
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .portfolio-carousel {
+        gap: 15px;
+    }
+    
+    .portfolio-item {
+        flex: 0 0 calc(100% - 10px);
     }
     
     .portfolio-img {
         height: 150px;
+    }
+    
+    .portfolio-img i {
+        font-size: 2.5rem;
+    }
+    
+    .carousel-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    /* Certifications Section Mobile */
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .certification-card.large {
+        grid-column: span 1;
+    }
+    
+    .certification-card {
+        padding: 18px;
+        min-height: 160px;
     }
     
     /* Contact Section Mobile */
@@ -1271,14 +1443,14 @@ footer {
         padding: 20px;
         margin: 10px;
     }
-    
-    .gallery-main {
-        height: 200px;
-    }
 }
 
 /* Tablets (768px a 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
+    .portfolio-item {
+        flex: 0 0 calc(50% - 12.5px);
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1307,8 +1479,17 @@ footer {
         left: 25px;
     }
     
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .certifications-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .certification-card.large-card,
+    .certification-card.wide-card {
+        grid-column: span 2;
+    }
+    
+    .certification-card.tall-card {
+        grid-row: span 2;
     }
     
     .contact-info {
@@ -1317,9 +1498,67 @@ footer {
     }
 }
 
-/* Desktop - ativar efeito de luz do mouse */
+/* Desktop (992px e acima) */
 @media (min-width: 992px) {
-    .mouse-light {
-        display: block;
+    .portfolio-item {
+        flex: 0 0 calc(33.333% - 16.666px);
+    }
+    
+    .certifications-mosaic {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Corrigir problema do modal no mobile */
+@media (max-width: 767px) {
+    .portfolio-modal-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 95%;
+        max-width: 95%;
+        max-height: 85vh;
+        margin: 0;
+        border-radius: 10px;
+        animation: modalSlideInMobile 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    @keyframes modalSlideInMobile {
+        to {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+    
+    /* Garantir que o modal seja fácil de fechar no mobile */
+    .portfolio-modal-close {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 2002;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Melhorar a legibilidade do conteúdo no modal mobile */
+    .portfolio-modal-body {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .portfolio-modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .portfolio-modal-description {
+        font-size: 1rem;
+        line-height: 1.5;
     }
 }
