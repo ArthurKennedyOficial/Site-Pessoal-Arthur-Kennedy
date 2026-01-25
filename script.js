@@ -3,7 +3,7 @@ let mouseX = 0;
 let mouseY = 0;
 let mouseTimer;
 
-// ===== CARROSSEL DO PORTFÓLIO COM ARRASTE PARA MOBILE =====
+// ===== CARROSSEL DO PORTFÓLIO COM ARRASTE PARA MOBILE - CORRIGIDO =====
 function initPortfolioCarousel() {
     const carousel = document.querySelector('.portfolio-carousel');
     const items = document.querySelectorAll('.portfolio-item');
@@ -21,6 +21,7 @@ function initPortfolioCarousel() {
     let currentTranslate = 0;
     let prevTranslate = 0;
     let animationId = null;
+    let dragThreshold = 30; // Limite para considerar como arraste vs clique
     
     // Criar dots
     items.forEach((_, index) => {
@@ -115,6 +116,11 @@ function initPortfolioCarousel() {
         if (!isDragging || window.innerWidth > 767) return;
         const currentPosition = getPositionX(event);
         currentTranslate = prevTranslate + currentPosition - startPos;
+        
+        // Atualizar cursor visualmente
+        if (Math.abs(currentTranslate) > dragThreshold) {
+            carousel.style.cursor = 'grabbing';
+        }
     }
     
     function endDrag() {
@@ -127,7 +133,7 @@ function initPortfolioCarousel() {
         const movedBy = currentTranslate - prevTranslate;
         
         // Se o movimento for significativo, mudar slide
-        if (Math.abs(movedBy) > 50) {
+        if (Math.abs(movedBy) > dragThreshold) {
             if (movedBy < 0) {
                 nextSlide();
             } else {
@@ -229,7 +235,7 @@ function initExperienceModal() {
     
     const experiencesData = [
         {
-            title: "Fundador e CEO - XS Commerce",
+            title: "Assessor de Marketing Autônomo",
             date: "2023 - Atual",
             description: "Assessoria de Marketing Estratégica especializada em e-commerce e performance digital.",
             details: [
@@ -266,7 +272,7 @@ function initExperienceModal() {
             ]
         },
         {
-            title: "Coordenador de TI - MMJ Contabilidade",
+            title: "Coordenador e Técnico de TI - MMJ Contabilidade",
             date: "2020 - 2023",
             description: "Responsável pela manutenção e suporte de toda a infraestrutura tecnológica de uma das maiores empresas de contabilidade do interior de Minas Gerais.",
             details: [
@@ -344,7 +350,7 @@ function initExperienceModal() {
     });
 }
 
-// ===== MODAL DE PORTFÓLIO SIMPLIFICADO (SEM IMAGEM) =====
+// ===== MODAL DE PORTFÓLIO SIMPLIFICADO (SEM IMAGEM) - CORRIGIDO =====
 function initPortfolioModal() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const portfolioModal = document.getElementById('portfolioModal');
@@ -386,13 +392,17 @@ function initPortfolioModal() {
         }
     ];
     
-    // Abrir modal
+    // Abrir modal - CORREÇÃO PARA MOBILE
     portfolioItems.forEach((item, index) => {
-        const btnViewDetails = item.querySelector('.portfolio-view-details');
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+        let isTapping = false;
         
         const clickHandler = (e) => {
-            // Prevenir comportamento padrão em mobile
-            if (e.cancelable) {
+            // Prevenir comportamento padrão apenas se for um toque simples
+            if (e.cancelable && e.type === 'touchstart') {
                 e.preventDefault();
             }
             
@@ -421,25 +431,51 @@ function initPortfolioModal() {
             document.body.style.overflow = 'auto';
         };
         
-        // Adicionar evento de clique para desktop
-        item.addEventListener('click', clickHandler);
+        // Detectar toque inicial
+        item.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            isTapping = true;
+        }, { passive: true });
         
-        // Adicionar evento de toque para mobile
+        // Detectar movimento durante toque
+        item.addEventListener('touchmove', function(e) {
+            if (!isTapping) return;
+            
+            touchEndX = e.touches[0].clientX;
+            touchEndY = e.touches[0].clientY;
+            
+            // Se o movimento for significativo (arraste), não é um toque
+            const deltaX = Math.abs(touchEndX - touchStartX);
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            
+            if (deltaX > 10 || deltaY > 10) {
+                isTapping = false; // É um arraste, não um toque
+            }
+        }, { passive: true });
+        
+        // Detectar fim do toque
         item.addEventListener('touchend', function(e) {
-            // Impedir que o toque também dispare o evento de clique
+            if (!isTapping) return;
+            
+            // É um toque simples, abrir modal
             e.preventDefault();
             clickHandler(e);
+            isTapping = false;
+        });
+        
+        // Adicionar evento de clique para desktop
+        item.addEventListener('click', function(e) {
+            // Só executar em desktop ou se não for toque
+            if (window.innerWidth > 767 || e.type === 'click') {
+                clickHandler(e);
+            }
         });
         
         // Também adicionar evento no botão
+        const btnViewDetails = item.querySelector('.portfolio-view-details');
         if (btnViewDetails) {
             btnViewDetails.addEventListener('click', function(e) {
-                e.stopPropagation();
-                clickHandler(e);
-            });
-            
-            btnViewDetails.addEventListener('touchend', function(e) {
-                e.preventDefault();
                 e.stopPropagation();
                 clickHandler(e);
             });
@@ -619,6 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initExperienceModal();
     initPortfolioModal();
     initPortfolioCarousel();
+    initCertificationModal(); // <-- Adicione esta linha
     
     // Remover loading screen após 5 segundos (fallback)
     setTimeout(() => {
@@ -631,3 +668,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 5000);
 });
+
+// ===== MODAL DE CERTIFICAÇÕES AMPLIADAS =====
+function initCertificationModal() {
+    const mosaicItems = document.querySelectorAll('.mosaic-item');
+    const certificationModal = document.getElementById('certificationModal');
+    const modalClose = document.querySelector('.certification-modal-close');
+    const modalImg = document.getElementById('certificationModalImg');
+    const modalTitle = document.getElementById('certificationModalTitle');
+    const modalSubtitle = document.getElementById('certificationModalSubtitle');
+    
+    if (!mosaicItems.length || !certificationModal) return;
+    
+    // Abrir modal
+    mosaicItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').src;
+            const title = this.getAttribute('data-title') || '';
+            const subtitle = this.getAttribute('data-subtitle') || '';
+            
+            modalImg.src = imgSrc;
+            modalImg.alt = title;
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            
+            certificationModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Fechar modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            certificationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    if (certificationModal) {
+        certificationModal.addEventListener('click', (e) => {
+            if (e.target === certificationModal) {
+                certificationModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certificationModal.classList.contains('active')) {
+            certificationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
