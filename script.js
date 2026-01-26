@@ -3,7 +3,7 @@ let mouseX = 0;
 let mouseY = 0;
 let mouseTimer;
 
-// ===== CARROSSEL DO PORTFÓLIO COM ARRASTE PARA MOBILE - CORRIGIDO =====
+// ===== CARROSSEL DO PORTFÓLIO COM ARRASTE PARA MOBILE - CORRIGIDO CENTRALIZAÇÃO =====
 function initPortfolioCarousel() {
     const carousel = document.querySelector('.portfolio-carousel');
     const items = document.querySelectorAll('.portfolio-item');
@@ -21,7 +21,8 @@ function initPortfolioCarousel() {
     let currentTranslate = 0;
     let prevTranslate = 0;
     let animationId = null;
-    let dragThreshold = 30; // Limite para considerar como arraste vs clique
+    let dragThreshold = 30;
+    let lastDragTime = 0;
     
     // Criar dots
     items.forEach((_, index) => {
@@ -49,10 +50,21 @@ function initPortfolioCarousel() {
     function updateCarousel() {
         updateItemsPerView();
         
-        // Calcular o deslocamento
+        // Calcular o deslocamento considerando o gap e centralização
         const itemWidth = 100 / itemsPerView;
-        const gap = 25;
-        const translateX = -currentIndex * (itemWidth + (gap / itemsPerView));
+        const gapPercentage = (25 / wrapper.offsetWidth) * 100; // Converter gap de px para %
+        const totalItemWidth = itemWidth + gapPercentage;
+        
+        // Centralizar corretamente cada slide
+        let translateX;
+        
+        if (window.innerWidth <= 767) {
+            // Para mobile: cada slide ocupa 100% da largura
+            translateX = -currentIndex * 100;
+        } else {
+            // Para desktop/tablet: cálculo normal
+            translateX = -currentIndex * totalItemWidth;
+        }
         
         carousel.style.transform = `translateX(${translateX}%)`;
         
@@ -63,6 +75,7 @@ function initPortfolioCarousel() {
         
         // Controlar botões
         if (prevBtn) {
+            const maxIndex = Math.max(0, items.length - itemsPerView);
             prevBtn.disabled = currentIndex === 0;
             prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
         }
@@ -102,20 +115,27 @@ function initPortfolioCarousel() {
     
     function startDrag(event) {
         if (window.innerWidth > 767) return; // Apenas para mobile
+        
+        // Prevenir múltiplos inícios rápidos
+        const now = Date.now();
+        if (now - lastDragTime < 100) return;
+        lastDragTime = now;
+        
         isDragging = true;
         startPos = getPositionX(event);
+        prevTranslate = currentTranslate;
         carousel.style.cursor = 'grabbing';
         carousel.style.transition = 'none';
-        animationId = requestAnimationFrame(animation);
         
-        // Prevenir comportamento padrão
+        animationId = requestAnimationFrame(animation);
         event.preventDefault();
     }
     
     function drag(event) {
         if (!isDragging || window.innerWidth > 767) return;
+        
         const currentPosition = getPositionX(event);
-        currentTranslate = prevTranslate + currentPosition - startPos;
+        currentTranslate = currentPosition - startPos;
         
         // Atualizar cursor visualmente
         if (Math.abs(currentTranslate) > dragThreshold) {
@@ -125,12 +145,18 @@ function initPortfolioCarousel() {
     
     function endDrag() {
         if (!isDragging || window.innerWidth > 767) return;
+        
         isDragging = false;
-        cancelAnimationFrame(animationId);
+        
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+        
         carousel.style.cursor = 'grab';
         carousel.style.transition = 'transform 0.5s ease';
         
-        const movedBy = currentTranslate - prevTranslate;
+        const movedBy = currentTranslate;
         
         // Se o movimento for significativo, mudar slide
         if (Math.abs(movedBy) > dragThreshold) {
@@ -139,16 +165,36 @@ function initPortfolioCarousel() {
             } else {
                 prevSlide();
             }
+        } else {
+            // Se não houve movimento significativo, voltar à posição atual
+            updateCarousel();
         }
         
         // Resetar posição
         currentTranslate = 0;
         prevTranslate = 0;
-        updateCarousel();
     }
     
     function animation() {
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
+        // Para mobile: calcular porcentagem baseada na largura do wrapper
+        if (window.innerWidth <= 767) {
+            const wrapperWidth = wrapper.offsetWidth;
+            const dragPercentage = (currentTranslate / wrapperWidth) * 100;
+            const baseTranslate = -currentIndex * 100;
+            const totalTranslate = baseTranslate + dragPercentage;
+            
+            carousel.style.transform = `translateX(${totalTranslate}%)`;
+        } else {
+            // Para desktop: usar cálculo original
+            const itemWidth = 100 / itemsPerView;
+            const gapPercentage = (25 / wrapper.offsetWidth) * 100;
+            const totalItemWidth = itemWidth + gapPercentage;
+            const baseTranslate = -currentIndex * totalItemWidth;
+            const dragPercentage = (currentTranslate / wrapper.offsetWidth) * 100;
+            
+            carousel.style.transform = `translateX(calc(${baseTranslate}% + ${currentTranslate}px))`;
+        }
+        
         if (isDragging) {
             requestAnimationFrame(animation);
         }
@@ -160,8 +206,8 @@ function initPortfolioCarousel() {
     
     // Event listeners para touch (mobile)
     if (wrapper) {
-        wrapper.addEventListener('touchstart', startDrag);
-        wrapper.addEventListener('touchmove', drag);
+        wrapper.addEventListener('touchstart', startDrag, { passive: false });
+        wrapper.addEventListener('touchmove', drag, { passive: false });
         wrapper.addEventListener('touchend', endDrag);
         
         // Prevenir scroll vertical enquanto arrasta
@@ -172,8 +218,8 @@ function initPortfolioCarousel() {
         }, { passive: false });
     }
     
-    // Event listeners para mouse (desktop)
-    if (wrapper && window.innerWidth <= 767) {
+    // Event listeners para mouse (desktop) - REMOVIDO DO MOBILE
+    if (wrapper && window.innerWidth > 767) {
         wrapper.addEventListener('mousedown', startDrag);
         wrapper.addEventListener('mousemove', drag);
         wrapper.addEventListener('mouseup', endDrag);
@@ -184,9 +230,9 @@ function initPortfolioCarousel() {
     window.addEventListener('resize', updateCarousel);
     
     // Inicializar
+    updateItemsPerView();
     updateCarousel();
 }
-
 // ===== MODAL DA LOGO =====
 function initLogoModal() {
     const logoLink = document.querySelector('.logo-img') || document.querySelector('.logo');
@@ -721,3 +767,4 @@ function initCertificationModal() {
         }
     });
 }
+
