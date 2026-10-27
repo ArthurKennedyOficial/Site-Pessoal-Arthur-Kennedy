@@ -1,677 +1,241 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-estado="desligado" class="sem-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Kennedy | Especialista em E-commerce e Tráfego Pago</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arthur Kennedy · Marketing e IA</title>
+<meta name="description" content="Arthur Kennedy, de Pará de Minas. IA aplicada a marketing, vendas e processos: IA no dia a dia da empresa, estruturação comercial e assessoria completa de marketing e vendas.">
+<meta property="og:title" content="Arthur Kennedy · Marketing e IA">
+<meta property="og:description" content="IA aplicada a marketing, vendas e processos.">
+<meta property="og:image" content="https://arthurkennedy.com.br/assets/foto.jpg">
+<link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+<script>
+document.documentElement.classList.replace("sem-js","js");
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/marca.css">
+<style>
+html:not([data-estado=secao]) body{overflow:hidden}html{overscroll-behavior-y:none}.veludo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse 85% 85% at 50% 46%,#080B11 0%,#05070B 30%,#070A10 50%,#030508 76%,#010203 100%)}.veludo canvas{position:absolute;inset:0;width:100%;height:100%}#mente{position:fixed;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}#ligar-caixa{position:fixed;inset:0;z-index:7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .6s,filter .6s,transform .6s}#ligar{position:relative;display:inline-flex;align-items:center;gap:14px;font:500 16px/1 var(--f-display);letter-spacing:.08em;color:var(--tinta);background:rgba(16,20,27,.6);border:1px solid var(--acento);border-radius:999px;padding:17px 30px 17px 22px;cursor:pointer;transition:background .25s,color .25s,border-color .25s,letter-spacing .6s}#ligar svg{width:44px;height:22px;overflow:visible}#ligar::before{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid var(--acento);animation:respira 2.6s ease-out infinite;pointer-events:none}@keyframes respira{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.22,1.6)}}#ligar:hover{background:var(--tinta);color:var(--fundo);border-color:var(--tinta)}#ligar:hover svg{--tinta:var(--fundo);--halo:var(--tinta)}.sussurro{font:11px var(--f-mono);letter-spacing:.2em;color:var(--tinta-2);margin:0;opacity:.75;text-align:center;max-width:none}html:not([data-estado=desligado]) #ligar-caixa{opacity:0;filter:blur(10px);transform:scale(1.05);pointer-events:none;visibility:hidden;transition:opacity .6s,filter .6s,transform .6s,visibility 0s .6s}html:not([data-estado=desligado]) #ligar::before{animation:none}html:not([data-estado=desligado]) #ligar{letter-spacing:.4em}#identidade{position:fixed;left:0;top:0;z-index:5;text-align:center;pointer-events:none;opacity:0;transition:opacity .9s}html[data-estado=grafo] #identidade{opacity:1;transition-delay:.35s}#identidade .nome{font:600 30px/1.05 var(--f-display);letter-spacing:-.02em;margin:0}#identidade .linha-fina{font:11px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-2);margin-top:8px}@media(max-width:759px){#identidade .nome{font-size:22px}#identidade .linha-fina{font-size:10px;margin-top:6px}}#ajuste{position:fixed;right:16px;bottom:16px;z-index:60;width:330px;max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);overflow:auto;padding:16px 18px 14px;background:rgba(13,17,24,.95);border:1px solid var(--contorno);border-radius:12px;box-shadow:var(--degrau);font:14px/1.5 var(--f-texto);color:var(--tinta)}#ajuste[hidden]{display:none}#ajuste .aj-cab{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}#ajuste .aj-cab b{font:600 16px/1.2 var(--f-display)}#ajuste label{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:2px 10px;margin-bottom:10px}#ajuste label output{font:600 15px/1 var(--f-display);color:var(--acento)}#ajuste input[type=range]{grid-column:1/-1;width:100%;margin:0;accent-color:var(--acento);cursor:pointer}#ajuste .aj-valores{margin:12px 0 10px;padding:9px 11px;max-width:none;border:1px dashed var(--contorno);border-radius:8px;font-size:13px;line-height:1.6;color:var(--tinta-2);user-select:all}#ajuste .aj-pe{display:flex;gap:8px;flex-wrap:wrap}#ajuste button{font:500 13px/1 var(--f-display);color:var(--tinta);background:none;border:1px solid var(--contorno);border-radius:8px;padding:9px 12px;cursor:pointer}#ajuste button:hover{border-color:var(--tinta)}#ajuste .aj-cab button{padding:5px 10px;font-size:16px}#ajuste small{display:block;margin-top:10px;font-size:12px;line-height:1.5;color:var(--tinta-2)}#cards{position:fixed;inset:0;z-index:6;pointer-events:none}.card{position:absolute;left:0;top:0;display:block;white-space:nowrap;text-decoration:none;color:var(--tinta);opacity:0;will-change:transform;background:rgba(16,20,27,.84);border:1px solid var(--linha);border-radius:12px;padding:12px 18px 13px;font:600 17px/1.2 var(--f-display);transition:padding .5s,border-radius .5s,font-size .5s,background-color .3s,border-color .3s,color .3s,box-shadow .3s}.card .n{display:inline-block;font:500 11px var(--f-mono);letter-spacing:.1em;color:var(--acento);max-width:3em;margin-right:9px;overflow:hidden;vertical-align:1px;transition:max-width .5s,margin .5s,opacity .3s}.card .sub{display:block;font:400 12.5px/1.3 var(--f-texto);color:var(--tinta-2);max-height:20px;max-width:22em;margin-top:4px;overflow:hidden;transition:max-height .5s,max-width .5s,margin .5s,opacity .3s}.card:hover{border-color:var(--tinta-2);box-shadow:0 0 30px rgba(125,143,169,.2)}html[data-estado=secao] .card{padding:8px 15px;border-radius:999px;font-size:14px;font-weight:500}html[data-estado=secao] .card .n{max-width:0;margin-right:0;opacity:0}html[data-estado=secao] .card .sub{max-height:0;max-width:0;margin-top:0;opacity:0}.card.destaque,.card.destaque:hover{border-color:var(--laranja)}.card.destaque .n{color:var(--laranja)}html[data-estado=secao] .card.ativo{background:var(--tinta);color:var(--fundo);border-color:var(--tinta)}@media(max-width:759px){.card{font-size:15px;padding:10px 14px 11px}.card .sub{font-size:11.5px}}#topo{position:fixed;top:0;left:0;right:0;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;padding:12px 16px;min-height:64px;opacity:0;pointer-events:none;border-bottom:1px solid transparent;transition:opacity .5s,background .5s,border-color .5s}html[data-estado=secao] #topo{opacity:1;pointer-events:auto;background:linear-gradient(to bottom,rgba(6,8,12,.95),rgba(6,8,12,.86));border-bottom-color:var(--linha);transition-delay:.25s}#marco{background:none;border:none;padding:0;cursor:pointer;margin-right:8px;width:64px;height:32px}.vaga{font:500 14px/1.2 var(--f-display);padding:8px 15px;border:1px solid transparent;border-radius:999px;visibility:hidden;white-space:nowrap}.vagas{display:contents}#menu-bt{display:none}@media(max-width:640px){#topo{flex-wrap:nowrap;justify-content:space-between;gap:10px;padding:8px 12px;min-height:54px}#marco{flex:none;width:52px;height:26px;margin:0}#menu-bt{display:inline-flex;align-items:center;gap:7px;flex:none;font:500 14px/1.2 var(--f-display);color:var(--tinta);background:rgba(16,20,27,.84);border:1px solid var(--linha);border-radius:999px;padding:8px 15px;cursor:pointer}#menu-bt svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.vagas{position:absolute;inset:0;display:block;pointer-events:none}.vaga{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}html[data-estado=secao] .card{opacity:0!important;pointer-events:none!important;transition:padding .5s,border-radius .5s,font-size .5s,background-color .3s,border-color .3s,color .3s,box-shadow .3s,opacity .3s}}:root{--contorno:rgba(242,232,213,.2);--degrau:5px 5px 0 #1B212C;--degrau-forte:5px 5px 0 var(--fosforo);--vao:20px;--sup-2:#161B24}#conteudo{position:relative;z-index:2;display:none;padding:calc(var(--topo-h,64px) + 52px) 20px 80px}html[data-estado=secao] #conteudo{display:block}.secao{display:none;max-width:1180px;margin:0 auto}.secao.ativa{display:block}.grade{display:grid;gap:32px}@media(min-width:1000px){.grade{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}}.secao h2{font-size:clamp(28px,3.2vw,40px)}.secao p{font-size:16.5px;line-height:1.7}.cab.centro{text-align:center;max-width:800px;margin:0 auto 38px}.cab.centro p{margin-left:auto;margin-right:auto}.cab.centro p:last-child{margin-bottom:0}[hidden]{display:none!important}@media(max-width:560px){#conteudo{padding-left:16px;padding-right:16px;padding-top:calc(var(--topo-h,64px) + 34px)}.secao p{font-size:16px}.cab.centro{margin-bottom:28px}}.secao.ativa .m{animation:materializa .95s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}@keyframes materializa{0%{opacity:0;filter:blur(12px);transform:translateY(14px) scale(.985)}55%{opacity:1}100%{opacity:1;filter:none;transform:none}}.secao.saindo .m{animation:dissolve .32s ease-in both}@keyframes dissolve{to{opacity:0;filter:blur(10px);transform:translateY(-12px)}}.foto{margin:0 0 24px;border-radius:10px;overflow:hidden;border:1px solid var(--linha);background:#1a1d24;aspect-ratio:3/4;width:100%;max-width:170px}.foto img{display:block;width:100%;height:100%;object-fit:cover}.zz{margin-top:30px}.zz ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--linha)}.zz li{position:relative;padding:0 0 22px 20px}.zz li::before{content:"";position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--acento)}.zz li.hoje::before{background:var(--tinta);box-shadow:0 0 8px var(--tinta)}.zz .quando{font:11px var(--f-mono);letter-spacing:.1em;color:var(--tinta-2)}.zz b{display:block;font:600 17px var(--f-display);margin:2px 0 5px}.zz p{font-size:15px;line-height:1.65;color:var(--tinta-2);margin:0}.zz .eixo{display:none}@media(min-width:1100px){.zz{display:grid;grid-template-columns:clamp(150px,13vw,190px) repeat(7,minmax(0,1fr));grid-template-rows:auto 2px auto;margin-top:40px}.zz ol{display:contents}.zz .foto{grid-column:1;grid-row:1/4;align-self:center;margin:0;width:clamp(124px,11vw,160px);position:relative;z-index:1}.zz .eixo{display:block;grid-column:1/-1;grid-row:2;align-self:center;height:1px;background:var(--linha)}.zz li{grid-column:var(--c)/span 2;padding:0 18px 0 16px;border-left:1px solid var(--linha)}.zz li:nth-child(-n+3){grid-row:1;align-self:end;padding-bottom:28px}.zz li:nth-child(n+4){grid-row:3;align-self:start;padding-top:28px}.zz li::before{left:-4.5px;width:8px;height:8px}.zz li:nth-child(-n+3)::before{top:auto;bottom:-4.5px}.zz li:nth-child(n+4)::before{top:-4.5px}.zz li:nth-child(1){--c:2}.zz li:nth-child(2){--c:4}.zz li:nth-child(3){--c:6}.zz li:nth-child(4){--c:3}.zz li:nth-child(5){--c:5}.zz li:nth-child(6){--c:7}}.caixa{max-width:1080px;margin:0 auto}.caixa-abas{display:flex;flex-wrap:nowrap;align-items:flex-end;gap:6px;padding:0 16px;position:relative;z-index:1}.aba-f{font:600 14px/1.2 var(--f-display);color:var(--tinta-2);background:none;cursor:pointer;border:1px dashed var(--contorno);border-bottom:0;border-radius:9px 9px 0 0;padding:9px 15px 8px;transition:font-size .2s,padding .2s,color .2s,border-color .2s}.aba-f:hover{color:var(--tinta)}.aba-f[aria-selected=true]{font-size:16.5px;padding:12px 19px 11px;margin-bottom:-1px;color:var(--fosforo);border-color:rgba(242,232,213,.6);background:var(--fundo)}@media(max-width:759px){.caixa-abas{align-items:stretch;gap:4px;padding:4px 6px 0}.aba-f{flex:0 1 auto;font-size:12.5px;line-height:1.15;padding:8px 7px 7px;border-radius:8px 8px 0 0;text-wrap:balance}.aba-f[aria-selected=true]{font-size:13.5px;padding:9px 9px 8px;margin-top:-4px}.aba-f[data-curto]:not([aria-selected=true]) span{display:none}.aba-f[data-curto]:not([aria-selected=true])::before{content:attr(data-curto)}}.caixa-painel{border:1px dashed var(--contorno);border-radius:10px;padding:30px 28px 28px;animation:entra-painel .4s ease both}@keyframes entra-painel{from{opacity:0;transform:translateY(8px)}}.caixa p.caixa-frase{font:400 19px/1.5 var(--f-display);color:var(--tinta);margin:0 0 30px;max-width:62ch}.ent-grade{display:grid;gap:28px 34px}@media(min-width:700px){.ent-grade{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:1000px){.ent-grade{grid-template-columns:repeat(3,minmax(0,1fr))}.ent-grade.inteira{grid-template-columns:repeat(2,minmax(0,1fr))}}.ent-item{display:flex;align-items:flex-start;gap:14px;min-width:0;text-decoration:none}.ent-item.so-nome{align-items:center}.ent-item b{display:block;font:600 18px/1.3 var(--f-display);color:var(--fosforo);margin:1px 0 6px}.ent-item.so-nome b{margin:0}.caixa .ent-item p{font-size:15px;line-height:1.6;color:var(--tinta-2);margin:0;max-width:none}.ent-item small{display:block;font:11px var(--f-mono);letter-spacing:.06em;color:var(--tinta-2);margin-top:4px}a.ent-item:hover small{color:var(--fosforo)}.caixa-pe{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}.ico{display:grid;place-items:center;flex:none;width:42px;height:42px;border:1px solid var(--contorno);border-radius:9px;background:var(--sup-2);color:var(--laranja)}.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.abrir{margin-top:auto;padding-top:10px;font:500 14px var(--f-display);color:var(--tinta)}@media(max-width:560px){.caixa-painel{padding:24px 16px 22px}.caixa p.caixa-frase{font-size:17.5px;margin-bottom:26px}.ent-grade{gap:24px}.caixa-pe .bt{flex:1 1 100%;justify-content:center}}.mosaico{--desnivel:72px;--em-pe-a:4/5;--em-pe-b:10/14;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--vao);align-items:start;max-width:700px;margin:0 auto}.mosaico .col{display:grid;gap:var(--vao);min-width:0}.mosaico .col+.col{margin-top:var(--desnivel)}.mosaico .col:empty{display:none}.proj{display:flex;flex-direction:column;min-width:0;aspect-ratio:var(--em-pe-a);text-decoration:none;background:var(--sup);border:1px solid var(--contorno);border-radius:10px;box-shadow:var(--degrau);transition:border-color .2s,box-shadow .2s,background .2s}.proj .selo{white-space:nowrap}.col:nth-child(odd) .proj:nth-child(even),.col:nth-child(even) .proj:nth-child(odd){aspect-ratio:var(--em-pe-b)}.proj:hover{border-color:var(--fosforo);box-shadow:var(--degrau-forte);background:var(--sup-2)}.proj{gap:12px;padding:24px 24px 22px}.proj .alto{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:8px}.proj .ico{width:56px;height:56px;border-radius:12px}.proj .ico svg{width:28px;height:28px}.proj h3{font-size:22px;line-height:1.22;margin:0;color:var(--fosforo)}.proj p{font-size:15.5px;line-height:1.6;color:var(--tinta-2);margin:0;max-width:none}@media(max-width:700px){.mosaico{--desnivel:44px;--vao:14px}.proj{gap:9px;padding:16px 14px 14px}.proj .alto{gap:10px;margin-bottom:4px}.proj .ico{width:42px;height:42px;border-radius:9px}.proj .ico svg{width:22px;height:22px}.proj .selo{font-size:10px;letter-spacing:0;padding:3px 7px}.proj h3{font-size:16.5px}.proj p{font-size:14px;line-height:1.55}.proj .abrir{font-size:13.5px}}@media(min-width:1000px){.mosaico{--desnivel:44px;--vao:16px;--em-pe-a:7/8;--em-pe-b:4/5;grid-template-columns:repeat(3,minmax(0,1fr));max-width:880px}.mosaico .col:nth-child(3){margin-top:calc(var(--desnivel) / 2)}.proj{gap:10px;padding:20px 20px 18px}.proj .alto{gap:12px;margin-bottom:6px}.proj .ico{width:46px;height:46px;border-radius:10px}.proj .ico svg{width:24px;height:24px}.proj h3{font-size:19px}.proj p{font-size:14.5px;line-height:1.55}}.marcas{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.marcas .cat{font:11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-2)}.selo.est{display:inline-flex;align-items:center;gap:6px;color:var(--tinta)}.selo.est::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tinta)}.selo.est-dev::before{background:none;box-shadow:inset 0 0 0 1.5px var(--tinta-2)}.selo.est-dev,.selo.est-breve{color:var(--tinta-2)}.selo.est-breve{border-style:dashed}.selo.est-breve::before{display:none}.proj .abrir{padding-top:6px}.obra{--aviso-y:120px;display:grid;max-width:880px;margin:0 auto}.obra>*{grid-area:1/1;min-width:0}.obra .mosaico{width:100%;pointer-events:none;user-select:none}.proj.censura{background:rgba(16,20,27,.55);border-color:rgba(242,232,213,.1)}.censura .tarja{display:block;height:11px;border-radius:3px;background:var(--tinta-2);opacity:.32;filter:blur(3px)}.censura .tarja.t{height:17px;background:var(--fosforo);opacity:.3;margin-bottom:4px}.censura .tarja.ico-t{width:56px;height:56px;border-radius:12px;opacity:.18;margin-bottom:8px}.censura .tarja.pe{margin-top:auto;width:46%;opacity:.22}.obra-aviso{position:sticky;top:calc(var(--topo-h,64px) + 28px);z-index:1;align-self:start;justify-self:center;margin-top:var(--aviso-y);width:min(400px,calc(100% - 28px));text-align:center;background:var(--sup);border:1px solid var(--contorno);border-radius:12px;box-shadow:var(--degrau);padding:30px 30px 28px}.obra-aviso .selo{font-size:12px;padding:5px 12px}.obra-aviso h3{font-size:24px;line-height:1.25;color:var(--fosforo);margin:16px 0 10px}.obra-aviso p{font-size:16px;line-height:1.65;color:var(--tinta-2);margin:0 auto;max-width:32ch}@media(max-width:700px){.obra{--aviso-y:60px}.censura .tarja{height:9px}.censura .tarja.t{height:13px}.censura .tarja.ico-t{width:42px;height:42px;border-radius:9px}.obra-aviso{padding:24px 20px 22px}.obra-aviso h3{font-size:20px;margin-top:14px}.obra-aviso p{font-size:15px}}@media(min-width:1000px){.censura .tarja.ico-t{width:46px;height:46px;border-radius:10px}}.det{max-width:980px;margin:0 auto}.det-cab{text-align:center;max-width:800px;margin:0 auto 30px}.det-cab .volta{display:inline-block;font:500 13.5px var(--f-display);color:var(--tinta-2);text-decoration:none;border:1px solid var(--linha);border-radius:999px;padding:7px 14px;margin-bottom:24px}.det-cab .volta:hover{color:var(--tinta);border-color:var(--tinta-2)}.det-cab .marcas{justify-content:center;margin-bottom:14px}.det-cab h2{margin-bottom:10px}.det-frase{font:400 19px/1.5 var(--f-display);color:var(--tinta-2);margin:0 auto;max-width:44ch}.det-cab .acoes{justify-content:center}.bt.apagado{background:transparent;color:var(--tinta-2);border:1px dashed var(--linha);cursor:default}.bt.apagado:hover{color:var(--tinta-2)}.det-resumo{max-width:70ch;margin:0 auto}.det-resumo p{max-width:none}.det-blocos{display:flex;flex-wrap:wrap;gap:var(--vao);margin-top:30px}.bloco{flex:1 1 340px;min-width:0;background:var(--sup);border:1px solid var(--contorno);border-radius:10px;padding:22px 22px 20px;box-shadow:var(--degrau)}.bloco.largo{flex-basis:100%}.bloco.solto{background:none;border:none;padding:6px 0 0;box-shadow:none}.bloco h3{font-size:18px;margin-bottom:12px;color:var(--fosforo)}.bloco p{font-size:15.5px;line-height:1.7;color:var(--tinta-2);margin:0;max-width:none}ul.itens{list-style:none;margin:0;padding:0}ul.itens li{position:relative;font-size:15.5px;line-height:1.6;color:var(--tinta-2);padding:0 0 10px 18px}ul.itens li:last-child{padding-bottom:0}ul.itens li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--acento)}.passos{list-style:none;margin:0;padding:0;display:grid;gap:16px;counter-reset:passo}@media(min-width:700px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:1040px){.passos{grid-template-columns:repeat(4,minmax(0,1fr))}}.passos li{counter-increment:passo;background:var(--sup);border:1px solid var(--contorno);border-radius:10px;padding:18px 18px 18px;box-shadow:var(--degrau)}.passos li::before{content:counter(passo,decimal-leading-zero);display:block;font:12px var(--f-mono);letter-spacing:.1em;color:var(--laranja);margin-bottom:8px}.passos b{display:block;font:600 16.5px/1.3 var(--f-display);color:var(--fosforo);margin-bottom:5px}.passos span{display:block;font-size:15px;line-height:1.6;color:var(--tinta-2)}.etiquetas{display:flex;flex-wrap:wrap;gap:8px}.etiquetas .selo{font-size:12px;padding:5px 11px}.bloco figure{margin:0}.bloco figure a{display:block}.bloco figure img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--linha)}.bloco figcaption{font-size:14.5px;line-height:1.55;color:var(--tinta-2);margin:12px auto 0;max-width:70ch;text-align:center}.galeria{display:grid;gap:var(--vao)}@media(min-width:860px){.galeria{grid-template-columns:repeat(3,minmax(0,1fr))}}.demo{display:flex;flex-direction:column;text-decoration:none;background:var(--sup);border:1px solid var(--contorno);border-radius:10px;overflow:hidden;box-shadow:var(--degrau);transition:border-color .2s,box-shadow .2s,background .2s}.demo:hover{border-color:var(--fosforo);box-shadow:var(--degrau-forte);background:var(--sup-2)}.demo .capa{aspect-ratio:16/10;overflow:hidden;background:#000}.demo .capa img{width:100%;height:100%;object-fit:cover;object-position:top}.demo .corpo{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}.demo .corpo .selo{align-self:flex-start}.demo h4{font:600 17px var(--f-display);margin:0;color:var(--fosforo)}.demo p{font-size:14.5px;line-height:1.6;color:var(--tinta-2);margin:0}.det-fim{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}.numeros{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:1080px;margin:28px auto 0;text-align:center;border:1px dashed var(--contorno);border-radius:10px}.numeros>div{padding:20px 10px 18px}.numeros>div:nth-child(even){border-left:1px dashed var(--contorno)}.numeros>div:nth-child(n+3){border-top:1px dashed var(--contorno)}@media(min-width:760px){.numeros{grid-template-columns:repeat(4,minmax(0,1fr))}.numeros>div{padding:22px 18px 20px}.numeros>div:nth-child(n){border-top:0}.numeros>div:nth-child(n+2){border-left:1px dashed var(--contorno)}}.numeros b{display:block;font:600 19px/1.2 var(--f-display);color:var(--fosforo);white-space:nowrap}.numeros span{display:block;font-size:13.5px;line-height:1.45;color:var(--tinta-2);margin-top:3px}.passos-s{list-style:none;margin:0;padding:0;display:grid;gap:26px 38px;counter-reset:passo}@media(min-width:760px){.passos-s{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:column;grid-template-rows:repeat(var(--linhas,3),auto)}}.passos-s li{counter-increment:passo;position:relative;padding-left:42px}.passos-s li::before{content:counter(passo,decimal-leading-zero);position:absolute;left:0;top:3px;font:13px var(--f-mono);letter-spacing:.08em;color:var(--laranja)}.passos-s b{display:block;font:600 18px/1.3 var(--f-display);color:var(--fosforo);margin-bottom:5px}.passos-s span{display:block;font-size:15px;line-height:1.6;color:var(--tinta-2)}.txt-s{max-width:72ch}.txt-s+.txt-s{margin-top:28px}.txt-s h4{font:600 18px/1.3 var(--f-display);color:var(--fosforo);margin:0 0 10px}.caixa .txt-s p{font-size:16px;line-height:1.7;color:var(--tinta-2);margin:0;max-width:none}ul.itens li b{font-weight:600;color:var(--tinta)}.arv-legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin:0 auto 30px;font-size:13.5px;color:var(--tinta-2)}.arv-legenda span{display:inline-flex;align-items:center;gap:8px}.niv{display:inline-flex;gap:3px;flex:none}.niv i{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--linha)}.niv.n1 i:nth-child(-n+1),.niv.n2 i:nth-child(-n+2),.niv.n3 i{background:var(--tinta);box-shadow:none}.niv.nd i{width:27px;height:9px;border-radius:999px;box-shadow:none;border:1.5px dashed var(--tinta-2)}.arvore{--tr:#34405A}.arv-raiz{display:flex}.arv-raiz span{display:inline-flex;align-items:center;gap:10px;font:600 16px var(--f-display);background:var(--tinta);color:var(--fundo);border-radius:999px;padding:9px 18px}.arv-ramos{position:relative;display:grid;gap:26px;padding:26px 0 0 26px}.arv-ramos::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--tr) 0,var(--tr) calc(100% - 60px),transparent)}.ramo{position:relative;min-width:0}.ramo::before{content:"";position:absolute;left:-16px;top:20px;width:16px;height:1px;background:var(--tr)}.ramo h3{display:inline-flex;align-items:center;font-size:16.5px;margin:0;background:var(--sup);border:1px solid var(--tr);border-radius:999px;padding:9px 16px}.ramo ul{list-style:none;margin:0 0 0 20px;padding:8px 0 0;border-left:1px solid var(--tr)}.ramo li{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:9px 0 9px 20px}.ramo li::before{content:"";position:absolute;left:0;top:20px;width:12px;height:1px;background:var(--tr)}.ramo li:last-child{padding-bottom:0}.ramo .hab{font-size:15.5px;line-height:1.4;color:var(--tinta)}.ramo .grau{display:inline-flex;align-items:center;gap:8px;font:11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-2);white-space:nowrap}.ramo.agora h3{border-style:dashed}.ramo.agora ul{border-left-style:dashed}@media(min-width:1000px){.arv-raiz{justify-content:center;position:relative;padding-bottom:26px}.arv-raiz::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:26px;background:var(--tr)}.arv-ramos{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:26px 0 0}.arv-ramos::before{left:20px;right:calc((100% - 66px)/4 - 20px);top:0;bottom:auto;width:auto;height:1px;background:var(--tr)}.ramo::before{left:20px;top:-26px;width:1px;height:26px}}.contato-lista{display:grid;gap:var(--vao)}.contato-lista a.cartao{display:flex;justify-content:space-between;align-items:center;text-decoration:none;gap:16px;border-color:var(--contorno);box-shadow:var(--degrau);transition:border-color .2s,box-shadow .2s,background .2s}.contato-lista a.cartao:hover{border-color:var(--fosforo);box-shadow:var(--degrau-forte);background:var(--sup-2)}.contato-lista a.cartao b{color:var(--fosforo)}.contato-lista .rot{font:11px var(--f-mono);letter-spacing:.12em;color:var(--tinta-2);text-transform:uppercase}.contato-lista b{font:500 17px var(--f-display);word-break:break-all}.coordenada{font:12px/1.9 var(--f-mono);letter-spacing:.1em;color:var(--aco);margin-top:18px}.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}@media(max-width:560px){.det-frase{font-size:17.5px}.bloco{padding:18px 16px}}.fim{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:64px;min-height:44px}.fim::before{content:"";position:absolute;left:0;right:0;top:22px;height:1px;background:linear-gradient(to right,transparent,var(--linha) 16%,var(--linha) 84%,transparent)}.fim-seta{position:relative;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--linha);background:var(--fundo);color:var(--tinta-2);transition:color .2s,border-color .2s,transform .2s}.fim-seta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.fim-seta:hover{color:var(--fosforo);border-color:var(--fosforo);transform:translateY(3px)}.fim-rot{font:11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);text-align:center}@media(max-width:560px){.fim{margin-top:48px}}.sem-js body{overflow:auto}.sem-js #ligar-caixa,.sem-js #cards,.sem-js #identidade,.sem-js #mente,.sem-js #topo{display:none}.sem-js #conteudo{display:block;padding-top:40px}.sem-js .secao{display:block;margin-bottom:90px}
+</style>
 </head>
 <body>
-    <!-- ===== LOADING SCREEN ===== -->
-    <div id="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Carregando</div>
-        </div>
-    </div>
 
-    <!-- Background simplificado -->
-    <div class="background-container"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-disco-p" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#7D8FA9" stop-opacity="0"/><stop offset=".22" stop-color="#7D8FA9" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#EEF2F7"/><stop offset=".78" stop-color="#7D8FA9" stop-opacity=".55"/><stop offset="1" stop-color="#7D8FA9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <symbol id="disco" viewBox="0 0 96 48">
+    <circle cx="48" cy="24" r="12.4" fill="none" style="stroke:var(--tinta)" stroke-width="1.7" opacity=".92"/>
+    <circle cx="48" cy="24" r="11.2" style="fill:var(--halo)"/>
+    <path d="M2 24Q48 17.6 94 24Q48 30.4 2 24Z" style="fill:var(--disco)"/>
+  </symbol>
+</svg>
 
-    <!-- Modal para foto ampliada -->
-    <div id="logoModal" class="logo-modal">
-        <div class="logo-modal-content">
-            <span class="logo-modal-close">&times;</span>
-            <img src="Arthur.png" alt="Arthur Kennedy - Foto ampliada">
-        </div>
-    </div>
+<div class="veludo" aria-hidden="true"><canvas id="pano"></canvas></div>
+<canvas id="mente" aria-hidden="true"></canvas>
 
-    <!-- Modal para Experiências -->
-    <div id="experienceModal" class="experience-modal">
-        <div class="experience-modal-content">
-            <span class="experience-modal-close">&times;</span>
-            <div class="experience-modal-body">
-                <h3 class="experience-modal-title"></h3>
-                <p class="experience-modal-date"></p>
-                <div class="experience-modal-description"></div>
-                <div class="experience-modal-details"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Portfólio Simplificado -->
-    <div id="portfolioModal" class="portfolio-modal">
-        <div class="portfolio-modal-content">
-            <span class="portfolio-modal-close">&times;</span>
-            <div class="portfolio-modal-body">
-                <div class="portfolio-modal-header">
-                    <div class="portfolio-modal-icon"></div>
-                    <h3 class="portfolio-modal-title"></h3>
-                    <p class="portfolio-modal-subtitle"></p>
-                </div>
-                
-                <div class="portfolio-modal-description"></div>
-                
-                <div class="portfolio-modal-links" id="portfolioLinks">
-                    <h4><i class="fas fa-link"></i> Link do Projeto</h4>
-                    <div class="links-container"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navegação -->
-    <nav>
-        <div class="container nav-container">
-            <a href="#hero" class="logo" id="logoLink">
-                <div class="logo-img"></div>
-                <span class="logo-text">Arthur Kennedy</span>
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> Sobre</a></li>
-                <li><a href="#experiences"><i class="fas fa-briefcase"></i> Experiências</a></li>
-                <li><a href="#skills"><i class="fas fa-cogs"></i> Habilidades</a></li>
-                <li><a href="#portfolio"><i class="fas fa-project-diagram"></i> Portfólio</a></li>
-                <li><a href="#certifications"><i class="fas fa-award"></i> Certificações</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contato</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Seção Hero -->
-    <section id="hero">
-        <div class="container hero-content">
-            <h1 id="typed-name">Arthur Kennedy De Faria</h1>
-            <div class="subtitle">
-                <h2 id="typed-subtitle">Gestor de Tráfego, Gestor de E-commerce, Desenvolvedor Web e TI</h2>
-            </div>
-            <p class="hero-description">Transformando conhecimento em resultados. Apaixonado por tecnologia, negócios e boas estratégias de marketing.</p>
-            <div class="cta-buttons">
-                <a href="#portfolio" class="btn btn-primary"><i class="fas fa-eye"></i> Ver Portfólio</a>
-                <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Entrar em Contato</a>
-            </div>
-            <div class="floating-stats">
-                <div class="stat">
-                    <div class="stat-value">R$ 1MM+</div>
-                    <div class="stat-label">Vendas Geradas</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">R$ 150K+</div>
-                    <div class="stat-label">Investidos em Mídia</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">5+</div>
-                    <div class="stat-label">Anos de Experiência</div>
-                </div>
-            </div>
-        </div>
-        <div class="section-scroll-indicator">
-            <a href="#about" class="scroll-down" data-target="about">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Seção Sobre -->
-    <section id="about">
-        <div class="container">
-            <h2>Sobre Mim</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Tenho 23 anos e nos últimos 5 anos venho acumulando uma vasta experiência profissional, de estagiário a coordenador de TI em uma das maiores empresas de contabilidade do interior de Minas Gerais.</p>
-                    <p>Criei uma loja virtual que atingiu cerca de 400 clientes ativos e hoje presto assessoria estratégica de marketing para outras empresas como gestor de tráfego pago e estrategista digital.</p>
-                    <p>Meu objetivo é ajudar empresas a venderem mais, melhor e sempre, utilizando estratégias baseadas em dados e as mais recentes tecnologias de marketing digital.</p>
-                </div>
-                <div class="about-image">
-                    <img src="Arthur.png" alt="Arthur Kennedy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Experiências -->
-    <section id="experiences">
-        <div class="container">
-            <h2>Experiências</h2>
-            <div class="timeline">
-                <div class="timeline-item" data-index="0">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023 - Atual</span>
-                        <h3>Assessor de Marketing Autônomo</h3>
-                        <p>Serviço completo de assessoria de marketing estratégica especializada em e-commerce e performance digital.</p>
-                        <button class="btn-more-info">
-                            <i class="fas fa-plus-circle"></i> Mais Informações
-                        </button>
-                    </div>
-                </div>                
-                <div class="timeline-item" data-index="1">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021 - 2023</span>
-                        <h3>Fundador e CEO - ATYLA E-commerce</h3>
-                        <p>E-commerce de moda masculina que alcançou 400 clientes ativos através de estratégias digitais.</p>
-                        <button class="btn-more-info">
-                            <i class="fas fa-plus-circle"></i> Mais Informações
-                        </button>
-                    </div>
-                </div>
-                <div class="timeline-item" data-index="2">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2020 - 2023</span>
-                        <h3>Coordenador e Técnico de TI - MMJ Contabilidade</h3>
-                        <p>Responsável pela manutenção e suporte de toda a infraestrutura tecnológica.</p>
-                        <button class="btn-more-info">
-                            <i class="fas fa-plus-circle"></i> Mais Informações
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Habilidades -->
-    <section id="skills">
-        <div class="container">
-            <h2>Habilidades</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fas fa-bullhorn"></i> Marketing</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Meta Ads (Facebook/Instagram)</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Funis de Venda E-commerce</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Estratégia de Marketing</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Google Ads</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 60%"></div>
-                        </div>
-                    </div>
-                
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Google Tag Manager</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Google Analytics</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Copywriting</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Pixel e API de Conversão</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Edição de Vídeo e Imagem</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-briefcase"></i> Negócios</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gestão de E-commerce</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gestão de Marketplaces Ads</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Pesquisa de Mercado</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Prospecção e Vendas</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Criação de Processos</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Definição de Persona/ICP</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Análise de Dados/KPIs</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i>Tecnologia</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Informática/TI</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Desenvolvimento Web</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Nuvem Shop</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Shopify</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Elementor/Wordpress</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 50%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Ferramentas IA de Texto</span>
-                            <span>Avançado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Vídeo/Imagem com IA</span>
-                            <span>Intermediário</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Great Pages</span>
-                            <span>Básico</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 60%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Portfólio com Carrossel Simples -->
-    <section id="portfolio">
-        <div class="container">
-            <h2>Projetos</h2>
-            <div class="portfolio-carousel-container">
-                <div class="portfolio-carousel-wrapper">
-                    <div class="portfolio-carousel">
-                        <div class="portfolio-item" data-index="0">
-                            <div class="portfolio-img">
-                                <i class="fas fa-tshirt"></i>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>ATYLA - E-commerce de Moda Masculina</h3>
-                                <p>E-commerce completo de moda masculina que alcançou 400 clientes ativos através de estratégias digitais integradas.</p>
-                                <div class="portfolio-tags">
-                                    <span class="tag">E-commerce</span>
-                                    <span class="tag">Meta Ads</span>
-                                    <span class="tag">Google Ads</span>
-                                </div>
-                                <button class="portfolio-view-details">
-                                    <i class="fas fa-expand-alt"></i> Ver Detalhes
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="portfolio-item" data-index="1">
-                            <div class="portfolio-img">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>Jhoy Pet - E-commerce de produtos Pet</h3>
-                                <p>Montamos uma estratégia completa de tráfego pago com foco inicial em geração de leads...</p>
-                                <div class="portfolio-tags">
-                                    <span class="tag">Meta Ads</span>
-                                    <span class="tag">Otimização</span>
-                                    <span class="tag">Google Analytics</span>
-                                </div>
-                                <button class="portfolio-view-details">
-                                    <i class="fas fa-expand-alt"></i> Ver Detalhes
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="portfolio-item" data-index="2">
-                            <div class="portfolio-img">
-                                <i class="fas fa-landmark"></i>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>Infraestrutura de TI - MMJ Contabilidade</h3>
-                                <p>Implantação e gestão da infraestrutura tecnológica para uma das maiores empresas de contabilidade do interior de MG.</p>
-                                <div class="portfolio-tags">
-                                    <span class="tag">TI</span>
-                                    <span class="tag">Infraestrutura</span>
-                                    <span class="tag">Segurança</span>
-                                </div>
-                                <button class="portfolio-view-details">
-                                    <i class="fas fa-expand-alt"></i> Ver Detalhes
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="portfolio-item" data-index="3">
-                            <div class="portfolio-img">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>Sposato Premium - Empresa de Design de Interiores</h3>
-                                <p>Desenvolvimento e execução de estratégia completa de aquisição de leads e conversão.</p>
-                                <div class="portfolio-tags">
-                                    <span class="tag">Growth</span>
-                                    <span class="tag">Marketing</span>
-                                    <span class="tag">Estratégia</span>
-                                </div>
-                                <button class="portfolio-view-details">
-                                    <i class="fas fa-expand-alt"></i> Ver Detalhes
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev-btn" aria-label="Projeto anterior">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="carousel-dots"></div>
-                    <button class="carousel-btn next-btn" aria-label="Próximo projeto">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Certificações - MOSAICO DE IMAGENS PEQUENAS 
-<section id="certifications">
-    <div class="container">
-        <h2>Certificações e Formações</h2>
-        <div class="certifications-mosaic">
-            <!-- Item 1 
-            <div class="mosaic-item" data-title="Meta Ads Certification" data-subtitle="Certificação oficial Meta - 2024">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/meta.jpg?raw=true" alt="Meta Ads Certification">
-                <div class="mosaic-caption">Meta Ads Certification</div>
-            </div>
-            
-            <!-- Item 2 
-            <div class="mosaic-item" data-title="Staage - Análise de Dados" data-subtitle="Formação em Métricas de Negócios e Marketing - 2025">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/kpis.jpg?raw=true" alt="Staage - Análise de Dados">
-                <div class="mosaic-caption">Staage - Análise de Dados</div>
-            </div>
-            
-            <!-- Item 3 
-            <div class="mosaic-item" data-title="Tráfego para E-commerce" data-subtitle="Especialização em gestão de e-commerce - 2024">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/trafegoparaecommerce.jpg?raw=true" alt="Tráfego para E-commerce">
-                <div class="mosaic-caption">Tráfego para E-commerce</div>
-            </div>
-            
-            <!-- Item 4 
-            <div class="mosaic-item" data-title="Criação de Relatórios" data-subtitle="Formação completa em HTML5, CSS3 e JavaScript - 2020">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/relatorios.jpg?raw=true" alt="Criação de Relatórios">
-                <div class="mosaic-caption">Criação de Relatórios</div>
-            </div>
-            
-            <!-- Item 5 
-            <div class="mosaic-item" data-title="Vendas e Prospecção" data-subtitle="Estratégias avançadas de aquisição e conversão - 2025">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/vendas.jpg?raw=true" alt="Vendas e Prospecção">
-                <div class="mosaic-caption">Vendas e Prospecção</div>
-            </div>
-            
-            <!-- Item 6 
-            <div class="mosaic-item" data-title="Visão Estratégica" data-subtitle="Estratégias avançadas de Growth Marketing - 2023">
-                <img src="https://github.com/ArthurKennedyOficial/Site-Pessoal-Arthur-Kennedy/blob/main/certificados/visaomarketing.jpg?raw=true" alt="Visão Estratégica">
-                <div class="mosaic-caption">Visão Estratégica</div>
-            </div>
-            
-            <!-- Adicione mais itens conforme necessário -->
-            <!-- 
-            <div class="mosaic-item" data-title="Título" data-subtitle="Subtítulo">
-                <img src="certificacoes/nome-da-imagem.jpg" alt="Descrição">
-                <div class="mosaic-caption">Título Breve</div>
-            </div>
-     
-        </div>
-        <p style="text-align: center; margin-top: 20px; color: var(--color-lighter-gray); font-size: 0.9rem;">
-            * Clique em qualquer certificado para visualizá-lo em tamanho ampliado
-        </p>
-    </div>
-</section> <!--
-    
-    -->
-
-
-<!-- Modal para visualização ampliada das certificações 
-<div id="certificationModal" class="certification-modal">
-    <div class="certification-modal-content">
-        <span class="certification-modal-close">&times;</span>
-        <div class="certification-modal-body">
-            <img id="certificationModalImg" class="certification-modal-img" src="" alt="">
-            <h3 id="certificationModalTitle" class="certification-modal-title"></h3>
-            <p id="certificationModalSubtitle" class="certification-modal-subtitle"></p>
-        </div>
-    </div>
+<div id="ligar-caixa">
+  <button id="ligar" type="button"><svg viewBox="0 0 96 48" aria-hidden="true"><use href="#disco"/></svg><span>Ligar Consciência</span></button>
+  <p class="sussurro">ARTHUR KENNEDY · MARKETING, IA E VENDAS</p>
 </div>
--->
-    <!-- Seção Contato -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contato</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-main">
-                        <p class="contact-intro">Estou disponível para projetos freelancer em tempo parcial ou integral, com formato de trabalho 100% remoto.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Localização</h4>
-                                    <p>Pará de Minas, MG, Brasil</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>E-mail</h4>
-                                    <p>comercialkennedy18@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Telefone/WhatsApp</h4>
-                                    <p>(37) 9 9664-7419</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Disponibilidade</h4>
-                                    <p>PJ ou CLT</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="references">
-                        <h3>Referências</h3>
-                        <div class="reference-item">
-                            <div class="reference-name">Paulo Massa</div>
-                            <div class="reference-role">Assessor de RH para empresas</div>
-                            <div class="reference-contact">37 9 9193-4164</div>
-                        </div>
-                        <div class="reference-item">
-                            <div class="reference-name">Lucia Aparecida</div>
-                            <div class="reference-role">Gerente da MMJ Contabilidade</div>
-                            <div class="reference-contact">37 9 9192-5418</div>
-                        </div>
-                        <div class="reference-item">
-                            <div class="reference-name">Mario Martins Jacinto Junior</div>
-                            <div class="reference-role">Ex Diretor MMJ Contabilidade</div>
-                            <div class="reference-contact">37 9 8408-9047</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/arthur-kennedy-451790242" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/o.arthurkennedy/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://api.whatsapp.com/send/?phone=5537996647419&type=phone_number&app_absent=0" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Arthur Kennedy De Faria. Todos os direitos reservados.</p>
-                <p class="footer-subtitle">Especialista em E-commerce e Tráfego Pago</p>
-            </div>
-        </div>
-    </footer>
+<div id="identidade">
+  <h1 class="nome">Arthur Kennedy</h1>
+  <div class="linha-fina">Marketing · IA · Vendas</div>
+</div>
 
-    <script src="script.js"></script>
+<header id="topo">
+  <button id="marco" class="marco" type="button" aria-label="Voltar à consciência" title="Voltar à consciência"><svg viewBox="0 0 96 48"><use href="#disco"/></svg></button>
+  <div class="vagas"><span class="vaga" aria-hidden="true">Sobre</span><span class="vaga" aria-hidden="true">Serviços</span><span class="vaga" aria-hidden="true">Projetos</span><span class="vaga" aria-hidden="true">Habilidades</span><span class="vaga" aria-hidden="true">Contato</span></div>
+  <button id="menu-bt" type="button" aria-label="Voltar à consciência para escolher outra seção"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v5h5"/></svg>Menu</button>
+</header>
+
+<nav id="cards" aria-label="Seções">
+  <a class="card" href="#sobre"><span class="n">01</span><span class="nome">Sobre</span><span class="sub">Minha trajetória</span></a>
+  <a class="card" href="#servicos"><span class="n">02</span><span class="nome">Serviços</span><span class="sub">IA, marketing e vendas</span></a>
+  <a class="card" href="#projetos"><span class="n">03</span><span class="nome">Projetos</span><span class="sub">Biblioteca em construção</span></a>
+  <a class="card" href="#habilidades"><span class="n">04</span><span class="nome">Habilidades</span><span class="sub">O que sei e o que estudo</span></a>
+  <a class="card destaque" href="#contato"><span class="n">05</span><span class="nome">Contato</span><span class="sub">Vamos conversar</span></a>
+</nav>
+
+<main id="conteudo">
+
+<section class="secao" data-secao="sobre">
+  <div class="cab">
+    <span class="rotulo">01 · Sobre</span>
+    <h2>Minha trajetória</h2>
+  </div>
+  <div class="zz">
+    <figure class="foto"><img src="assets/foto.jpg" alt="Arthur Kennedy"></figure>
+    <div class="eixo" aria-hidden="true"></div>
+    <ol>
+      <li><span class="quando">QUEM SOU EU</span><b>Olá, eu sou o Arthur</b><p>Tenho seis anos entre TI, marketing e vendas, com especialidade em gestão de anúncios no Meta e no Google Ads e em estratégias de growth marketing, para alavancar empresas e torná-las mais lucrativas. Nos últimos meses venho me aprofundando no uso de IA nos negócios, para dar mais clareza e eficiência à tomada de decisão.</p></li>
+      <li><span class="quando">2020</span><b>MMJ Contabilidade · TI</b><p>Comecei como assistente de TI, no suporte a mais de 60 colaboradores, cuidando da infraestrutura, das atualizações de sistemas, dos backups, da segurança e da rede. Com o tempo me tornei técnico e coordenador do TI, junto com o diretor da empresa. A partir dali fui apresentado a novas tecnologias e à gestão de fato, me aprimorei em gestão e em comunicação, e foi isso que me trouxe até onde estou hoje.</p></li>
+      <li><span class="quando">2021</span><b>ATYLA · e-commerce</b><p>Vi a oportunidade de empreender no digital e abri meu primeiro e-commerce, de moda masculina, que chegou a 400 clientes ativos. Foi com ele que me aprofundei em marketing e vendas.</p></li>
+      <li><span class="quando">2023</span><b>Assessoria de performance</b><p>São quase três anos atuando como assessor completo de marketing e vendas para negócios de diferentes nichos, com mais de R$ 1 milhão em vendas geradas para os meus clientes nas principais frentes: tráfego pago, estratégia digital e estruturação comercial.</p></li>
+      <li><span class="quando">2026</span><b>DUO Marketing · CS</b><p>Fiz parte de uma equipe fantástica, como CS de cerca de 25 projetos ao mesmo tempo. Foi lá que trouxe a IA para a minha rotina e vi na prática quanta eficiência ela gera quando se junta ao marketing e às vendas.</p></li>
+      <li class="hoje"><span class="quando">HOJE</span><b>IA aplicada a marketing, vendas e processos</b><p>Além da assessoria de performance, hoje o meu foco é ajudar empresas a implementar a IA nos seus processos, para ganhar eficiência de forma geral e ter mais clareza na tomada de decisão nas frentes de marketing e comercial.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao" data-secao="servicos">
+  <div class="visao-geral">
+    <div class="cab centro">
+      <span class="rotulo">02 · Serviços</span>
+      <h2>IA · Marketing · Vendas</h2>
+      <p>Hoje ofereço três frentes de trabalho, que funcionam juntas ou separadas. Abra cada uma para ver o que está incluso e como isso pode impactar sua empresa.</p>
+    </div>
+    <div class="caixa" id="frentes"></div>
+    <div class="numeros" id="numeros"></div>
+    <noscript><p class="fraco">As três frentes são IA aplicada ao negócio, estruturação comercial e assessoria de marketing. Também faço projetos pontuais: criação de site, landing page, dashboards, sistemas internos, integrações de sistemas e agentes de atendimento.</p></noscript>
+  </div>
+  <div class="visao-detalhe det" hidden></div>
+</section>
+
+<section class="secao" data-secao="projetos">
+  <div class="visao-geral">
+    <div class="cab centro">
+      <span class="rotulo">03 · Projetos</span>
+      <h2>Projetos</h2>
+      <p>Ferramentas, páginas, sistemas, skills e agentes que você pode usar no dia a dia da sua empresa ou tomar como referência para os seus próprios projetos. Esta seção vai ser uma biblioteca, um portfólio interativo em que cada projeto vem com as instruções de como funciona e de como aplicar no seu negócio.</p>
+    </div>
+    <div class="obra">
+      <div class="mosaico" id="mosaico" aria-hidden="true"></div>
+      <div class="obra-aviso">
+        <span class="selo est est-breve">Em construção</span>
+        <h3>Biblioteca de projetos</h3>
+        <p>Em breve os projetos chegam aqui, prontos para você usar ou adaptar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" data-secao="habilidades">
+  <div class="cab centro">
+    <span class="rotulo">04 · Habilidades</span>
+    <h2>Principais habilidades</h2>
+    <p>O que eu já domino em cada área, em três níveis, e no que estou me aprimorando agora.</p>
+  </div>
+  <div class="arv-legenda" aria-hidden="true">
+    <span><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span>
+    <span><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span>
+    <span><span class="niv n1"><i></i><i></i><i></i></span>Básico</span>
+    <span><span class="niv nd"><i></i></span>Em estudo</span>
+  </div>
+    <div class="arvore">
+    <div class="arv-raiz"><span>Arthur Kennedy</span></div>
+    <div class="arv-ramos">
+      <div class="ramo">
+        <h3>Marketing</h3>
+        <ul>
+          <li><span class="hab">Meta Ads (Facebook e Instagram)</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Estratégia de marketing</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Funis de venda e e-commerce</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Google Ads</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Copywriting</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Edição de vídeo e imagem</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Google Analytics e Tag Manager</span><span class="grau"><span class="niv n1"><i></i><i></i><i></i></span>Básico</span></li>
+        </ul>
+      </div>
+      <div class="ramo">
+        <h3>Negócios e vendas</h3>
+        <ul>
+          <li><span class="hab">Análise de dados e KPIs</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Implementação de CRM (Kommo)</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Criação de processos</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Definição de persona e ICP</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Gestão de e-commerce</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Growth e vendas</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Prospecção e pesquisa de mercado</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+        </ul>
+      </div>
+      <div class="ramo">
+        <h3>Tecnologia e IA</h3>
+        <ul>
+          <li><span class="hab">Informática e TI</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Criativos estáticos com IA</span><span class="grau"><span class="niv n3"><i></i><i></i><i></i></span>Avançado</span></li>
+          <li><span class="hab">Agentes e skills com Claude Code e Codex</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Sistemas internos, sites e landing pages com IA</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Automações, integrações e WhatsApp API</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+          <li><span class="hab">Chatbots de atendimento</span><span class="grau"><span class="niv n2"><i></i><i></i><i></i></span>Intermediário</span></li>
+        </ul>
+      </div>
+      <div class="ramo agora">
+        <h3>Aprimoramentos</h3>
+        <ul>
+          <li><span class="hab">Certificação do Google Ads</span><span class="grau"><span class="niv nd"><i></i></span>Em estudo</span></li>
+          <li><span class="hab">n8n, para automação</span><span class="grau"><span class="niv nd"><i></i></span>Em estudo</span></li>
+          <li><span class="hab">Banco de dados e segurança</span><span class="grau"><span class="niv nd"><i></i></span>Em estudo</span></li>
+          <li><span class="hab">Experiências 3D na web com Three.js</span><span class="grau"><span class="niv nd"><i></i></span>Em estudo</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" data-secao="contato">
+  <div class="grade">
+    <div class="cab">
+      <span class="rotulo">05 · Contato</span>
+      <h2>Vamos conversar.</h2>
+      <p>Estou aberto a uma vaga fixa e a projetos pontuais de implantação de IA no marketing. A resposta é pelo WhatsApp ou pelo e-mail, no mesmo dia útil.</p>
+      <div class="coordenada">PARÁ DE MINAS · MG<br>CLT OU PJ<br>DISPONÍVEL</div>
+    </div>
+    <div class="contato-lista">
+      <a class="cartao" href="https://wa.me/5537996647419" target="_blank" rel="noopener"><span><span class="rot">WhatsApp</span><br><b>(37) 9 9664-7419</b></span><span>→</span></a>
+      <a class="cartao" href="mailto:comercialkennedy18@gmail.com"><span><span class="rot">E-mail</span><br><b>comercialkennedy18@gmail.com</b></span><span>→</span></a>
+      <a class="cartao" href="https://www.linkedin.com/in/arthur-kennedy-451790242/" target="_blank" rel="noopener"><span><span class="rot">LinkedIn</span><br><b>Arthur Kennedy</b></span><span>→</span></a>
+      <a class="cartao" href="https://www.instagram.com/o.arthurkennedy/" target="_blank" rel="noopener"><span><span class="rot">Instagram</span><br><b>@o.arthurkennedy</b></span><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="assets/rosto.js"></script>
+<script src="assets/consciencia.js"></script>
+<script src="assets/dados.js"></script>
+<script>
+(function(){const raiz=document.documentElement;const IDS=["sobre","servicos","projetos","habilidades","contato"];const GALHOS=[["2020 · TI","2021 · e-commerce","2023 · assessoria","2026 · DUO"],["IA no negócio","Estruturação comercial","Assessoria de marketing","Projetos pontuais"],["Ferramentas","Sistemas","Skills","Agentes"],["Marketing","Negócios e vendas","Tecnologia e IA"],["WhatsApp","E-mail"]];const SERVICOS=window.AK_SERVICOS,PONTUAIS=window.AK_PONTUAIS;const cards=[...document.querySelectorAll("#cards .card")];const NOMES=cards.map(c=>c.querySelector(".nome").textContent);const secoes=IDS.map(id=>document.querySelector(`.secao[data-secao="${id}"]`));const topo=document.getElementById("topo"),vagas=[...topo.querySelectorAll(".vaga")];const espera=ms=>new Promise(ok=>setTimeout(ok,ms));const FUNDO={contraste:3,densidade:1,reageAoMouse:true,velocidade:1,alcance:.38,empurra:.5,ergue:.2,ligarVida:1500,ligarEspera:420,ligarBrilho:.07,vale:[4,6,9],meio:[7,10,15],crista:[12,17,26],borda:[1,2,3]};const pano=(()=>{const tela=document.getElementById("pano"),U={};let gl=null,vivo=false,antes=0,fase=0,energia=0,mexeu=-1e6,quadros=0,onda=null;let escala=.5,lento=0,contados=0;let ax=innerWidth*.5,ay=innerHeight*.5,mx=ax,my=ay;const VERT="attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";const FRAG=`
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform vec2 uRes,uMouse,uOnda;
+uniform float uFase,uAperto,uOndaR,uOndaF,uAlcance,uEmpurra,uErgue,uBrilho,uDens;
+uniform vec3 cVale,cMeio,cCrista,cBorda;
+float dobras(vec2 q,float t){
+  q+=.20*vec2(sin(q.y*1.7+t*.55),cos(q.x*1.3-t*.45));
+  return sin(q.x*2.1+q.y*1.2+t*.40)*.5+sin(q.y*2.6-q.x*1.3-t*.33)*.3+sin(q.x*3.7+q.y*.4+t*.21)*.2;
+}
+float grao(vec2 p){ return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); }
+void main(){
+  vec2 p=gl_FragCoord.xy/uRes.y, m=uMouse/uRes.y, o=uOnda/uRes.y;
+  vec2 d=p-m; float g=exp(-dot(d,d)/(uAlcance*uAlcance))*uAperto;
+  vec2 e=p-o; float r=length(e); float a=exp(-pow((r-uOndaR)/.17,2.))*uOndaF;
+  vec2 q=p-d*g*uEmpurra-(e/max(r,.0001))*a*.09;
+  vec2 meio=vec2(uRes.x/uRes.y*.5,.5);
+  float t=clamp((dobras((q-meio)*uDens+meio,uFase)+g*uErgue+a*.8)*.5+.5,0.,1.);
+  vec3 c=mix(cVale,cMeio,smoothstep(0.,.62,t));
+  c=mix(c,cCrista,pow(smoothstep(.5,1.,t),1.5));
+  c+=vec3(.60,.67,.76)*a*uBrilho;
+  c=mix(c,cBorda,smoothstep(.18,.78,length(gl_FragCoord.xy/uRes-.5)));
+  c+=(grao(gl_FragCoord.xy)-.5)/255.;
+  gl_FragColor=vec4(c,1.);
+}`;function montar(){gl=tela.getContext("webgl",{antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:"low-power"});if(!gl)return false;const sombra=(tipo,txt)=>{const x=gl.createShader(tipo);gl.shaderSource(x,txt);gl.compileShader(x);return gl.getShaderParameter(x,gl.COMPILE_STATUS)?x:null};const v=sombra(gl.VERTEX_SHADER,VERT),f=sombra(gl.FRAGMENT_SHADER,FRAG);if(!v||!f)return false;const prog=gl.createProgram();gl.attachShader(prog,v);gl.attachShader(prog,f);gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return false;gl.useProgram(prog);gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);const onde=gl.getAttribLocation(prog,"a");gl.enableVertexAttribArray(onde);gl.vertexAttribPointer(onde,2,gl.FLOAT,false,0,0);for(const n of["uRes","uMouse","uOnda","uFase","uAperto","uOndaR","uOndaF","uAlcance","uEmpurra","uErgue","uBrilho","uDens","cVale","cMeio","cCrista","cBorda"])U[n]=gl.getUniformLocation(prog,n);aplicar();return true}function aplicar(redesenha){if(!gl)return;const k=FUNDO.contraste,longe=cor=>cor.map((v,n)=>FUNDO.vale[n]+(v-FUNDO.vale[n])*k);for(const[n,cor]of[["cVale",FUNDO.vale],["cMeio",longe(FUNDO.meio)],["cCrista",longe(FUNDO.crista)],["cBorda",FUNDO.borda]])gl.uniform3f(U[n],cor[0]/255,cor[1]/255,cor[2]/255);gl.uniform1f(U.uAlcance,FUNDO.alcance);gl.uniform1f(U.uEmpurra,FUNDO.empurra);gl.uniform1f(U.uErgue,FUNDO.ergue);gl.uniform1f(U.uBrilho,FUNDO.ligarBrilho);gl.uniform1f(U.uDens,FUNDO.densidade);if(redesenha)desenhar(performance.now())}function desenhar(agora){const L=tela.width,A=tela.height;let raio=0,forca=0,ox=0,oy=0;if(onda){const k=(agora-onda.t)/FUNDO.ligarVida;if(k>=1)onda=null;else{raio=Math.hypot(L,A)/A*.68*k;forca=Math.pow(1-k,.9);ox=onda.x*escala;oy=A-onda.y*escala}}gl.uniform2f(U.uRes,L,A);gl.uniform2f(U.uMouse,mx*escala,A-my*escala);gl.uniform2f(U.uOnda,ox,oy);gl.uniform1f(U.uFase,fase);gl.uniform1f(U.uAperto,energia);gl.uniform1f(U.uOndaR,raio);gl.uniform1f(U.uOndaF,forca);gl.drawArrays(gl.TRIANGLES,0,3);quadros++}function quadro(agora){const real=Math.max(0,(agora-antes)/1e3),dt=Math.min(.12,real);antes=agora;const alvo=agora-mexeu<160?1:0,perto=seg=>1-Math.exp(-dt/seg);energia+=(alvo-energia)*perto(alvo>energia?.2:.9);mx+=(ax-mx)*perto(.28);my+=(ay-my)*perto(.28);fase+=dt*FUNDO.velocidade*Math.max(energia,onda?.6:0);lento+=real;if(++contados===20){if(lento/20>.045&&escala>.125){escala/=2;medir()}lento=0;contados=0}desenhar(agora);if(alvo||energia>.004||onda)requestAnimationFrame(quadro);else{energia=0;vivo=false}}function acordar(){if(gl&&!vivo){vivo=true;antes=performance.now();requestAnimationFrame(quadro)}}function medir(){if(!gl)return;tela.width=Math.max(2,Math.round(innerWidth*escala));tela.height=Math.max(2,Math.round(innerHeight*escala));gl.viewport(0,0,tela.width,tela.height);desenhar(performance.now())}function mouse(e){if(!FUNDO.reageAoMouse)return;ax=e.clientX;ay=e.clientY;mexeu=performance.now();acordar()}let ok=false;try{ok=montar()}catch(erro){ok=false}if(!ok){gl=null;tela.hidden=true}else{medir();addEventListener("resize",medir);addEventListener("pointermove",mouse,{passive:true});addEventListener("pointerdown",mouse,{passive:true});tela.addEventListener("webglcontextlost",()=>{gl=null;tela.hidden=true})}return{ok,aplicar:()=>aplicar(true),onda(x,y){if(!gl)return;onda={x,y,t:performance.now()};acordar()},estado:()=>({vivo,quadros,energia,fase,escala})}})();window.__pano=pano;const ondaDeLigar=(x,y)=>pano.onda(x,y);const EM_CASA=location.protocol==="file:"||/^(localhost$|127\.|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/.test(location.hostname);if(EM_CASA&&pano.ok)(()=>{const CONTROLES=[["contraste","Visibilidade das dobras","visibilidade",1,6,.1],["densidade","Densidade das dobras","densidade",.4,3,.05],["velocidade","Movimento quando o mouse anda","movimento",0,4,.1],["alcance","Tamanho da região que o mouse molda","região",.1,1,.02],["empurra","Quanto as dobras se afastam do mouse","afasta",0,1.5,.05],["ergue","Quanto o pano clareia sob o mouse","clareia",0,.8,.02]];const PADRAO=Object.fromEntries(CONTROLES.map(([n])=>[n,FUNDO[n]]));const guardado=k=>{try{return localStorage.getItem(k)}catch(e){return null}};const guardar=(k,v)=>{try{if(v==null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){}};const num=v=>(+v).toLocaleString("pt-BR",{maximumFractionDigits:2});try{const s=JSON.parse(guardado("ak-fundo")||"{}");for(const[n,,,min,max]of CONTROLES)if(typeof s[n]==="number"&&s[n]>=min&&s[n]<=max)FUNDO[n]=s[n]}catch(e){}pano.aplicar();let painel=null;function mostrar(){for(const[n]of CONTROLES){const c=painel.querySelector(`input[data-n="${n}"]`);c.value=FUNDO[n];c.previousElementSibling.textContent=num(FUNDO[n])}painel.querySelector("[data-valores]").textContent=CONTROLES.map(([n,,curto])=>`${curto} ${num(FUNDO[n])}`).join(" · ")}function montar(){painel=document.createElement("aside");painel.id="ajuste";painel.setAttribute("aria-label","Ajuste do pano do fundo");painel.innerHTML=`<div class="aj-cab"><b>Ajuste do fundo</b><button type="button" data-acao="fechar" aria-label="Fechar o painel">×</button></div>`+CONTROLES.map(([n,nome,,min,max,passo])=>`<label><span>${nome}</span><output></output><input type="range" data-n="${n}" min="${min}" max="${max}" step="${passo}"></label>`).join("")+`<p class="aj-valores" data-valores></p><div class="aj-pe"><button type="button" data-acao="copiar">Copiar valores</button><button type="button" data-acao="padrao">Voltar ao padrão</button></div><small>F2 abre e fecha. Passe o mouse pelo fundo para ver o pano se mexer. O que você regular fica guardado só neste navegador.</small>`;painel.addEventListener("input",e=>{const n=e.target.dataset.n;if(!n)return;FUNDO[n]=+e.target.value;guardar("ak-fundo",JSON.stringify(Object.fromEntries(CONTROLES.map(([x])=>[x,FUNDO[x]]))));pano.aplicar();mostrar()});painel.addEventListener("click",e=>{const b=e.target.closest("button[data-acao]");if(!b)return;if(b.dataset.acao==="fechar")alternar();else if(b.dataset.acao==="padrao"){Object.assign(FUNDO,PADRAO);guardar("ak-fundo",null);pano.aplicar();mostrar()}else{const txt=painel.querySelector("[data-valores]").textContent,feito=()=>{b.textContent="Copiado";setTimeout(()=>{b.textContent="Copiar valores"},1400)};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(feito,()=>{});else{getSelection().selectAllChildren(painel.querySelector("[data-valores]"));try{if(document.execCommand("copy"))feito()}catch(erro){}}}});painel.addEventListener("keydown",e=>e.stopPropagation());document.body.appendChild(painel);mostrar()}function alternar(){if(!painel)montar();else painel.hidden=!painel.hidden;guardar("ak-ajuste",painel.hidden?null:"1")}addEventListener("keydown",e=>{if(e.key==="F2"){e.preventDefault();alternar()}},true);if(guardado("ak-ajuste")==="1"||/[?&]ajuste\b/.test(location.search))alternar()})();function medirTopo(){raiz.style.setProperty("--topo-h",topo.offsetHeight+"px")}medirTopo();addEventListener("resize",medirTopo);const mente=AKConsciencia.iniciar({canvas:document.getElementById("mente"),botao:document.getElementById("ligar"),identidade:document.getElementById("identidade"),cards,galhos:GALHOS,topo:()=>({h:topo.offsetHeight,vagas:vagas.map(v=>{const r=v.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]})})});window.__mente=mente;let ligando=false;document.getElementById("ligar").onclick=e=>{if(ligando)return;ligando=true;const b=e.currentTarget.getBoundingClientRect();ondaDeLigar(b.left+b.width/2,b.top+b.height/2);setTimeout(()=>{if(lerEndereco().i>=0)rota();else mente.ligar()},pano.ok?FUNDO.ligarEspera:0)};const ICONES={agente:'<rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 8V5M9.5 13h.01M14.5 13h.01M9.5 16h5M2.5 12.5v3M21.5 12.5v3"/><circle cx="12" cy="4" r="1"/>',alvo:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12h.01"/>',megafone:'<path d="M4 10v4h3l8 4.5v-13L7 10z"/><path d="M18 9.5a4 4 0 0 1 0 5M8 14.5l1 5h2.5l-.8-4"/>',imagem:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4.5 4.5 2.5-2.5 6 5.5M15.5 9.5h.01"/>',agenda:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',confere:'<circle cx="12" cy="12" r="8.5"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/>',integra:'<circle cx="5.5" cy="12" r="2.5"/><circle cx="18.5" cy="6" r="2.5"/><circle cx="18.5" cy="18" r="2.5"/><path d="m7.8 11 8.4-4M7.8 13l8.4 4"/>',chat:'<path d="M4 5.5h16V16h-9.5L6 19.5V16H4z"/><path d="M8 9.5h8M8 12.5h5"/>',pagina:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>',site:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/>',funil:'<path d="M4 5h16l-6 7v6l-4 2v-8z"/>',busca:'<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>',carteira:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.2a3 3 0 0 1 0 5.6M18 14.6c1.8.8 3 2.7 3 5.4"/>',raio:'<path d="M13 3 5 13h6l-1 8 8-10h-6z"/>',cubo:'<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/>',barras:'<path d="M3 20h18M6 20v-8M12 20V5M18 20v-5"/>',paineis:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/>',livro:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/>',capelo:'<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v5"/>'};const ico=nome=>`<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24">${ICONES[nome]||ICONES.pagina}</svg></span>`;function htmlCaixa(rotulo,abas){return`<div class="caixa-abas" role="tablist" aria-label="${rotulo}">${abas.map((a,n)=>`<button class="aba-f" type="button" role="tab" data-aba="${a.id}"${a.curto?` data-curto="${a.curto}" aria-label="${a.nome}"`:""} aria-selected="${n===0}"><span>${a.nome}</span></button>`).join("")}</div>`+abas.map((a,n)=>`<div class="caixa-painel" role="tabpanel" data-aba="${a.id}"${n?" hidden":""}>${a.html}</div>`).join("")}function mostrarAba(caixa,id){caixa.querySelectorAll(".aba-f").forEach(b=>b.setAttribute("aria-selected",b.dataset.aba===id));caixa.querySelectorAll(".caixa-painel").forEach(p=>{p.hidden=p.dataset.aba!==id})}document.addEventListener("click",e=>{const b=e.target.closest(".aba-f");if(b)mostrarAba(b.closest(".caixa"),b.dataset.aba)});const itemEntrega=(e,completa)=>`<div class="ent-item">${ico(e.icone)}<div><b>${e.nome}</b><p>${completa&&e.texto||e.breve}</p></div></div>`;document.getElementById("numeros").innerHTML=(window.AK_NUMEROS||[]).map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("");const caixaServ=document.getElementById("frentes");caixaServ.innerHTML=htmlCaixa("Serviços",[...SERVICOS.map(s=>({id:s.id,nome:s.nome,curto:s.curto,html:`<p class="caixa-frase">${s.frase}</p><div class="ent-grade">${s.entregas.map(e=>itemEntrega(e)).join("")}</div><div class="caixa-pe"><a class="bt contorno" href="#servicos/${s.id}">Ver mais detalhes →</a></div>`})),{id:"pontuais",nome:PONTUAIS.nome,curto:PONTUAIS.curto,html:`<p class="caixa-frase">${PONTUAIS.frase}</p><div class="ent-grade">${PONTUAIS.itens.map(p=>p.exemplo?`<a class="ent-item so-nome" href="${p.exemplo}">${ico(p.icone)}<div><b>${p.nome}</b><small>ver exemplo →</small></div></a>`:`<div class="ent-item so-nome">${ico(p.icone)}<div><b>${p.nome}</b></div></div>`).join("")}</div><div class="caixa-pe"><a class="bt contorno" href="#contato">Conversar sobre um projeto →</a></div>`}]);const FORMAS=[[72,[96,88,64]],[58,[92,80,90,50]],[80,[86,70]],[64,[94,84,58]],[70,[90,76,88,40]],[54,[82,92,66]]];const tarja=(cls,w)=>`<span class="tarja${cls}"${w?` style="width:${w}%"`:""}></span>`;const mosaico=document.getElementById("mosaico");mosaico.innerHTML='<div class="col"></div><div class="col"></div><div class="col"></div>';const colunas=[...mosaico.children],gabarito=document.createElement("template");gabarito.innerHTML=FORMAS.map(([t,linhas])=>`<div class="proj censura">${tarja(" ico-t")}${tarja(" t",t)}${linhas.map(w=>tarja("",w)).join("")}${tarja(" pe")}</div>`).join("");const projs=[...gabarito.content.children],TRES_COLUNAS=matchMedia("(min-width:1000px)");function arrumarMosaico(){const n=TRES_COLUNAS.matches?3:2;projs.forEach((c,k)=>colunas[k%n].appendChild(c))}arrumarMosaico();TRES_COLUNAS.addEventListener("change",()=>{projs.forEach(c=>c.classList.remove("m"));arrumarMosaico()});const SIMPLES={passos:b=>`<ol class="passos-s" style="--linhas:${Math.ceil(b.itens.length/2)}">${b.itens.map(([t,d])=>`<li><b>${t}</b><span>${d}</span></li>`).join("")}</ol>`,texto:(b,tit)=>`<div class="txt-s">${tit?`<h4>${b.titulo}</h4>`:""}<p>${b.texto}</p></div>`,lista:(b,tit)=>`<div class="txt-s">${tit?`<h4>${b.titulo}</h4>`:""}<ul class="itens">${b.itens.map(i=>`<li>${i}</li>`).join("")}</ul></div>`};function htmlFrente(x){const abas=[{id:"entregaveis",nome:"Entregáveis",html:`<div class="ent-grade inteira">${x.entregas.map(e=>itemEntrega(e,true)).join("")}</div>`},...x.abas.map((a,n)=>({id:"parte"+n,nome:a.nome,curto:a.curto,html:a.blocos.map(b=>SIMPLES[b.t](b,a.blocos.length>1)).join("")}))];return`<div class="det-cab">
+        <a class="volta" href="#servicos">← Serviços</a>
+        <h2>${x.nome}</h2>
+        <p class="det-frase">${x.frase}</p>
+      </div>
+      <div class="caixa">${htmlCaixa(x.nome,abas)}</div>
+      <div class="det-fim"><a class="bt contorno" href="#servicos">← Serviços</a><a class="bt" href="#contato">Conversar sobre esta frente</a></div>`}const listaDe=i=>IDS[i]==="servicos"?SERVICOS:null;function vizinhos(i,sub){const lista=listaDe(i),k=sub&&lista?lista.findIndex(x=>x.id===sub):-1,sec=n=>n>=0&&n<IDS.length?{hash:"#"+IDS[n],nome:NOMES[n]}:null;if(k<0)return{ant:sec(i-1),prox:sec(i+1)};const item=n=>({hash:`#${IDS[i]}/${lista[n].id}`,nome:lista[n].nome});return{ant:k>0?item(k-1):sec(i),prox:k<lista.length-1?item(k+1):sec(i+1)}}const SETA='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>';const fins=secoes.map(s=>{const n=document.createElement("nav");n.className="fim";n.setAttribute("aria-label","Fim da página");s.appendChild(n);return n});function preparar(i,sub){const det=secoes[i].querySelector(".visao-detalhe");if(det){const geral=secoes[i].querySelector(".visao-geral");const item=sub&&SERVICOS.find(x=>x.id===sub);det.innerHTML=item?htmlFrente(item):"";det.hidden=!item;geral.hidden=!!item;if(item)mostrarAba(caixaServ,item.id)}const p=vizinhos(i,sub).prox;fins[i].innerHTML=p?`<a class="fim-seta" href="${p.hash}" aria-label="Avançar para ${p.nome}" title="Avançar para ${p.nome}">${SETA}</a><span class="fim-rot">${p.nome}</span>`:""}const SEL=".cab > *, .caixa, .mosaico .proj, .obra-aviso, .zz li, .zz .foto, .arv-legenda, .arv-raiz, .ramo, .det-cab > *, .det-resumo, .numeros, .det-blocos > *, .det-fim, .contato-lista .cartao, .coordenada, .fim";function materializar(sec){sec.classList.remove("saindo");sec.classList.add("ativa");const els=[...sec.querySelectorAll(SEL)].filter(el=>el.getClientRects().length);els.forEach((el,n)=>{el.classList.add("m");el.style.setProperty("--d",Math.min(n*65,900)+"ms")});requestAnimationFrame(()=>mente.condensar(els.map((el,n)=>{const r=el.getBoundingClientRect();return{left:r.left,top:r.top,width:r.width,height:r.height,bottom:r.bottom,atraso:Math.min(n*65,900)}})))}async function dissolverAtual(){const s=secoes.find(x=>x.classList.contains("ativa"));if(!s)return;s.classList.add("saindo");await espera(300);s.classList.remove("ativa","saindo")}function marcarAtivo(i){cards.forEach((c,k)=>{c.classList.toggle("ativo",k===i);if(k===i)c.setAttribute("aria-current","page");else c.removeAttribute("aria-current")})}function lerEndereco(){const[s,sub]=decodeURIComponent(location.hash.slice(1)).split("/");return{i:IDS.indexOf(s),sub:sub||""}}let vez=0;async function rota(){const minha=++vez,{i,sub}=lerEndereco(),estado=mente.estado();if(estado==="desligado"&&!ligando)return;if(i>=0){marcarAtivo(i);if(estado==="secao"){await dissolverAtual();if(minha!==vez)return;preparar(i,sub);scrollTo(0,0);materializar(secoes[i]);return}await mente.abrir(i,estado==="desligado");if(minha!==vez)return;preparar(i,sub);medirTopo();scrollTo(0,0);materializar(secoes[i])}else if(estado==="secao"){marcarAtivo(-1);await dissolverAtual();if(minha!==vez)return;scrollTo(0,0);mente.voltar()}}function ir(hash){if(hash===location.hash||!hash&&!location.hash)return;history.pushState(null,"",hash||location.pathname+location.search);rota()}document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();ir(a.getAttribute("href")==="#"?"":a.getAttribute("href"))});document.getElementById("marco").onclick=()=>ir("");document.getElementById("menu-bt").onclick=()=>ir("");addEventListener("popstate",rota);addEventListener("keydown",e=>{if(e.key!=="Escape"||mente.estado()!=="secao")return;const{i,sub}=lerEndereco();ir(sub&&i>=0?"#"+IDS[i]:"")});const ROLAGEM={parado:350,pausa:160,empurrao:40,toque:70,descanso:1100};let ultMov=0,ultRoda=0,somaRoda=0,sentidoRoda=0,valendo=false,descansoAte=0,dedo=null;const noFim=()=>scrollY+innerHeight>=raiz.scrollHeight-4,noAlto=()=>scrollY<=2;const naBorda=s=>s>0?noFim():noAlto();addEventListener("scroll",()=>{ultMov=performance.now()},{passive:true});function passar(s){const{i,sub}=lerEndereco();if(i<0||mente.estado()!=="secao")return false;const v=vizinhos(i,sub),alvo=s>0?v.prox:v.ant;if(!alvo)return false;descansoAte=performance.now()+ROLAGEM.descanso;valendo=false;ir(alvo.hash);return true}const podeEmpurrar=(s,ag)=>mente.estado()==="secao"&&ag>=descansoAte&&ag-ultMov>ROLAGEM.parado&&naBorda(s);addEventListener("wheel",e=>{const s=Math.sign(e.deltaY);if(!s||e.ctrlKey)return;const ag=performance.now(),novo=ag-ultRoda>ROLAGEM.pausa;ultRoda=ag;if(novo){somaRoda=0;sentidoRoda=s;valendo=podeEmpurrar(s,ag)}if(!valendo||s!==sentidoRoda){valendo=false;return}somaRoda+=Math.abs(e.deltaY)*(e.deltaMode===1?33:e.deltaMode===2?innerHeight:1);if(somaRoda>=ROLAGEM.empurrao)passar(s)},{passive:true});addEventListener("touchstart",e=>{const ag=performance.now();dedo=e.touches.length===1&&mente.estado()==="secao"&&ag>=descansoAte&&ag-ultMov>ROLAGEM.parado?{x:e.touches[0].clientX,y:e.touches[0].clientY,fim:noFim(),alto:noAlto()}:null},{passive:true});addEventListener("touchend",e=>{const d=dedo;dedo=null;if(!d||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-d.x,dy=e.changedTouches[0].clientY-d.y;if(Math.abs(dy)<ROLAGEM.toque||Math.abs(dx)>Math.abs(dy))return;if(dy<0&&d.fim&&noFim())passar(1);else if(dy>0&&d.alto&&noAlto())passar(-1)},{passive:true});addEventListener("touchcancel",()=>{dedo=null},{passive:true});addEventListener("keydown",e=>{if(e.repeat||e.altKey||e.ctrlKey||e.metaKey)return;const s=e.key==="ArrowDown"||e.key==="PageDown"?1:e.key==="ArrowUp"||e.key==="PageUp"?-1:0;if(s&&podeEmpurrar(s,performance.now())&&passar(s))e.preventDefault()});cards.forEach((c,i)=>{c.addEventListener("pointerenter",()=>{if(mente.estado()==="grafo")mente.realce(i)});c.addEventListener("pointerleave",()=>mente.realce(-1));c.addEventListener("focus",()=>{if(mente.estado()==="grafo")mente.realce(i)});c.addEventListener("blur",()=>mente.realce(-1))});const chegada=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];if(chegada&&chegada.type==="reload"&&location.hash)history.replaceState(null,"",location.pathname+location.search)})();
+</script>
 </body>
 </html>
-
-
-
-
